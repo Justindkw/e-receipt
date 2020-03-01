@@ -2,7 +2,10 @@ package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,8 +13,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("big Gamer time?");
-        System.out.println("gamer text");
-        System.out.println("yare yare daze");
+
+        myButton = findViewById(R.id.butt);
+        myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //User taps button
+                navigateToSecondScreen();
+            }
+        });
+    }
+    Button myButton;
+
+    //private method
+    private void navigateToSecondScreen(){
+        Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
     }
 }
