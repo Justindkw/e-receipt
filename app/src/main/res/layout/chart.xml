@@ -11,8 +11,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pie_chart_title"
-        android:textSize="@dimen/chart_title_text_size"
+        android:text="Title"
+        android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -68,8 +68,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/inside_title"
-            android:textSize="@dimen/inside_title_text_size"
+            android:text="inside_title"
+            android:textSize="16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -82,7 +82,7 @@
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/input_linear_padding"
+        android:padding="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -94,7 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/burn"
+            android:hint="burn"
             android:inputType="number" />
 
         <Button
@@ -102,14 +102,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="addBurned"
-            android:text="@string/add" />
+            android:text="add" />
 
         <EditText
             android:id="@+id/consumed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/cons"
+            android:hint="cons"
             android:inputType="number" />
 
         <Button
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="addConsumed"
-            android:text="@string/add" />
+            android:text="add" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
