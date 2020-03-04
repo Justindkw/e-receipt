@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/butt"
+        android:id="@+id/cameraButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="CLICK IT I DARE YOU"
@@ -15,3 +15,4 @@
         android:textColor="@android:color/white"
         android:textSize="30dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
