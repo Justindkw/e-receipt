@@ -23,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     Button myButton;
 
     //private method
-    private void navigateToSecondScreen(){
+    private void navigateToSecondScreen() {
         Intent intent = new Intent(this, CameraActivity.class);
         startActivity(intent);
     }
 }
+
