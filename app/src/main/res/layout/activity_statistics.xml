@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".statistics">
 
+    <Button
+        android:id="@+id/budgetingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Budget"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="639dp" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="639dp" />
+
+    <Button
+        android:id="@+id/statisticsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Statistics"
+        tools:layout_editor_absoluteX="246dp"
+        tools:layout_editor_absoluteY="639dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
