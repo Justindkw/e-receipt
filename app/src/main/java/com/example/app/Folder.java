@@ -1,5 +1,9 @@
 package com.example.app;
 
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Folder {
@@ -14,5 +18,11 @@ public class Folder {
     }
     public void addReciept(Reciept r){
         reciepts.add(r);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }
