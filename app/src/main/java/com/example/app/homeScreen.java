@@ -14,8 +14,8 @@ import java.util.HashMap;
 public class homeScreen extends AppCompatActivity {
 
     int curButtonPos = 0;
-    TableRow curRow = new TableRow(this);
-    TableLayout folderLayout = (TableLayout)findViewById(R.id.folderTable);
+    TableRow curRow;
+    TableLayout folderLayout;
     Button createFolder;
     HashMap<String,Folder> folders = new HashMap<>();
 
@@ -23,6 +23,9 @@ public class homeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        curRow = new TableRow(this);
+        folderLayout = findViewById(R.id.folderTable);
+        folderLayout.addView(curRow);
         createFolder = findViewById(R.id.createFolder);
         createFolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +58,6 @@ public class homeScreen extends AppCompatActivity {
         insertButton(folder.toString());
     }
     public void insertButton(String s){
-        curButtonPos++;
         if(curButtonPos%2==0){
             curRow = new TableRow(this);
             folderLayout.addView(curRow);
@@ -70,6 +72,7 @@ public class homeScreen extends AppCompatActivity {
             }
         });
         curRow.addView(b);
+        curButtonPos++;
 
     }
 
