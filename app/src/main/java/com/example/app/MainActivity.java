@@ -41,11 +41,6 @@ public class MainActivity extends AppCompatActivity {
     int calsBurned = 0;
     int calsConsumed = 0;
 
-    //@Override
-    //protected void onCreate(Bundle savedInstanceState) {
-        //super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-   // }
 
 
     public void addBurned(View v) {
