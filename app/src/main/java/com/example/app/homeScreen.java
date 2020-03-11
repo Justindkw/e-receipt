@@ -7,9 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.TableRow;
+
 import java.util.HashMap;
 
 public class homeScreen extends AppCompatActivity {
+
+    int curButtonPos = 0;
+    TableRow curRow = new TableRow(this);
+    TableLayout folderLayout = (TableLayout)findViewById(R.id.folderTable);
+    Button createFolder;
+    HashMap<String,Folder> folders = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,32 +27,11 @@ public class homeScreen extends AppCompatActivity {
         createFolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                insertButton("Test");
                 //User taps button
 
             }
         });
-    }
-    int buttonRowPos = 0;
-    Button createFolder;
-    HashMap<String,Folder> folders = new HashMap<>();
-
-    public void addFolder(Folder folder){
-        folders.put(folder.toString(),folder);
-        insertButton(folder.toString());
-    }
-    public void insertButton(String s){
-        Button b = new Button(this);
-        TableLayout folderLayout = (TableLayout)findViewById(R.id.folderTable);
-        b.setText(s);
-        b.setTag(s);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         statisticsButton = findViewById(R.id.statisticsButton);
         statisticsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +48,29 @@ public class homeScreen extends AppCompatActivity {
                 toBudgetScreen();
             }
         });
+    }
+
+    public void addFolder(Folder folder){
+        folders.put(folder.toString(),folder);
+        insertButton(folder.toString());
+    }
+    public void insertButton(String s){
+        curButtonPos++;
+        if(curButtonPos%2==0){
+            curRow = new TableRow(this);
+            folderLayout.addView(curRow);
+        }
+        Button b = new Button(this);
+        b.setText(s);
+        b.setTag(s);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        curRow.addView(b);
+
     }
 
     //Buttons
