@@ -2,13 +2,11 @@ package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class homeScreen extends AppCompatActivity {
@@ -40,7 +38,44 @@ public class homeScreen extends AppCompatActivity {
         TableLayout folderLayout = (TableLayout)findViewById(R.id.folderTable);
         b.setText(s);
         b.setTag(s);
-        b.
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        statisticsButton = findViewById(R.id.statisticsButton);
+        statisticsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //User taps on statisticsButton
+                toStatsScreen();
+            }
+        });
+
+        budgetButton = findViewById(R.id.budgetingButton);
+        budgetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toBudgetScreen();
+            }
+        });
+    }
+
+    //Buttons
+
+    Button statisticsButton;
+    Button budgetButton;
+
+    //Private button voids
+    private void toStatsScreen() {
+        Intent toStatsScreen = new Intent(this, statistics.class);
+        startActivity(toStatsScreen);
+    }
+
+    private void toBudgetScreen() {
+        Intent toBudgetScreen = new Intent(this, budgeting.class);
+        startActivity(toBudgetScreen);
     }
 }

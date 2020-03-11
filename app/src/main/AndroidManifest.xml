@@ -12,9 +12,9 @@
         <activity android:name=".statistics"></activity>
         <activity android:name=".receiptFolder" />
         <activity android:name=".budgeting" />
-        <activity android:name=".homeScreen" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".CameraActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".homeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
