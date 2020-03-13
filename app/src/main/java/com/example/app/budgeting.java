@@ -29,11 +29,20 @@ public class budgeting extends AppCompatActivity {
                 toStatsScreen();
             }
         });
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toHomeScreen();
+            }
+        });
     }
 
     //Buttons
     Button homeButton;
     Button statisticsButton;
+    Button backButton;
 
     //Private button voids
     private void toHomeScreen() {
