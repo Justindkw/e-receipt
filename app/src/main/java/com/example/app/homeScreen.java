@@ -8,16 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-
 import java.util.HashMap;
 
 public class homeScreen extends AppCompatActivity {
-
-    int curButtonPos = 0;
-    TableRow curRow;
-    TableLayout folderLayout;
-    Button createFolder;
-    HashMap<String,Folder> folders = new HashMap<>();
+    private int mData;
+    private int curButtonPos = 0;
+    private TableRow curRow;
+    private TableLayout folderLayout;
+    private Button createFolder;
+    private HashMap<String,Folder> folders = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,27 +52,33 @@ public class homeScreen extends AppCompatActivity {
         });
     }
 
+
     public void addFolder(Folder folder){
         folders.put(folder.toString(),folder);
         insertButton(folder.toString());
     }
-    public void insertButton(String s){
+    public void insertButton(String name){
         if(curButtonPos%2==0){
             curRow = new TableRow(this);
             folderLayout.addView(curRow);
         }
         Button b = new Button(this);
-        b.setText(s);
-        b.setTag(s);
+        final Folder thisFolder = folders.get(name);
+        Intent intent = new Intent(this,FolderFile.class);
+        intent.putExtra("folder",thisFolder);
+        b.setText(name);
+        b.setTag(name);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                goToFolderFile(folders.get(thisFolder));
             }
         });
         curRow.addView(b);
         curButtonPos++;
 
+    }
+    public void goToFolderFile(Folder folder){
     }
 
     //Buttons

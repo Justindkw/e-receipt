@@ -1,12 +1,14 @@
 package com.example.app;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-public class Folder {
+public class Folder implements Parcelable {
     private String name;
     private String use;
     private String note;
@@ -16,6 +18,25 @@ public class Folder {
         this.use = use;
         this.note = note;
     }
+
+    protected Folder(Parcel in) {
+        name = in.readString();
+        use = in.readString();
+        note = in.readString();
+    }
+
+    public static final Creator<Folder> CREATOR = new Creator<Folder>() {
+        @Override
+        public Folder createFromParcel(Parcel in) {
+            return new Folder(in);
+        }
+
+        @Override
+        public Folder[] newArray(int size) {
+            return new Folder[size];
+        }
+    };
+
     public void addReciept(Reciept r){
         reciepts.add(r);
     }
@@ -24,5 +45,17 @@ public class Folder {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(use);
+        dest.writeString(note);
     }
 }
