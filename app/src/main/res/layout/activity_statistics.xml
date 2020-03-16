@@ -27,7 +27,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/home" />
+            android:background="@drawable/home_light" />
 
         <Button
             android:id="@+id/budgetingButton"
@@ -49,34 +49,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/statistics" />
+            android:background="@drawable/stat_dark" />
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
-        android:layout_height="649dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/grey_vertical_rectangle" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

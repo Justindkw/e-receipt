@@ -29,7 +29,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/home" />
+            android:background="@drawable/home_light" />
 
         <Button
             android:id="@+id/budgetingButton"
@@ -40,7 +40,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/budgeting" />
+            android:background="@drawable/__dark" />
 
         <Button
             android:id="@+id/statisticsButton"
@@ -51,17 +51,17 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/statistics" />
+            android:background="@drawable/stat" />
     </LinearLayout>
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="54dp"
-        android:layout_height="49dp"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="29dp"
-        android:background="?attr/actionModeCloseDrawable"
+        android:background="@drawable/back_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -239,7 +239,7 @@
 
         <TextView
             android:id="@+id/text8"
-            android:layout_width="90dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginLeft="120dp"

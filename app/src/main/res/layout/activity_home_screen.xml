@@ -279,7 +279,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/statistics" />
+            android:background="@drawable/stat" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
