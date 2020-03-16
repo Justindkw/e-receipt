@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FolderFile"></activity>
+
+        <activity android:name=".addFolder"></activity>
         <activity android:name=".statistics" />
         <activity android:name=".receiptFolder" />
         <activity android:name=".budgeting" />
