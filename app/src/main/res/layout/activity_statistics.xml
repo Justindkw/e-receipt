@@ -27,7 +27,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/home_light" />
+            android:background="@drawable/home" />
 
         <Button
             android:id="@+id/budgetingButton"
@@ -49,7 +49,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/stat_dark" />
+            android:background="@drawable/statistics" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,14 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TableRow.LayoutParams;
+
 import java.util.HashMap;
 
 public class homeScreen extends AppCompatActivity {
@@ -71,6 +74,11 @@ public class homeScreen extends AppCompatActivity {
 
         ConstraintLayout layout = new ConstraintLayout(this);
         ConstraintSet set = new ConstraintSet();
+        layout.setMinWidth((int)convertDpToPixel((float)180));
+        layout.setMinHeight((int)convertDpToPixel((float)250));
+
+        layout.setMaxWidth((int)convertDpToPixel((float)180));
+        layout.setMaxHeight((int)convertDpToPixel((float)250));
         set.clone(layout);
         //creates the new constraint layout and the layout setter
         //set is the one i need you to edit Lucas, because it determines the constraint, margin, etc of the button.
@@ -89,10 +97,18 @@ public class homeScreen extends AppCompatActivity {
         b.setBackgroundResource(R.drawable.grey_horizontal_rectangle);
         b.setText(name);
         b.setTag(name);
+        b.setWidth((int)convertDpToPixel((float)180));
+        b.setHeight((int)convertDpToPixel((float)250));
+        LayoutParams params = new LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(5, 0, 5, 0);
+        layout.setLayoutParams(params);
         //creates button and its text and tag
         final Intent intent = new Intent(this,FolderFile.class);
         intent.putExtra("folder",folders.get(name));
-        //saves folder to the next activty
+        //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +120,8 @@ public class homeScreen extends AppCompatActivity {
         layout.addView(image);
         layout.addView(b);
         //adds image and button to the constraint layout
-        set.connect(image.getId(), ConstraintSet.TOP, b.getId(), ConstraintSet.TOP, 60);
-        set.applyTo(layout);
+        //set.connect(image.getId(), ConstraintSet.TOP, b.getId(), ConstraintSet.TOP, 60);
+        //set.applyTo(layout);
         //this is suppose to set the constaint/margins/etc to to the correct size, but i have not clue how to do that
         //the set code above is directly copied from site, so please change
         curRow.addView(layout);
@@ -124,7 +140,9 @@ public class homeScreen extends AppCompatActivity {
         Intent toStatsScreen = new Intent(this, statistics.class);
         startActivity(toStatsScreen);
     }
-
+    public float convertDpToPixel(float dp){
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
+    }
     private void toBudgetScreen() {
         Intent toBudgetScreen = new Intent(this, budgeting.class);
         startActivity(toBudgetScreen);
