@@ -19,7 +19,7 @@ import android.widget.TableRow.LayoutParams;
 
 import java.util.HashMap;
 
-public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ItemClickListener{
+public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ItemClickListener {
 
     recyclerViewAdapter adapter;
 
@@ -28,10 +28,10 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        //data to populate the RecyclerView with
-        String[] data = {"1", "2", "3", "4"};
+        // data to populate the RecyclerView with
+        String[] data = {"1", "2", "3", "4", "5"};
 
-        //set up the RecyclerView
+        // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
@@ -42,8 +42,9 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.i("TAG", "You clicked number " + adapter.getItem(position));
-        }
+        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
+    }
+
 
     //Justin's stuff starts here
     private int curButtonPos = 0;
@@ -51,59 +52,59 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     private TableLayout folderLayout;
     private Button createFolder;
     private HashMap<String,Folder> folders = new HashMap<>();
-    //Justin's stuff ends here
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
-        curRow = new TableRow(this);
-        folderLayout = findViewById(R.id.folderTable);
-        folderLayout.addView(curRow);
 
-        createFolder = findViewById(R.id.createFolder);
-        createFolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                insertButton("Test");
-                //User taps button
-
-            }
-        });
-        statisticsButton = findViewById(R.id.statisticsButton);
-        statisticsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //User taps on statisticsButton
-                toStatsScreen();
-            }
-        });
-
-        budgetButton = findViewById(R.id.budgetingButton);
-        budgetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toBudgetScreen();
-            }
-        });
-
-        foodButton = findViewById(R.id.Food);
-        foodButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toFoodFolder();
-            }
-        });
-
-        clothingButton = findViewById(R.id.Clothing);
-        clothingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toClothingFolder();
-            }
-        });
-
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_home_screen);
+//        curRow = new TableRow(this);
+//        folderLayout = findViewById(R.id.folderTable);
+//        folderLayout.addView(curRow);
+//
+//        createFolder = findViewById(R.id.createFolder);
+//        createFolder.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                insertButton("Test");
+//                //User taps button
+////Justin's stuff ends here
+//            }
+//        });
+//        statisticsButton = findViewById(R.id.statisticsButton);
+//        statisticsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //User taps on statisticsButton
+//                toStatsScreen();
+//            }
+//        });
+//
+//        budgetButton = findViewById(R.id.budgetingButton);
+//        budgetButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toBudgetScreen();
+//            }
+//        });
+//
+//        foodButton = findViewById(R.id.Food);
+//        foodButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toFoodFolder();
+//            }
+//        });
+//
+//        clothingButton = findViewById(R.id.Clothing);
+//        clothingButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                toClothingFolder();
+//            }
+//        });
+//
+//    }
 
     //Justin's stuff starts here
     public void addFolder(Folder folder){
@@ -175,7 +176,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         curRow.addView(layout);
         //adds the constraint view to the actual layout
         curButtonPos++;
-        //updates button pos
+        //updates button position
     }
     //Justin's stuff ends here
 
