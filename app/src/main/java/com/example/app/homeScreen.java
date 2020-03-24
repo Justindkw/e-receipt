@@ -3,9 +3,12 @@ package com.example.app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -16,12 +19,39 @@ import android.widget.TableRow.LayoutParams;
 
 import java.util.HashMap;
 
-public class homeScreen extends AppCompatActivity {
+public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ItemClickListener{
+
+    recyclerViewAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home_screen);
+
+        //data to populate the RecyclerView with
+        String[] data = {"1", "2", "3", "4"};
+
+        //set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
+        int numberOfColumns = 2;
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        adapter = new recyclerViewAdapter(this, data);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Log.i("TAG", "You clicked number " + adapter.getItem(position));
+        }
+
+    //Justin's stuff starts here
     private int curButtonPos = 0;
     private TableRow curRow;
     private TableLayout folderLayout;
     private Button createFolder;
     private HashMap<String,Folder> folders = new HashMap<>();
+    //Justin's stuff ends here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +60,7 @@ public class homeScreen extends AppCompatActivity {
         curRow = new TableRow(this);
         folderLayout = findViewById(R.id.folderTable);
         folderLayout.addView(curRow);
+
         createFolder = findViewById(R.id.createFolder);
         createFolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,9 +86,26 @@ public class homeScreen extends AppCompatActivity {
                 toBudgetScreen();
             }
         });
+
+        foodButton = findViewById(R.id.Food);
+        foodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toFoodFolder();
+            }
+        });
+
+        clothingButton = findViewById(R.id.Clothing);
+        clothingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toClothingFolder();
+            }
+        });
+
     }
 
-
+    //Justin's stuff starts here
     public void addFolder(Folder folder){
         folders.put(folder.toString(),folder);
         //adds a new folder to the folder map
@@ -91,7 +139,7 @@ public class homeScreen extends AppCompatActivity {
 //        ConstraintLayout.LayoutParams newLayoutParams = (ConstraintLayout.LayoutParams) findViewById(R.id.image1).getLayoutParams();
 //        image.setLayoutParams(newLayoutParams);
         //this is intended to copy the param layout of the first button, but im not sure if it works for not
-        //please fix lucas
+        //please fix lucas THIS AREA SO I DON'T FORGET
 
         Button b = new Button(this);
         b.setBackgroundResource(R.drawable.grey_horizontal_rectangle);
@@ -129,11 +177,13 @@ public class homeScreen extends AppCompatActivity {
         curButtonPos++;
         //updates button pos
     }
-
+    //Justin's stuff ends here
 
     //Buttons
     Button statisticsButton;
     Button budgetButton;
+    Button foodButton;
+    Button clothingButton;
 
     //Private button voids
     private void toStatsScreen() {
@@ -143,8 +193,19 @@ public class homeScreen extends AppCompatActivity {
     public float convertDpToPixel(float dp){
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
+
     private void toBudgetScreen() {
         Intent toBudgetScreen = new Intent(this, budgeting.class);
         startActivity(toBudgetScreen);
+    }
+
+    private void toFoodFolder() {
+        Intent toFoodFolder = new Intent(this, foodFolder.class);
+        startActivity(toFoodFolder);
+    }
+
+    private void toClothingFolder() {
+        Intent toClothingFolder = new Intent(this, clothingFolder.class);
+        startActivity(toClothingFolder);
     }
 }
