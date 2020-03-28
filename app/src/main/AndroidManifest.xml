@@ -12,7 +12,6 @@
         <activity android:name=".homeScreenRecyclerView"></activity>
         <activity android:name=".clothingFolder" />
         <activity android:name=".foodFolder" />
-        <activity android:name=".addReceipt" />
         <activity android:name=".addFolder" />
         <activity android:name=".FolderFile" />
         <activity android:name=".statistics" />

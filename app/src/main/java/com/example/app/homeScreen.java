@@ -23,10 +23,66 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
     recyclerViewAdapter adapter;
 
+    //Justin's stuff starts here
+    private int curButtonPos = 0;
+    private TableRow curRow;
+    private TableLayout folderLayout;
+    private Button createFolder;
+    private HashMap<String,Folder> folders = new HashMap<>();
+
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        curRow = new TableRow(this);
+        folderLayout = findViewById(R.id.folderTable);
+        folderLayout.addView(curRow);
+
+        createFolder = findViewById(R.id.createFolder);
+        createFolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertButton("Test");
+                //User taps button
+//Justin's stuff ends here
+            }
+        });
+//Lucas's stuff starts here
+        statisticsButton = findViewById(R.id.statisticsButton);
+        statisticsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //User taps on statisticsButton
+                toStatsScreen();
+            }
+        });
+
+        budgetButton = findViewById(R.id.budgetingButton);
+        budgetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toBudgetScreen();
+            }
+        });
+
+        foodButton = findViewById(R.id.Food);
+        foodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toFoodFolder();
+            }
+        });
+
+        clothingButton = findViewById(R.id.Clothing);
+        clothingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toClothingFolder();
+            }
+        });
 
         // data to populate the RecyclerView with
         String[] data = {"1", "2", "3", "4", "5"};
@@ -43,70 +99,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     @Override
     public void onItemClick(View view, int position) {
         Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
+
     }
+//Lucas's stuff ends here
 
-
-    //Justin's stuff starts here
-    private int curButtonPos = 0;
-    private TableRow curRow;
-    private TableLayout folderLayout;
-    private Button createFolder;
-    private HashMap<String,Folder> folders = new HashMap<>();
-
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_home_screen);
-//        curRow = new TableRow(this);
-//        folderLayout = findViewById(R.id.folderTable);
-//        folderLayout.addView(curRow);
-//
-//        createFolder = findViewById(R.id.createFolder);
-//        createFolder.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                insertButton("Test");
-//                //User taps button
-////Justin's stuff ends here
-//            }
-//        });
-//        statisticsButton = findViewById(R.id.statisticsButton);
-//        statisticsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //User taps on statisticsButton
-//                toStatsScreen();
-//            }
-//        });
-//
-//        budgetButton = findViewById(R.id.budgetingButton);
-//        budgetButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                toBudgetScreen();
-//            }
-//        });
-//
-//        foodButton = findViewById(R.id.Food);
-//        foodButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                toFoodFolder();
-//            }
-//        });
-//
-//        clothingButton = findViewById(R.id.Clothing);
-//        clothingButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                toClothingFolder();
-//            }
-//        });
-//
-//    }
-
-    //Justin's stuff starts here
+//Justin's stuff starts here
     public void addFolder(Folder folder){
         folders.put(folder.toString(),folder);
         //adds a new folder to the folder map
@@ -178,8 +175,9 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         curButtonPos++;
         //updates button position
     }
-    //Justin's stuff ends here
+//Justin's stuff ends here
 
+//Lucas's stuff starts here
     //Buttons
     Button statisticsButton;
     Button budgetButton;
@@ -210,3 +208,4 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         startActivity(toClothingFolder);
     }
 }
+//Lucas's stuff ends here
