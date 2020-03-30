@@ -1,2 +1,2 @@
 include ':eReceipt-app'
-rootProject.name='app'
+rootProject.name='eReceipt'
