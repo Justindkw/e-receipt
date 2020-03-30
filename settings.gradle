@@ -1,2 +1,2 @@
-include ':app'
+include ':eReceipt-app'
 rootProject.name='app'
