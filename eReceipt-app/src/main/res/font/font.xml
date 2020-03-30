@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--I'm working on the font - Lucas -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/ralewayregular"/>
+</font-family>
