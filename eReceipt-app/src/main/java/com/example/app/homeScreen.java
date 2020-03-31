@@ -30,7 +30,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     private Button createFolder;
     private HashMap<String,Folder> folders = new HashMap<>();
 
-
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,27 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             }
         });
 //Lucas's stuff starts here
+
+        // data to populate the RecyclerView with
+        String[] data = {"Food", "Clothing", "Gas", "Entertainment", "5"};
+        Button food = new Button(this);
+        food.setId(R.id.Food);
+
+        Button clothing = new Button(this);
+        clothing.setId(R.id.Clothing);
+
+        HashMap<String, Button> newData = new HashMap<String, Button>();
+        newData.put("Food", food);
+        newData.put("Clothing", clothing);
+
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
+        int numberOfColumns = 2;
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        adapter = new recyclerViewAdapter(this, data);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+
         statisticsButton = findViewById(R.id.statisticsButton);
         statisticsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,22 +105,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             }
         });
 
-        // data to populate the RecyclerView with
-        String[] data = {"1", "2", "3", "4", "5"};
-
-        // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        int numberOfColumns = 2;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new recyclerViewAdapter(this, data);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
     }
-
+//probably don't need this (see below)
     @Override
     public void onItemClick(View view, int position) {
         Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
-
     }
 //Lucas's stuff ends here
 

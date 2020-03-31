@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.myTextView.setText(mData[position]);
+        holder.myTextView.setText(mData[position]); //probably don't need this
     }
 
     // total number of cells
@@ -45,10 +46,13 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
+        Button myFolderButton;
 
         ViewHolder(View itemView) {
             super(itemView);
+
             myTextView = itemView.findViewById(R.id.info_text);
+
             itemView.setOnClickListener(this);
         }
 

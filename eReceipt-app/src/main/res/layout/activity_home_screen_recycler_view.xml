@@ -8,8 +8,8 @@
     tools:context=".homeScreenRecyclerView">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="5dp">
 
@@ -19,9 +19,9 @@
             android:layout_gravity="center">
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="150dp"
-                android:layout_height="190dp"
+                android:id="@+id/info_folder"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
                 android:background="@drawable/folderbutton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,13 +32,14 @@
                 android:id="@+id/info_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="110dp"
-                android:layout_marginBottom="58dp"
+                android:layout_marginTop="130dp"
                 android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/button"
-                app:layout_constraintStart_toStartOf="@+id/button"
-                app:layout_constraintTop_toTopOf="@+id/button" />
+                android:textSize="18sp"
+                app:fontFamily="@font/ralewayregular"
+                app:layout_constraintBottom_toBottomOf="@+id/info_folder"
+                app:layout_constraintEnd_toEndOf="@+id/info_folder"
+                app:layout_constraintStart_toStartOf="@+id/info_folder"
+                app:layout_constraintTop_toTopOf="@+id/info_folder" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
