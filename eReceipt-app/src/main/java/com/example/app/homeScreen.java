@@ -18,12 +18,14 @@ import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ItemClickListener {
 
     recyclerViewAdapter adapter;
 
     //Justin's stuff starts here
+    Folder newFolder;
     private int curButtonPos = 0;
     private TableRow curRow;
     private TableLayout folderLayout;
@@ -36,6 +38,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        newFolder = getIntent().getParcelableExtra("newFolder");
+        if(newFolder != null){
+            folders.put(newFolder.toString(),newFolder);
+        }
+
         curRow = new TableRow(this);
         folderLayout = findViewById(R.id.folderTable);
         folderLayout.addView(curRow);
@@ -44,8 +51,13 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         createFolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertButton("Test");
+                toAddFolder();
                 //User taps button
+
+        for(Map.Entry<String, Folder> folder : folders.entrySet()){
+            insertButton(folder.getKey());
+        }
+        
 //Justin's stuff ends here
             }
         });
@@ -69,9 +81,10 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         adapter = new recyclerViewAdapter(this, data);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
+        //adapter.setClickListener(this);
+        //recyclerView.setAdapter(adapter);
 
+        statisticsButton = findViewById(R.id.statisticsButton);
         statisticsButton = findViewById(R.id.statisticsButton);
         statisticsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,12 +128,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 //Lucas's stuff ends here
 
 //Justin's stuff starts here
-    public void addFolder(Folder folder){
-        folders.put(folder.toString(),folder);
-        //adds a new folder to the folder map
-        insertButton(folder.toString());
-        //adds a new button to the activity
-    }
+
     public void insertButton(String name){
         if(curButtonPos%2==0){
             //determines the position of the button
@@ -218,6 +226,10 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     private void toClothingFolder() {
         Intent toClothingFolder = new Intent(this, clothingFolder.class);
         startActivity(toClothingFolder);
+    }
+    private void toAddFolder(){
+        Intent addFolder = new Intent(this, addFolder.class);
+        startActivity(addFolder);
     }
 }
 //Lucas's stuff ends here

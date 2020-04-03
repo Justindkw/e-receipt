@@ -102,7 +102,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -114,6 +113,17 @@
             android:textSize="18sp"
             app:fontFamily="@font/ralewayregular"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -142,6 +152,17 @@
             android:textColor="#000000"
             android:textSize="18sp"
             app:fontFamily="@font/ralewayregular" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/use"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Main Use" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -158,7 +179,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/notes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
@@ -168,17 +188,17 @@
             android:textSize="18sp"
             app:fontFamily="@font/ralewayregular" />
 
-        <TextView
-            android:id="@+id/notesEdit"
-            android:layout_width="315dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="6dp"
-            android:layout_weight="1"
-            android:text="Add a note here"
-            android:textSize="12sp"
-            app:fontFamily="@font/ralewayregular" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/notes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Add a note here" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
