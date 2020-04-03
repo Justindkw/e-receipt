@@ -53,6 +53,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
         // data to populate the RecyclerView with
         String[] data = {"Food", "Clothing", "Gas", "Entertainment", "5"};
+
         Button food = new Button(this);
         food.setId(R.id.Food);
 
