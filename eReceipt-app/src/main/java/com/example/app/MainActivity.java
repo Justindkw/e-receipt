@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+//Nicolas's stuff starts here
     Button myButton;
 
     //private method
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     int variableOne = 0; //various variables for what the chart will contain. can be changed
     int variableTwo = 0;
-
 
 
     public void addVar1(View v) {
@@ -71,5 +71,6 @@ public class MainActivity extends AppCompatActivity {
         int progress = (int) (d * 100);
         pieChart.setProgress(progress);
     }
+//Nicolas's stuff ends here
 }
 
