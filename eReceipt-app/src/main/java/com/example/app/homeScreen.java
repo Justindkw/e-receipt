@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -180,7 +179,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         params.setMargins(5, 0, 5, 0);
         layout.setLayoutParams(params);
         //creates button and its text and tag
-        final Intent intent = new Intent(this,FolderFile.class);
+        final Intent intent = new Intent(this, FolderFile.class);
         intent.putExtra("folder",folders.get(name));
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {
@@ -237,7 +236,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         startActivity(toClothingFolder);
     }
     private void toAddFolder(){
-        Intent addFolder = new Intent(this, addFolder.class);
+        Intent addFolder = new Intent(this, com.example.app.addFolder.class);
         startActivity(addFolder);
     }
 }

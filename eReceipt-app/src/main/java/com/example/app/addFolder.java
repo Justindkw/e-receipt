@@ -26,7 +26,7 @@ public class addFolder extends AppCompatActivity {
         notesInput = (EditText) findViewById(R.id.notes);
 
         submitButton = (Button) findViewById(R.id.doneButton);
-        final Intent intent = new Intent(this,homeScreen.class);
+        final Intent intent = new Intent(this, homeScreen.class);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

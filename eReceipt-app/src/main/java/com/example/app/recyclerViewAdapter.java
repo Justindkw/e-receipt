@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +14,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
     private String[] mData;
     private LayoutInflater mInflater;
-    private  ItemClickListener mClickListener;
+    private ItemClickListener mClickListener;
 
     // data is passed into the constructor
     recyclerViewAdapter(Context context, String[] data) {
@@ -26,9 +25,9 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     // inflates the cell layout from xml when needed
     @Override
     @NonNull
-    public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
-        View view = mInflater.from(mContext).inflate(R.layout.activity_home_screen_recycler_view, parent, false);
-        view.setOnClickListener(mOnClickListener);
+
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int viewType) {
+        View view = mInflater.inflate(R.layout.activity_home_screen_recycler_view, parent, false);
         return new ViewHolder(view);
     }
 
@@ -59,11 +58,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         }
 
         @Override
-        public void onClick(final View view) {
+        public void onClick(View view) {
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-            int itemPosition = recyclerViewAdapter.getChildLayoutPosition(view);
-            String item = mList.get(itemPosition);
-            Toast.makeText(mContext, item, Toast.LENGTH_LONG).show();
         }
     }
 
