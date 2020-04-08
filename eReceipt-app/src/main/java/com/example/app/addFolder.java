@@ -26,13 +26,14 @@ public class addFolder extends AppCompatActivity {
         notesInput = (EditText) findViewById(R.id.notes);
 
         submitButton = (Button) findViewById(R.id.doneButton);
-        final Intent intent = new Intent(this,homeScreen.class);
+        final Intent intent = new Intent();
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 folder = new Folder(nameInput.getText().toString(), useInput.getText().toString(), notesInput.getText().toString());
                 intent.putExtra("newFolder",folder);
-                startActivity(intent);
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }

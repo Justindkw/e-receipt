@@ -32,16 +32,14 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     private Button createFolder;
     private HashMap<String,Folder> folders = new HashMap<>();
 
+
+    static final int REQUEST_CODE = 0;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
-        newFolder = getIntent().getParcelableExtra("newFolder");
-        if(newFolder != null){
-            folders.put(newFolder.toString(),newFolder);
-        }
 
         curRow = new TableRow(this);
         folderLayout = findViewById(R.id.folderTable);
@@ -53,16 +51,20 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             public void onClick(View v) {
                 toAddFolder();
                 //User taps button
+//        folders.put("one",new Folder("one","use","notes"));
+//        folders.put("two",new Folder("two","use","notes"));
+//        folders.put("three",new Folder("three","use","notes"));
+//        System.out.println(folders.size());
+//        for(Map.Entry<String, Folder> folder : folders.entrySet()){
+//            insertButton(folder.getKey());
+//            System.out.println(folder.getKey());
+//        }
 
-        for(Map.Entry<String, Folder> folder : folders.entrySet()){
-            insertButton(folder.getKey());
-        }
-        
 //Justin's stuff ends here
             }
         });
-//Lucas's stuff starts here
 
+//Lucas's stuff starts here
         // data to populate the RecyclerView with
         String[] data = {"Food", "Clothing", "Gas", "Entertainment", "5"};
         Button food = new Button(this);
@@ -118,6 +120,20 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             }
         });
 
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                newFolder = data.getParcelableExtra("newFolder");
+                if(newFolder != null){
+                    folders.put(newFolder.toString(),newFolder);
+                    insertButton(newFolder.toString());
+                    System.out.println("newfolder added");
+                }
+            }
+        }
     }
 //probably don't need this (see below)
     @Override
@@ -193,6 +209,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         curButtonPos++;
         //updates button position
     }
+
 //Justin's stuff ends here
 
 //Lucas's stuff starts here
@@ -228,7 +245,22 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     }
     private void toAddFolder(){
         Intent addFolder = new Intent(this, addFolder.class);
-        startActivity(addFolder);
+        startActivityForResult(new Intent(homeScreen.this,addFolder.class), REQUEST_CODE);
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putSerializable("folders",folders);
+    }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        HashMap<String, Folder> savedState = (HashMap) savedInstanceState.getSerializable("folders");
+        if (savedState == null) {
+            System.out.println("nothing lol");
+        } else {
+            folders = savedState;
+        }
     }
 }
 //Lucas's stuff ends here
