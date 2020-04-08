@@ -25,7 +25,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     // inflates the cell layout from xml when needed
     @Override
     @NonNull
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int viewType) {
         View view = mInflater.inflate(R.layout.activity_home_screen_recycler_view, parent, false);
         return new ViewHolder(view);
     }

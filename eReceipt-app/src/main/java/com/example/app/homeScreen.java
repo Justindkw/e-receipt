@@ -66,26 +66,29 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
 //Lucas's stuff starts here
         // data to populate the RecyclerView with
+
         String[] data = {"Food", "Clothing", "Gas", "Entertainment", "5"};
-        Button food = new Button(this);
-        food.setId(R.id.Food);
 
-        Button clothing = new Button(this);
-        clothing.setId(R.id.Clothing);
-
-        HashMap<String, Button> newData = new HashMap<String, Button>();
-        newData.put("Food", food);
-        newData.put("Clothing", clothing);
+//        Button food = new Button(this);
+//        food.setId(R.id.Food);
+//
+//        Button clothing = new Button(this);
+//        clothing.setId(R.id.Clothing);
+//
+//        HashMap<String, Button> newData = new HashMap<String, Button>();
+//        newData.put("Food", food);
+//        newData.put("Clothing", clothing);
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         adapter = new recyclerViewAdapter(this, data);
-        //adapter.setClickListener(this);
-        //recyclerView.setAdapter(adapter);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
 
-        statisticsButton = findViewById(R.id.statisticsButton);
+
+        //Buttons down below
         statisticsButton = findViewById(R.id.statisticsButton);
         statisticsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +143,12 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     public void onItemClick(View view, int position) {
         Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
     }
+
+//    private final OnClickListener mOnClickListener = new MyOnClickListener();
+//    @Override
+//    public MyViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+//        View view =
+//    }
 //Lucas's stuff ends here
 
 //Justin's stuff starts here
@@ -186,7 +195,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         params.setMargins(5, 0, 5, 0);
         layout.setLayoutParams(params);
         //creates button and its text and tag
-        final Intent intent = new Intent(this,FolderFile.class);
+        final Intent intent = new Intent(this, FolderFile.class);
         intent.putExtra("folder",folders.get(name));
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {

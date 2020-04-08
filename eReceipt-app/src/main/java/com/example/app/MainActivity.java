@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+//Nicolas's stuff starts here
     Button myButton;
 
     //private method
@@ -37,39 +38,39 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    int calsBurned = 0;
-    int calsConsumed = 0;
+    int variableOne = 0; //various variables for what the chart will contain. can be changed
+    int variableTwo = 0;
 
 
-
-    public void addBurned(View v) {
-        // Get the new value from a user input:
-        EditText burnedEditText = findViewById(R.id.burned);
-
-        // Update the old value:
-        calsBurned = Integer.parseInt(burnedEditText.getText().toString());
-        updateChart();
-    }
-
-    public void addConsumed(View v) {
-        // Get the new value from a user input:
-        EditText consumedEditText = findViewById(R.id.consumed);
-
-        // Update the old value:
-        calsConsumed = Integer.parseInt(consumedEditText.getText().toString());
-        updateChart();
-    }
-
-    private void updateChart(){
-        // Update the text in a center of the chart:
-        TextView numberOfCals = findViewById(R.id.number_of_calories);
-        numberOfCals.setText(String.valueOf(calsBurned) + " / " + calsConsumed);
-
-        // Calculate the slice size and update the pie chart:
-        ProgressBar pieChart = findViewById(R.id.stats_progressbar);
-        double d = (double) calsBurned / (double) calsConsumed;
-        int progress = (int) (d * 100);
-        pieChart.setProgress(progress);
-    }
+//    public void addVar1(View v) {
+//        // Get the new value from a user input:
+//        EditText var1EditText = findViewById(R.id.var1);
+//
+//        // Update the old value:
+//        calsVar1 = Integer.parseInt(var1EditText.getText().toString());
+//        updateChart();
+//    }
+//
+//    public void addConsumed(View v) {
+//        // Get the new value from a user input:
+//        EditText var2EditText = findViewById(R.id.var2);
+//
+//        // Update the old value:
+//        var2 = Integer.parseInt(consumedEditText.getText().toString());
+//        updateChart();
+//    }
+//
+//    private void updateChart(){
+//        // Update the text in a center of the chart:
+//        TextView numberOfItem = findViewById(R.id.number_of_item);
+//        item.setText(String.valueOf(calsVar1) + " / " + calsVar2);
+//
+//        // Calculate the slice size and update the pie chart:
+//        ProgressBar pieChart = findViewById(R.id.stats_progressbar);
+//        double d = (double) calsVar1 / (double) calsVar2;
+//        int progress = (int) (d * 100);
+//        pieChart.setProgress(progress);
+//    }
+//Nicolas's stuff ends here
 }
 
