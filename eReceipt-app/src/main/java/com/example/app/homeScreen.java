@@ -50,24 +50,13 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             @Override
             public void onClick(View v) {
                 toAddFolder();
-                //User taps button
-//        folders.put("one",new Folder("one","use","notes"));
-//        folders.put("two",new Folder("two","use","notes"));
-//        folders.put("three",new Folder("three","use","notes"));
-//        System.out.println(folders.size());
-//        for(Map.Entry<String, Folder> folder : folders.entrySet()){
-//            insertButton(folder.getKey());
-//            System.out.println(folder.getKey());
-//        }
-
-//Justin's stuff ends here
             }
         });
 
 //Lucas's stuff starts here
         // data to populate the RecyclerView with
 
-        String[] data = {"Food", "Clothing", "Gas", "Entertainment", "5"};
+        String[] folderNames = {"Food", "Clothing", "Gas", "Entertainment", "5"};
 
 //        Button food = new Button(this);
 //        food.setId(R.id.Food);
@@ -83,7 +72,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new recyclerViewAdapter(this, data);
+        adapter = new recyclerViewAdapter(this, folderNames);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 
@@ -127,14 +116,12 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                newFolder = data.getParcelableExtra("newFolder");
-                if(newFolder != null){
-                    folders.put(newFolder.toString(),newFolder);
-                    insertButton(newFolder.toString());
-                    System.out.println("newfolder added");
-                }
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            newFolder = data.getParcelableExtra("newFolder");
+            if(newFolder != null){
+                folders.put(newFolder.toString(),newFolder);
+                insertButton(newFolder.toString());
+                System.out.println("newfolder added");
             }
         }
     }
@@ -169,19 +156,8 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         layout.setMaxWidth((int)convertDpToPixel((float)180));
         layout.setMaxHeight((int)convertDpToPixel((float)250));
         set.clone(layout);
-        //creates the new constraint layout and the layout setter
-        //set is the one i need you to edit Lucas, because it determines the constraint, margin, etc of the button.
         ImageView image = new ImageView(getApplicationContext());
         image.setImageResource(R.drawable.bx_bx_receipt);
-        //creates and sets new image view
-
-//        ConstraintLayout.LayoutParams imageLayoutParams = (ConstraintLayout.LayoutParams) findViewById(R.id.image1).getLayoutParams();
-//        image.setLayoutParams(imageLayoutParams);
-//        ConstraintLayout.LayoutParams newLayoutParams = (ConstraintLayout.LayoutParams) findViewById(R.id.image1).getLayoutParams();
-//        image.setLayoutParams(newLayoutParams);
-        //this is intended to copy the param layout of the first button, but im not sure if it works for not
-        //please fix lucas THIS AREA SO I DON'T FORGET
-
         Button b = new Button(this);
         b.setBackgroundResource(R.drawable.grey_horizontal_rectangle);
         b.setText(name);
@@ -234,7 +210,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     }
 
     private void toStatsScreen() {
-        Intent toStatsScreen = new Intent(this, MainActivity.class);
+        Intent toStatsScreen = new Intent(this, addReciept.class);
         startActivity(toStatsScreen);
     }
 
