@@ -4,77 +4,156 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapter.ViewHolder> {
 
-    private String[] mData;
-    private LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
+    private ArrayList<recyclerViewData> data; //the ArrayList which contains the data form recyclerViewData is called "data"
 
-    // data is passed into the constructor
-    recyclerViewAdapter(Context context, String[] data) {
-        this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+    public recyclerViewAdapter(ArrayList<recyclerViewData> data) {
+        this.data = data;
     }
 
-    // inflates the cell layout from xml when needed
-    @Override
     @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_home_screen_recycler_view, parent, false);
 
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int viewType) {
-        View view = mInflater.inflate(R.layout.activity_home_screen_recycler_view, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(v);
     }
 
-    // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.myTextView.setText(mData[position]); //probably don't need this
+        recyclerViewData setData = data.get(position);
+
+        holder.folderText.setText(setData.getText());
+        holder.folderId.setId(setData.getButtonId()); //setId works for some reason. i tried setButtonId which didn't work
     }
 
-    // total number of cells
     @Override
     public int getItemCount() {
-        return mData.length;
-    }
-
-
-    // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
-        Button myFolderButton;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-
-            myTextView = itemView.findViewById(R.id.info_text);
-
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        if (data != null) {
+            return data.size();
+        } else {
+            return 0;
         }
     }
 
-    // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData[id];
+    public static class ViewHolder extends RecyclerView.ViewHolder { //possibly change "RecyclerView" to "recyclerViewAdapter"
+        public final View view; //idk what this is for but i think i need it
+        public final TextView folderText; //the folder's text
+        public final Button folderId; //the folder's id
+
+        public ViewHolder(View view) {
+            super(view);
+            this.view = view;
+            folderText = view.findViewById(R.id.info_text); //folderText has been set to the folder's name
+            folderId = view.findViewById(R.id.info_folder); //folderId has been set to the button
+        }
+
     }
 
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
 
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
+//    private LayoutInflater mInflater;
+//    private String[] mData;
+//    private ItemClickListener mClickListener; //keep above 3
+//
+//    //new things
+//    private ArrayList<City> text;
+//    public final View view;
+//    public final TextView name;
+//    public final R.id buttonID;
+//
+//    // data is passed into the constructor
+//    public recyclerViewAdapter(Context context, String[] data) {
+//        this.mInflater = LayoutInflater.from(context);
+//        this.mData = data;
+////        super(view);
+////        this.view = view;
+////        name = view.findViewById(R.id.info_text);
+////        buttonID = view.findViewById(R.id.info_folder);
+//
+//        //this.mClickListener = mClickListener;
+//        //this.buttonID = buttonID;
+//    }
+//
+//
+//    //
+////    // data is passed into the constructor
+////    recyclerViewAdapter(Context context, String[] data, Button button) {
+////        this.mInflater = LayoutInflater.from(context);
+////        this.mData = data;
+////        this.buttonID = button;
+////    }
+//
+//    // inflates the cell layout from xml when needed
+//    @Override
+//    @NonNull
+//    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//        View view = mInflater.from(parent.getContext()).inflate(R.layout.activity_home_screen_recycler_view, parent, false);
+//        return new ViewHolder(view);
+//    }
+//
+//    // binds the data to the TextView in each cell
+//    @Override
+//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+//        recyclerViewData city = text.get(position);
+//
+//        holder.name.setText(city.getName(city.getName()));
+//        holder.id.setId(city.getButtonId());
+//
+//        //holder.myTextView.setText(mData[position]);
+//    }
+//
+//    // total number of cells
+//    @Override
+//    public int getItemCount() {
+//        if (mData != null) {
+//            return text.size();
+//        } else {
+//            return 0;
+//        }
+//    }
+//
+//
+//    // stores and recycles views as they are scrolled off screen
+//    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+//        TextView myTextView;
+//        R.id buttonId;
+//
+//        ViewHolder(View itemView) {
+//            super(itemView);
+//            myTextView = itemView.findViewById(R.id.info_text);
+//            buttonId = itemView.findViewById(R.id.info_folder);
+//
+//            itemView.setOnClickListener(this);
+//        }
+//
+//        @Override
+//        public void onClick(View view) {
+//            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+//        }
+//    }
+//
+//    // convenience method for getting data at click position
+//    String getItem(int id) {
+//        return mData[id];
+//    }
+//
+//    // allows clicks events to be caught
+//    void setClickListener(ItemClickListener itemClickListener) {
+//        this.mClickListener = itemClickListener;
+//    }
+//
+//    // parent activity will implement this method to respond to click events
+//    public interface ItemClickListener {
+//        void onItemClick(View view, int position);
+//    }
 }
