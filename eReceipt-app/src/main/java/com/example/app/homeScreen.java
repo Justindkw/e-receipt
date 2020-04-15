@@ -190,12 +190,6 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         b.setTag(name);
         b.setWidth((int)convertDpToPixel((float)180));
         b.setHeight((int)convertDpToPixel((float)250));
-        LayoutParams params = new LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(5, 0, 5, 0);
-        layout.setLayoutParams(params);
         //creates button and its text and tag
         final Intent intent = new Intent(this, FolderFile.class);
         intent.putExtra("folder",folders.get(name));
@@ -211,10 +205,6 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         layout.addView(image);
         layout.addView(b);
         //adds image and button to the constraint layout
-        //set.connect(image.getId(), ConstraintSet.TOP, b.getId(), ConstraintSet.TOP, 60);
-        //set.applyTo(layout);
-        //this is suppose to set the constaint/margins/etc to to the correct size, but i have not clue how to do that
-        //the set code above is directly copied from site, so please change
         curRow.addView(layout);
         //adds the constraint view to the actual layout
         curButtonPos++;
