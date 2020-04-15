@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //User taps button
-                navigateToSecondScreen();
             }
         });
     }
@@ -33,10 +32,6 @@ public class MainActivity extends AppCompatActivity {
     Button myButton;
 
     //private method
-    private void navigateToSecondScreen() {
-        Intent intent = new Intent(this, CameraActivity.class);
-        startActivity(intent);
-    }
 
     int variableOne = 0; //various variables for what the chart will contain. can be changed
     int variableTwo = 0;
