@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -17,11 +18,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ItemClickListener {
+public class homeScreen extends AppCompatActivity {//implements recyclerViewAdapter.ItemClickListener {
 
-    recyclerViewAdapter adapter;
+//    recyclerViewAdapter adapter;
 
     //Justin's stuff starts here
     Folder newFolder;
@@ -31,6 +34,10 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     private Button createFolder;
     private HashMap<String,Folder> folders = new HashMap<>();
 
+    //Lucas' stuff starts here
+    private RecyclerView data;
+    private RecyclerView.Adapter adapter;
+    //Lucas' stuff ends here
 
     static final int REQUEST_FOLDER = 0;
 
@@ -50,30 +57,39 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             public void onClick(View v) {
                 toAddFolder();
             }
+
         });
 
 //Lucas's stuff starts here
-        // data to populate the RecyclerView with
 
-        String[] folderNames = {"Food", "Clothing", "Gas", "Entertainment", "5"};
+        ArrayList<recyclerViewData> setData = initFolders();
 
-//        Button food = new Button(this);
-//        food.setId(R.id.Food);
-//
-//        Button clothing = new Button(this);
-//        clothing.setId(R.id.Clothing);
-//
-//        HashMap<String, Button> newData = new HashMap<String, Button>();
-//        newData.put("Food", food);
-//        newData.put("Clothing", clothing);
-
-        // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
+        this.data = (RecyclerView) findViewById(R.id.rvNumbers);
         int numberOfColumns = 2;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new recyclerViewAdapter(this, folderNames);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, numberOfColumns);
+        this.data.setLayoutManager(mLayoutManager);
+
+        adapter = new recyclerViewAdapter(setData);
+        this.data.setAdapter(adapter);
+
+
+        // data to populate the RecyclerView with
+//        String[] data = {"Food", "Clothing", "Gas", "Entertainment", "5"};
+//
+//        // set up the RecyclerView
+//        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
+//        int numberOfColumns = 2;
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+//        adapter = new recyclerViewAdapter(this, data);
+//        adapter.setClickListener(this);
+//        recyclerView.setAdapter(adapter);
+
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+//        adapter = new recyclerViewAdapter(this, folderNames);
+//        adapter.setClickListener(this);
+//        recyclerView.setAdapter(adapter);
+
 
 
         //Buttons down below
@@ -112,6 +128,16 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         });
 
     }
+
+    private ArrayList<recyclerViewData> initFolders() {
+        ArrayList<recyclerViewData> list = new ArrayList<>();
+
+        list.add(new recyclerViewData("Food", R.id.Food));
+        list.add(new recyclerViewData("Clothing", R.id.Clothing));
+
+        return list;
+    }
+    //Justin's stuff starts here
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -123,12 +149,13 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
                 System.out.println("newfolder added");
             }
         }
-    }
+    }//Justin's stuff ends here
+
 //probably don't need this (see below)
-    @Override
-    public void onItemClick(View view, int position) {
-        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
-    }
+//    @Override
+//    public void onItemClick(View view, int position) {
+//        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
+//    }
 
 //    private final OnClickListener mOnClickListener = new MyOnClickListener();
 //    @Override
@@ -227,6 +254,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         Intent toClothingFolder = new Intent(this, clothingFolder.class);
         startActivity(toClothingFolder);
     }
+    //Lucas' stuff ends here
     private void toAddFolder(){
         startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
     }
@@ -246,4 +274,3 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         }
     }
 }
-//Lucas's stuff ends here
