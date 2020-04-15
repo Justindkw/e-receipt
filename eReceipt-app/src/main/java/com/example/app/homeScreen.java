@@ -27,12 +27,12 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 //    recyclerViewAdapter adapter;
 
     //Justin's stuff starts here
-    Folder newFolder;
+    private Folder newFolder;
     private int curButtonPos = 0;
     private TableRow curRow;
     private TableLayout folderLayout;
     private Button createFolder;
-    private HashMap<String,Folder> folders = new HashMap<>();
+    private static HashMap<String,Folder> folders = new HashMap<>();
 
     //Lucas' stuff starts here
     private RecyclerView data;
@@ -137,6 +137,11 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
         return list;
     }
+
+    public static HashMap<String, Folder> getFolders() {
+        return folders;
+    }
+
     //Justin's stuff starts here
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
