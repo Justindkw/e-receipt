@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addReciept"></activity>
+        <activity android:name=".addReceipt"></activity>
         <activity android:name=".homeScreenRecyclerView" />
         <activity android:name=".clothingFolder" />
         <activity android:name=".foodFolder" />

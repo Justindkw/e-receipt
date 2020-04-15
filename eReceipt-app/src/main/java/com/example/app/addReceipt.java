@@ -12,10 +12,17 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
-public class addReciept extends AppCompatActivity {
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+public class addReceipt extends AppCompatActivity {
+
+    EditText amount;
+    EditText company;
+    Bitmap receiptPhoto;
+    Button submitButton;
+
+    static final int REQUEST_IMAGE_CAPTURE = 2;
     Button captureButton;
     ImageView imageDisplay;
     @Override
@@ -58,8 +65,26 @@ public class addReciept extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bitmap bitmap = (Bitmap)data.getExtras().get("data");
-            imageDisplay.setImageBitmap(bitmap);
+            receiptPhoto = (Bitmap)data.getExtras().get("data");
+            imageDisplay.setImageBitmap(receiptPhoto);
         }
+
+
+
+        submitButton = (Button) findViewById(R.id.doneButton);
+        //need change. MAKE ID CHANGE
+
+
+
+        final Intent intent = new Intent();
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Receipt newReceipt = new Receipt(receiptPhoto,Integer.valueOf(amount.getText().toString()), company.getText().toString());
+                intent.putExtra("newReceipt",newReceipt);
+                setResult(RESULT_OK,intent);
+                finish();
+            }
+        });
     }
 }

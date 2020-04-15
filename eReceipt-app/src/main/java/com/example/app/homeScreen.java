@@ -18,7 +18,6 @@ import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ItemClickListener {
 
@@ -33,7 +32,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     private HashMap<String,Folder> folders = new HashMap<>();
 
 
-    static final int REQUEST_CODE = 0;
+    static final int REQUEST_FOLDER = 0;
 
     @Override
 
@@ -116,7 +115,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_FOLDER && resultCode == RESULT_OK) {
             newFolder = data.getParcelableExtra("newFolder");
             if(newFolder != null){
                 folders.put(newFolder.toString(),newFolder);
@@ -210,7 +209,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     }
 
     private void toStatsScreen() {
-        Intent toStatsScreen = new Intent(this, addReciept.class);
+        Intent toStatsScreen = new Intent(this, addReceipt.class);
         startActivity(toStatsScreen);
     }
 
@@ -229,8 +228,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         startActivity(toClothingFolder);
     }
     private void toAddFolder(){
-        Intent addFolder = new Intent(this, addFolder.class);
-        startActivityForResult(new Intent(homeScreen.this,addFolder.class), REQUEST_CODE);
+        startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
     }
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {

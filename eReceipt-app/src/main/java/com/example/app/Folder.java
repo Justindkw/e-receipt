@@ -2,7 +2,6 @@ package com.example.app;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 
@@ -12,7 +11,7 @@ public class Folder implements Parcelable {
     private String name;
     private String use;
     private String note;
-    private ArrayList<Reciept> reciepts = new ArrayList<>();
+    private ArrayList<Receipt> receipts = new ArrayList<>();
     public Folder(String name, String use,String note){
         this.name = name;
         this.use = use;
@@ -37,8 +36,8 @@ public class Folder implements Parcelable {
         }
     };
 
-    public void addReciept(Reciept r){
-        reciepts.add(r);
+    public void addReceipt(Receipt r){
+        receipts.add(r);
     }
 
     @NonNull
