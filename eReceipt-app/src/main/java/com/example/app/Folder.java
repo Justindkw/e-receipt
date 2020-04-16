@@ -11,7 +11,7 @@ public class Folder implements Parcelable {
     private String name;
     private String use;
     private String note;
-    private int totalSpent = 0;
+    private double totalSpent = 0;
     private ArrayList<Receipt> receipts = new ArrayList<>();
     public Folder(String name, String use,String note){
         this.name = name;
@@ -40,6 +40,9 @@ public class Folder implements Parcelable {
     public void addReceipt(Receipt r){
         receipts.add(r);
         totalSpent+=r.getCost();
+    }
+    public double getTotalSpent(){
+        return totalSpent;
     }
 
     @NonNull

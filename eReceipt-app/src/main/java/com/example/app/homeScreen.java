@@ -4,21 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TableRow.LayoutParams;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -27,12 +23,12 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 //    recyclerViewAdapter adapter;
 
     //Justin's stuff starts here
-    private Folder newFolder;
     private int curButtonPos = 0;
     private TableRow curRow;
     private TableLayout folderLayout;
     private Button createFolder;
-    private static HashMap<String,Folder> folders = new HashMap<>();
+    //GlobalFolderList folderList = (GlobalFolderList)getApplication();
+
 
     //Lucas' stuff starts here
     private RecyclerView data;
@@ -57,8 +53,10 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
             public void onClick(View v) {
                 toAddFolder();
             }
-
         });
+        for(HashMap.Entry<String,Folder> folder:GlobalFolderList.getFolderList().entrySet()){
+            insertButton(folder.getKey());
+        }
 
 //Lucas's stuff starts here
 
@@ -138,20 +136,15 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         return list;
     }
 
-    public static HashMap<String, Folder> getFolders() {
-        return folders;
-    }
-
     //Justin's stuff starts here
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_FOLDER && resultCode == RESULT_OK) {
-            newFolder = data.getParcelableExtra("newFolder");
+            Folder newFolder = data.getParcelableExtra("newFolder");
             if(newFolder != null){
-                folders.put(newFolder.toString(),newFolder);
+                GlobalFolderList.add(newFolder.toString(),newFolder);
                 insertButton(newFolder.toString());
-                System.out.println("newfolder added");
             }
         }
     }//Justin's stuff ends here
@@ -197,7 +190,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         b.setHeight((int)convertDpToPixel((float)250));
         //creates button and its text and tag
         final Intent intent = new Intent(this, FolderFile.class);
-        intent.putExtra("folder",folders.get(name));
+        intent.putExtra("folderName", name);
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,20 +245,5 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
     //Lucas' stuff ends here
     private void toAddFolder(){
         startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
-    }
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putSerializable("folders",folders);
-    }
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        HashMap<String, Folder> savedState = (HashMap) savedInstanceState.getSerializable("folders");
-        if (savedState == null) {
-            System.out.println("nothing lol");
-        } else {
-            folders = savedState;
-        }
     }
 }

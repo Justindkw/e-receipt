@@ -8,12 +8,14 @@ import android.os.Bundle;
 
 public class receiptFolder extends AppCompatActivity {
     static final int REQUEST_RECIEPT = 1;
-    private Folder folder;
+    //GlobalFolderList folderList = (GlobalFolderList)getApplication();
+    private String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt_folder);
-        folder = getIntent().getParcelableExtra("folder");
+        name = getIntent().getParcelableExtra("folderName");
     }
     private void toAddFolder(){
         startActivityForResult(new Intent(receiptFolder.this, addReceipt.class), REQUEST_RECIEPT);
@@ -24,7 +26,7 @@ public class receiptFolder extends AppCompatActivity {
         if (requestCode == REQUEST_RECIEPT && resultCode == RESULT_OK) {
             Receipt newReceipt = (Receipt)data.getParcelableExtra("newReceipt");
             if(newReceipt != null){
-                folder.addReceipt(newReceipt);
+                GlobalFolderList.get(name).addReceipt(newReceipt);
             }
         }
     }

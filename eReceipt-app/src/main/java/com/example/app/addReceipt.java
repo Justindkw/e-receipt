@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.util.HashMap;
+
 public class addReceipt extends AppCompatActivity {
 
     EditText amount;
@@ -40,6 +42,10 @@ public class addReceipt extends AppCompatActivity {
             }
         });
     }
+
+    //PHOTO STUFF BEINGS HERE
+
+    //asks for photo permission
     private void activeTakePhoto() {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
@@ -49,6 +55,7 @@ public class addReceipt extends AppCompatActivity {
         }
 
     }
+    //asks for photo permission
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == 110) {
@@ -57,10 +64,15 @@ public class addReceipt extends AppCompatActivity {
                 takePicture();
             }
         }}
+    //goes to camera activity
     public void takePicture() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
     }
+
+    //PHOTO STUFF ENDS HERE
+
+    //returns the resulted receipt back to receiptFolder
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

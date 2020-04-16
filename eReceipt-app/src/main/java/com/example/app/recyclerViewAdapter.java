@@ -79,7 +79,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
     private void newIntent() {
         Intent intent  = new Intent();
-        intent.putExtra(folderName, homeScreen.getFolders().get(folderName));
+        //intent.putExtra(folderName, homeScreen.getFolders().get(folderName));
     }//make sure folderName is the name of the folder
 
     //allows click events to be caught
