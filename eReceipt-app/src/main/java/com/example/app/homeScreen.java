@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -31,8 +33,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
 
     //Lucas' stuff starts here
-    private RecyclerView data;
-    private RecyclerView.Adapter adapter;
+    private ArrayList<String> mNames = new ArrayList<>();
     //Lucas' stuff ends here
 
     static final int REQUEST_FOLDER = 0;
@@ -60,35 +61,16 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
 //Lucas's stuff starts here
 
-        ArrayList<recyclerViewData> setData = initFolders();
-
-        this.data = (RecyclerView) findViewById(R.id.rvNumbers);
-        int numberOfColumns = 2;
-
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, numberOfColumns);
-        this.data.setLayoutManager(mLayoutManager);
-
-        adapter = new recyclerViewAdapter(setData);
-        this.data.setAdapter(adapter);
-
-
-        // data to populate the RecyclerView with
-//        String[] data = {"Food", "Clothing", "Gas", "Entertainment", "5"};
+//        ArrayList<recyclerViewData> setData = initFolders();
 //
-//        // set up the RecyclerView
-//        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
+//        this.data = (RecyclerView) findViewById(R.id.rvNumbers);
 //        int numberOfColumns = 2;
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-//        adapter = new recyclerViewAdapter(this, data);
-//        adapter.setClickListener(this);
-//        recyclerView.setAdapter(adapter);
-
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-//        adapter = new recyclerViewAdapter(this, folderNames);
-//        adapter.setClickListener(this);
-//        recyclerView.setAdapter(adapter);
-
-
+//
+//        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, numberOfColumns);
+//        this.data.setLayoutManager(mLayoutManager);
+//
+//        adapter = new recyclerViewAdapter(setData);
+//        this.data.setAdapter(adapter);
 
         //Buttons down below
         statisticsButton = findViewById(R.id.statisticsButton);
@@ -127,13 +109,24 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
     }
 
-    private ArrayList<recyclerViewData> initFolders() {
-        ArrayList<recyclerViewData> list = new ArrayList<>();
+//    private ArrayList<recyclerViewData> initFolders() {
+//        ArrayList<recyclerViewData> list = new ArrayList<>();
+//
+//        list.add(new recyclerViewData("Food", R.id.Food));
+//        list.add(new recyclerViewData("Clothing", R.id.Clothing));
+//
+//        return list;
+//    }
 
-        list.add(new recyclerViewData("Food", R.id.Food));
-        list.add(new recyclerViewData("Clothing", R.id.Clothing));
+    private void initRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.rvNumbers);
+        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames);
 
-        return list;
+        int numberOfColumns = 2;
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+
     }
 
     //Justin's stuff starts here
