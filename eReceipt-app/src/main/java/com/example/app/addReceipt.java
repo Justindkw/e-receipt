@@ -92,8 +92,8 @@ public class addReceipt extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Receipt newReceipt = new Receipt(receiptPhoto,Integer.valueOf(amount.getText().toString()), company.getText().toString());
-                intent.putExtra("newReceipt",newReceipt);
+                //Receipt newReceipt = new Receipt(receiptPhoto,Integer.valueOf(amount.getText().toString()), company.getText().toString());
+               // intent.putExtra("newReceipt",newReceipt);
                 setResult(RESULT_OK,intent);
                 finish();
             }

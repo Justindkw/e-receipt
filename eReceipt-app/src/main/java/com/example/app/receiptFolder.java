@@ -30,10 +30,10 @@ public class receiptFolder extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_RECIEPT && resultCode == RESULT_OK) {
-            Receipt newReceipt = (Receipt)data.getParcelableExtra("newReceipt");
-            if(newReceipt != null){
+            //Receipt newReceipt = (Receipt)data.getParcelableExtra("newReceipt");
+            /*if(newReceipt != null){
                 GlobalFolderList.get(name).addReceipt(newReceipt);
-            }
+            }*/
         }
     }
     //Lucas' stuff starts here
