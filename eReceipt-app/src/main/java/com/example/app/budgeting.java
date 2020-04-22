@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -42,7 +43,15 @@ public class budgeting extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //what happens when button is CLICKEDEDED
+                if(BudgetingAdapter.correctBudgets()){
+                    BudgetingAdapter.finalizeBudgets();
+                    for(Folder fold:GlobalFolderList.getFolderList().values()){
+                        //Log.d(fold.toString(),fold.getTotalBudget()+"");
+                    }
+                }
+                else{
+                    //this means the user input budget is not correct. For example id they don't have any value or it includes letters
+                }
             }
         });
 
