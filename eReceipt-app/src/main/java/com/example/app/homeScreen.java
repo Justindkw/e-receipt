@@ -109,14 +109,20 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
     }
 
-//    private ArrayList<recyclerViewData> initFolders() {
-//        ArrayList<recyclerViewData> list = new ArrayList<>();
+//    private ArrayList<recyclerViewAdapter> initFolders() {
+//        ArrayList<recyclerViewAdapter> list = new ArrayList<>();
 //
-//        list.add(new recyclerViewData("Food", R.id.Food));
-//        list.add(new recyclerViewData("Clothing", R.id.Clothing));
+//        list.add(new recyclerViewAdapter("Food"));
+//        list.add(new recyclerViewAdapter("Clothing"));
 //
 //        return list;
 //    }
+
+    private void folderNames() {
+        mNames.add("Food");
+
+        initRecyclerView();
+    }
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
