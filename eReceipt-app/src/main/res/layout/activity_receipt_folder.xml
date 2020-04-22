@@ -59,7 +59,7 @@
 
     <LinearLayout
         android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/tab_bar"
         android:foregroundGravity="center_vertical|center|center_horizontal"

@@ -106,7 +106,7 @@ public class receiptFolder extends AppCompatActivity {
     }
 
     private void toStatsScreen() {
-        Intent toStatsScreen = new Intent(this, addReceipt.class);
+        Intent toStatsScreen = new Intent(this, MainActivity.class);
         startActivity(toStatsScreen);
     }
 

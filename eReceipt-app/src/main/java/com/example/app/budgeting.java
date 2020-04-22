@@ -51,7 +51,7 @@ public class budgeting extends AppCompatActivity {
     }
 
     private void toStatsScreen() {
-        Intent toStatsScreen = new Intent(this, homeScreen.class);
+        Intent toStatsScreen = new Intent(this, MainActivity.class);
         startActivity(toStatsScreen);
     }
 }
