@@ -10,8 +10,6 @@ import android.widget.EditText;
 
 public class addFolder extends AppCompatActivity {
 
-    Folder folder;
-
     EditText nameInput;
     EditText useInput;
     EditText notesInput;

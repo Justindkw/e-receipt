@@ -50,6 +50,7 @@ public class addReceipt extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("addReceipt",name);
                 Folder folder = GlobalFolderList.get(name);
                 folder.addReceipt(new Receipt(receiptPhoto,10,"yes"));
                 intent.putExtra("receiptPos",folder.size()-1);

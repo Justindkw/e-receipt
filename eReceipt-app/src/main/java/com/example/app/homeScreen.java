@@ -187,6 +187,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         b.setHeight((int)convertDpToPixel((float)250));
         //creates button and its text and tag
         final Intent intent = new Intent(this, receiptFolder.class);
+        Log.d("HOMESCREEN",name);
         intent.putExtra("folderName", name);
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {

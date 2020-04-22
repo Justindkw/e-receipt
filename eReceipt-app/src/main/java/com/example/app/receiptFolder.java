@@ -31,6 +31,7 @@ public class receiptFolder extends AppCompatActivity {
         test = findViewById(R.id.testImage);
         name = getIntent().getStringExtra("folderName");
         folder = GlobalFolderList.get(name);
+        Log.d("receipt",name);
         receipts = folder.getReceipts();
         createReciept = findViewById(R.id.createReceipt);
         createReciept.setOnClickListener(new View.OnClickListener() {
@@ -40,8 +41,6 @@ public class receiptFolder extends AppCompatActivity {
             }
         });
         Log.d(TAG, "onCreate: started.");
-        name = getIntent().getParcelableExtra("folderName");
-
         backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +77,7 @@ public class receiptFolder extends AppCompatActivity {
     }
     private void toAddReceipt(){
         Intent intent = new Intent(receiptFolder.this, addReceipt.class);
+        Log.d("YOU SURE NAME IN EXTRA?",name);
         intent.putExtra("name",name);
         startActivityForResult(intent, REQUEST_RECIEPT);
     }

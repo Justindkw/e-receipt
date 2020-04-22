@@ -17,7 +17,7 @@ public class GlobalFolderList{
         for(String i:folderMap.keySet()){
             test+=i;
         }
-        Log.d("Myapp",test);
+        Log.d("GLOBAL",test+" name");
         return folderMap.get(name);
     }
     public static HashMap<String,Folder> getFolderList(){
