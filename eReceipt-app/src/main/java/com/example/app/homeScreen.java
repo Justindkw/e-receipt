@@ -49,6 +49,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         folderLayout = findViewById(R.id.folderTable);
         folderLayout.addView(curRow);
 
+        inflateFolders();
         createFolder = findViewById(R.id.createFolder);
         createFolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +126,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
         initRecyclerView();
     }
+    private void inflateFolders(){
+        for(int i = 0; i<5;i++){
+            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
+        }
+    }
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
@@ -190,6 +196,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         b.setHeight((int)convertDpToPixel((float)250));
         //creates button and its text and tag
         final Intent intent = new Intent(this, receiptFolder.class);
+        Log.d("HOMESCREEN",name);
         intent.putExtra("folderName", name);
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {

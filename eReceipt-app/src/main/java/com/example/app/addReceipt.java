@@ -16,9 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
-
 public class addReceipt extends AppCompatActivity {
 
     EditText amount;
@@ -39,7 +36,7 @@ public class addReceipt extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         captureButton = (Button) findViewById(R.id.captureButton);
         imageDisplay = (ImageView) findViewById(R.id.imageCapture);
-        submitButton = (Button) findViewById(R.id.doneReceiptButton);
+        submitButton = (Button) findViewById(R.id.doneBudgetButton);
         captureButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -50,6 +47,7 @@ public class addReceipt extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("addReceipt",name);
                 Folder folder = GlobalFolderList.get(name);
                 folder.addReceipt(new Receipt(receiptPhoto,10,"yes"));
                 intent.putExtra("receiptPos",folder.size()-1);

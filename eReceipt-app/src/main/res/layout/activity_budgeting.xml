@@ -82,193 +82,222 @@
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="345dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="115dp"
-        android:background="@drawable/rectangle_1"
-        android:foregroundGravity="center_horizontal"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="84dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="243dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
-            android:layout_marginTop="5dp"
-            android:text="Budget set for this month:"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="345dp"
+            android:layout_height="82dp"
+            android:layout_marginTop="115dp"
+            android:background="@drawable/rectangle_1"
+            android:foregroundGravity="center_horizontal">
 
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
-            android:layout_marginBottom="5dp"
-            android:text="$500.00"
-            android:textSize="24sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="243dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginTop="5dp"
+                android:text="Budget set for this month:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:fontFamily="@font/ralewayregular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="345dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/rectangle_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/clothesBudget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/totalBudget"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="hint" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="33dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginBottom="5dp"
+                android:text="$0.00"
+                android:textSize="24sp"
+                app:fontFamily="@font/ralewayregular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/text3"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
-            android:text="Clothes"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/budgetRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text4"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="124dp"
-            android:layout_marginLeft="124dp"
-            android:layout_marginEnd="33dp"
-            android:layout_marginRight="33dp"
-            android:text="$125.00"
-            android:textSize="24sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.516" />
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout4"
-        android:layout_width="345dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="29dp"
-        android:background="@drawable/rectangle_2"
+    <Button
+        android:id="@+id/doneBudgetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="309dp"
+        android:layout_marginLeft="309dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/done"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+        app:layout_constraintStart_toStartOf="parent" />
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraintLayout3"-->
+<!--        android:layout_width="345dp"-->
+<!--        android:layout_height="63dp"-->
+<!--        android:layout_marginStart="7dp"-->
+<!--        android:layout_marginLeft="7dp"-->
+<!--        android:layout_marginTop="75dp"-->
+<!--        android:layout_marginEnd="7dp"-->
+<!--        android:layout_marginRight="7dp"-->
+<!--        android:background="@drawable/rectangle_2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">-->
 
-        <TextView
-            android:id="@+id/text5"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
-            android:text="Business"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/clothesBudget"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="7dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-        <TextView
-            android:id="@+id/text6"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginEnd="33dp"
-            android:layout_marginRight="33dp"
-            android:text="$175.00"
-            android:textSize="24sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text5"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.516" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="hint" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
-        android:layout_width="345dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="29dp"
-        android:background="@drawable/rectangle_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+<!--        <TextView-->
+<!--            android:id="@+id/text3"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginStart="33dp"-->
+<!--            android:layout_marginLeft="33dp"-->
+<!--            android:text="Clothes"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="20sp"-->
+<!--            app:fontFamily="@font/ralewayregular"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/text4"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/text7"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
-            android:text="Food"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/text4"-->
+<!--            android:layout_width="90dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="124dp"-->
+<!--            android:layout_marginLeft="124dp"-->
+<!--            android:layout_marginEnd="33dp"-->
+<!--            android:layout_marginRight="33dp"-->
+<!--            android:text="$125.00"-->
+<!--            android:textSize="24sp"-->
+<!--            app:fontFamily="@font/ralewayregular"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/text3"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.516" />-->
 
-        <TextView
-            android:id="@+id/text8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginEnd="33dp"
-            android:layout_marginRight="33dp"
-            android:text="$200.00"
-            android:textSize="24sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text7"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.483" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraintLayout4"-->
+<!--        android:layout_width="345dp"-->
+<!--        android:layout_height="63dp"-->
+<!--        android:layout_marginTop="29dp"-->
+<!--        android:background="@drawable/rectangle_2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/text5"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginStart="33dp"-->
+<!--            android:layout_marginLeft="33dp"-->
+<!--            android:text="Business"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="20sp"-->
+<!--            app:fontFamily="@font/ralewayregular"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/text6"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/text6"-->
+<!--            android:layout_width="90dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="120dp"-->
+<!--            android:layout_marginLeft="120dp"-->
+<!--            android:layout_marginEnd="33dp"-->
+<!--            android:layout_marginRight="33dp"-->
+<!--            android:text="$175.00"-->
+<!--            android:textSize="24sp"-->
+<!--            app:fontFamily="@font/ralewayregular"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/text5"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.516" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/constraintLayout5"-->
+<!--        android:layout_width="345dp"-->
+<!--        android:layout_height="63dp"-->
+<!--        android:layout_marginTop="29dp"-->
+<!--        android:background="@drawable/rectangle_2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/text7"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginStart="33dp"-->
+<!--            android:layout_marginLeft="33dp"-->
+<!--            android:text="Food"-->
+<!--            android:textColor="#000000"-->
+<!--            android:textSize="20sp"-->
+<!--            app:fontFamily="@font/ralewayregular"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/text8"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/text8"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="120dp"-->
+<!--            android:layout_marginLeft="120dp"-->
+<!--            android:layout_marginEnd="33dp"-->
+<!--            android:layout_marginRight="33dp"-->
+<!--            android:text="$200.00"-->
+<!--            android:textSize="24sp"-->
+<!--            app:fontFamily="@font/ralewayregular"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/text7"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.483" />-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
