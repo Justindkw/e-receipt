@@ -20,7 +20,7 @@ import android.widget.TableRow;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class homeScreen extends AppCompatActivity {//implements recyclerViewAdapter.ItemClickListener {
+public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ButtonOnClick{//implements recyclerViewAdapter.ItemClickListener {
 
 //    recyclerViewAdapter adapter;
 
@@ -91,22 +91,6 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
             }
         });
 
-        foodButton = findViewById(R.id.Food);
-        foodButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toFoodFolder();
-            }
-        });
-
-        clothingButton = findViewById(R.id.Clothing);
-        clothingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toClothingFolder();
-            }
-        });
-
     }
 
 //    private ArrayList<recyclerViewAdapter> initFolders() {
@@ -120,6 +104,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
     private void folderNames() {
         mNames.add("Food");
+        mNames.add("merch");
 
         initRecyclerView();
     }
@@ -131,7 +116,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames);
+        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames,this);
 
         int numberOfColumns = 2;
 
@@ -193,7 +178,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         b.setHeight((int)convertDpToPixel((float)250));
         //creates button and its text and tag
         final Intent intent = new Intent(this, receiptFolder.class);
-        Log.d("HOMESCREEN",name);
+        //Log.d("HOMESCREEN",name);
         intent.putExtra("folderName", name);
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +198,11 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         //updates button position
     }
 
+    @Override
+    public void ButtonOnClick(String string) {
+        Log.d("ran","yep");
+        startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
+    }
 //Justin's stuff ends here
 
 //Lucas's stuff starts here
@@ -250,4 +240,5 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
     private void toAddFolder(){
         startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
     }
+
 }

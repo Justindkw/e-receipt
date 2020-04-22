@@ -27,17 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*myButton = findViewById(R.id.cameraButton);
-        myButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //User taps button
-            }
-        }); */
-//Nicolas's stuff starts here
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         textView = findViewById(R.id.tv);
         pbar = findViewById(R.id.p_Bar);
         Button button = findViewById(R.id.show_btn);

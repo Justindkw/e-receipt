@@ -18,16 +18,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapter.ViewHolder> {
+public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapter.ViewHolder>{
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> mFolderNames = new ArrayList<>();
+    private ArrayList<String> mFolderNames;
     private Context mContext;
+    private ButtonOnClick buttonOnClick;
 
-    public recyclerViewAdapter(Context mContext, ArrayList<String> mFolderNames) {
+    public recyclerViewAdapter(Context mContext, ArrayList<String> mFolderNames, ButtonOnClick buttonOnClick) {
         this.mFolderNames = mFolderNames;
         this.mContext = mContext;
+        this.buttonOnClick = buttonOnClick;
     }
 
     @NonNull
@@ -44,26 +46,29 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         Log.d(TAG,"onBindViewHolder: called.");
 
         holder.folderName.setText(mFolderNames.get(position));
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on: " + mFolderNames.get(position));
-
-                Toast.makeText(mContext, mFolderNames.get(position), Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(mContext, FolderFile.class);
-                intent.putExtra("name", mFolderNames.get(position));
-                mContext.startActivity(intent);
-            }
-        });
+//        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "onClick: clicked on: " + mFolderNames.get(position));
+//
+//                Toast.makeText(mContext, mFolderNames.get(position), Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(mContext, homeScreen.class);
+//                intent.putExtra("name", mFolderNames.get(position));
+//                mContext.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
     public int getItemCount() {
         return mFolderNames.size();
     }
+    public interface ButtonOnClick{
+        void ButtonOnClick(String string);
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         Button folderButton;
         TextView folderName;
@@ -72,6 +77,13 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             folderButton = itemView.findViewById(R.id.info_folder);
+            Log.d("name",mFolderNames.get(getAdapterPosition()));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    buttonOnClick.ButtonOnClick(mFolderNames.get(getAdapterPosition()));
+                }
+            });
             folderName = itemView.findViewById(R.id.info_text);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
