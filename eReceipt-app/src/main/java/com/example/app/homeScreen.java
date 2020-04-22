@@ -109,13 +109,13 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         initRecyclerView();
     }
 
-    private void initRecyclerView() {
+    private void initRecyclerView() { //THIS INITIALIZES THE RECYCLER VIEW
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        //recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames, this);//buttononclick keeps giving errors
+        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames, this);//buttononclick keeps giving errors
 
         int numberOfColumns = 2;
 
-        //recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
     }
