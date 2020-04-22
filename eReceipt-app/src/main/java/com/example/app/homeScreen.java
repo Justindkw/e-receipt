@@ -25,17 +25,14 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
 //    recyclerViewAdapter adapter;
 
-    //Justin's stuff starts here
-    private int curButtonPos = 0;
-    private TableRow curRow;
-    private TableLayout folderLayout;
-    private Button createFolder;
-
-
     //Lucas' stuff starts here
     private ArrayList<String> mNames = new ArrayList<>();
     //Lucas' stuff ends here
 
+    //Justin's stuff starts here
+    private int curButtonPos = 0;
+    private TableRow curRow;
+    private TableLayout folderLayout;
     static final int REQUEST_FOLDER = 0;
 
     @Override
@@ -46,21 +43,22 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
         folderNames(); //initializes anything in folderNames()
 
+        //everything here should be removed after recyclerview is done
         curRow = new TableRow(this);
         folderLayout = findViewById(R.id.folderTable);
         folderLayout.addView(curRow);
+        //up to here
 
-        inflateFolders();
-        createFolder = findViewById(R.id.createFolder);
-        createFolder.setOnClickListener(new View.OnClickListener() {
+        inflateFolders(); //adds test folders. Will remove after testing
+
+
+        findViewById(R.id.createFolder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toAddFolder();
             }
         });
-        for(HashMap.Entry<String,Folder> folder:GlobalFolderList.getFolderList().entrySet()){
-            insertButton(folder.getKey());
-        }
+        restoreFolders();
 
 //Lucas's stuff starts here
 
@@ -76,8 +74,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 //        this.data.setAdapter(adapter);
 
         //Buttons down below
-        statisticsButton = findViewById(R.id.statisticsButton);
-        statisticsButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.statisticsButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //User taps on statisticsButton
@@ -85,8 +82,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             }
         });
 
-        budgetButton = findViewById(R.id.budgetingButton);
-        budgetButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.budgetingButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //User taps on budgetingButton
@@ -112,11 +108,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
         initRecyclerView();
     }
-    private void inflateFolders(){
-        for(int i = 0; i<5;i++){
-            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
-        }
-    }
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
@@ -130,6 +121,12 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     }
 
     //Justin's stuff starts here
+    private void inflateFolders(){
+        for(int i = 0; i<5;i++){
+            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -155,7 +152,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 //Lucas's stuff ends here
 
 //Justin's stuff starts here
-
+    public void restoreFolders(){
+        for(HashMap.Entry<String,Folder> folder:GlobalFolderList.getFolderList().entrySet()){
+            insertButton(folder.getKey());
+        }
+    }
     public void insertButton(String name){
         if(curButtonPos%2==0){
             //determines the position of the button
@@ -192,35 +193,31 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
                 //goes to the folder file activity
             }
         });
-        //sets onClick for the new button (which sends information to the new activity
         layout.addView(image);
         layout.addView(b);
-        //adds image and button to the constraint layout
         curRow.addView(layout);
-        //adds the constraint view to the actual layout
         curButtonPos++;
-        //updates button position
     }
 
     //@Override
-    public void ButtonOnClick(String string) {
-        Log.d("ran","yep");
-        startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
+//    public void ButtonOnClick(String string) {
+//        Log.d("ran","yep");
+//        startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
+//    }
+
+    private void toAddFolder(){
+        startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
     }
 //Justin's stuff ends here
-
 //Lucas's stuff starts here
     //Buttons
-    Button statisticsButton;
-    Button budgetButton;
     //Private button voids
     public float convertDpToPixel(float dp){
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 
     private void toStatsScreen() {
-        Intent toStatsScreen = new Intent(this, MainActivity.class);
-        startActivity(toStatsScreen);
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private void toBudgetScreen() {
@@ -231,12 +228,8 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     @Override
     public void onFolderClick(int position) {
         mNames.get(position);
-        Intent intent = new Intent(homeScreen.this, receiptFolder.class).putExtra("name", mNames.get(position));
-        startActivity(intent);
+        startActivity(new Intent(homeScreen.this, receiptFolder.class).putExtra("name", mNames.get(position)));
     }
     //Lucas' stuff ends here
-    private void toAddFolder(){
-        startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
-    }
 
 }

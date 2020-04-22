@@ -75,7 +75,6 @@ public class receiptFolder extends AppCompatActivity {
     }
     private void toAddReceipt(){
         Intent intent = new Intent(receiptFolder.this, addReceipt.class);
-        Log.d("YOU SURE NAME IN EXTRA?",name);
         intent.putExtra("name",name);
         startActivityForResult(intent, REQUEST_RECIEPT);
     }
@@ -84,7 +83,6 @@ public class receiptFolder extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_RECIEPT && resultCode == RESULT_OK) {
             int pos = data.getIntExtra("receiptPos",-1);
-            Log.d("app",receipts.size()+" "+pos);
             if(pos != -1){
                 Receipt newReceipt = receipts.get(pos);
                 test.setImageBitmap(newReceipt.getPhoto());

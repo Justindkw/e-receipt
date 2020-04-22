@@ -3,53 +3,38 @@ package com.example.app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-
 public class Budgeting extends AppCompatActivity {
 
-    //Buttons
-    private Button homeButton;
-    private Button statisticsButton;
-    private Button backButton;
-    private Button submitButton;
-
-    private RecyclerView recyclerView;
-    private BudgetingAdapter budgetingAdapter;
     public ArrayList<Folder> budgetArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budgeting);
-
-        recyclerView = (RecyclerView) findViewById(R.id.budgetRecycler);
-        submitButton = (Button) findViewById(R.id.doneBudgetButton);
-
+//Justin's stuff starts here
+        //sets up the recyclerview plus the list of folders
         budgetArrayList = new ArrayList<Folder>(GlobalFolderList.getFolderList().values());
-        budgetingAdapter = new BudgetingAdapter(this,budgetArrayList);
+        BudgetingAdapter budgetingAdapter = new BudgetingAdapter(this,budgetArrayList);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.budgetRecycler);
         recyclerView.setAdapter(budgetingAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        //by clicking on the doneBudgetButton, the budget for the clas
+        findViewById(R.id.doneBudgetButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(BudgetingAdapter.correctBudgets()){
-                    TextView totalBudgetText = findViewById(R.id.totalBudget);
-                    totalBudgetText.setText(String.valueOf(BudgetingAdapter.finalizeBudgets()));
+                    BudgetingAdapter.finalizeBudgets();
+                    ((TextView)findViewById(R.id.totalBudget)).setText(String.valueOf(GlobalFolderList.getTotalBudget()));
 //                    for(Folder fold:GlobalFolderList.getFolderList().values()){
-//                        Log.d(fold.toString(),fold.getTotalBudget()+"");
+//                        Log.d(fold.toString(),fold.getBudget()+"");
 //                    }
                 }
                 else{
@@ -57,29 +42,22 @@ public class Budgeting extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
-        homeButton = findViewById(R.id.homeButton);
-        homeButton.setOnClickListener(new View.OnClickListener() {
+//Justin's stuff ends here
+//Lucas's stuff starts here
+        findViewById(R.id.homeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toHomeScreen();
             }
         });
-
-        statisticsButton = findViewById(R.id.statisticsButton);
-        statisticsButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.statisticsButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toStatsScreen();
             }
         });
 
-        backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toHomeScreen();

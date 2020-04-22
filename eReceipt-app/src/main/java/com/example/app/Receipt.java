@@ -2,7 +2,7 @@ package com.example.app;
 
 import android.graphics.Bitmap;
 import java.util.Date;
-
+//Justin's stuff
 public class Receipt {
     private Bitmap photo;
     private double cost;
@@ -15,7 +15,6 @@ public class Receipt {
         this.company = company;
     }
 
-
     public double getCost() {
         return cost;
     }
@@ -24,7 +23,15 @@ public class Receipt {
         return photo;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
     public void setDayLimit(Date date) {
         this.dayLimit = date;
+    }
+
+    public Date getDayLimit() {
+        return dayLimit;
     }
 }

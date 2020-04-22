@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyViewHolder> {
 
@@ -36,13 +34,10 @@ public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyVi
             for(boolean b : areDoubles) if(!b) return false;
             return true;
         }
-        public static int finalizeBudgets(){
-            int totalBudget=0;
+        public static void finalizeBudgets(){
             for(int i =0; i<budgets.length;i++){
-                folderArrayList.get(i).setTotalBudget(budgets[i]);
-                totalBudget+=budgets[i];
+                folderArrayList.get(i).setBudget(budgets[i]);
             }
-            return totalBudget;
         }
         @Override
         public BudgetingAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -57,7 +52,7 @@ public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyVi
         public void onBindViewHolder(final BudgetingAdapter.MyViewHolder holder, final int position) {
 
 
-            holder.editText.setText(String.valueOf(folderArrayList.get(position).getTotalBudget()));
+            holder.editText.setText(String.valueOf(folderArrayList.get(position).getBudget()));
             holder.folderName.setText(folderArrayList.get(position).toString());
 
         }

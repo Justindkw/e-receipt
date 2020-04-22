@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 public class GlobalFolderList{
     private static HashMap<String, Folder> folderMap = new HashMap<String, Folder>();
-
     public static void add(String name, Folder folder) {
         folderMap.put(name, folder);
     }
@@ -22,5 +21,13 @@ public class GlobalFolderList{
     }
     public static HashMap<String,Folder> getFolderList(){
         return folderMap;
+    }
+
+    public static int getTotalBudget(){
+        int totBudget=0;
+        for(Folder fold:folderMap.values()){
+            totBudget+=fold.getBudget();
+        }
+        return totBudget;
     }
 }
