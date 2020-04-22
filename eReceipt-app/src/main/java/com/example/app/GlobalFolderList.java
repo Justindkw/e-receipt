@@ -1,6 +1,7 @@
 package com.example.app;
 
 import android.app.Application;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -12,6 +13,11 @@ public class GlobalFolderList{
     }
 
     public static Folder get(String name) {
+        String test="";
+        for(String i:folderMap.keySet()){
+            test+=i;
+        }
+        Log.d("Myapp",test);
         return folderMap.get(name);
     }
     public static HashMap<String,Folder> getFolderList(){

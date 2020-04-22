@@ -2,6 +2,7 @@ package com.example.app;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -12,8 +13,10 @@ public class Folder implements Parcelable {
     private String use;
     private String note;
     private double totalSpent = 0;
+    private double totalBudget = 0;
     private ArrayList<Receipt> receipts = new ArrayList<>();
-    public Folder(String name, String use,String note){
+
+    public Folder(String name, String use, String note) {
         this.name = name;
         this.use = use;
         this.note = note;
@@ -37,12 +40,26 @@ public class Folder implements Parcelable {
         }
     };
 
-    public void addReceipt(Receipt r){
-        receipts.add(r);
-        totalSpent+=r.getCost();
+    public int addReceipt(Receipt r) {
+        this.receipts.add(r);
+        this.totalSpent += r.getCost();
+        Log.d("app", String.valueOf(receipts.size()));
+        return receipts.size()-1;
     }
-    public double getTotalSpent(){
+
+    public double getTotalSpent() {
         return totalSpent;
+    }
+
+    public ArrayList<Receipt> getReceipts() {
+        return receipts;
+    }
+
+    public void setTotalBudget(double budget) {
+        this.totalBudget = budget;
+    }
+    public int size(){
+        return receipts.size();
     }
 
     @NonNull
@@ -61,5 +78,7 @@ public class Folder implements Parcelable {
         dest.writeString(name);
         dest.writeString(use);
         dest.writeString(note);
+        dest.writeDouble(totalSpent);
+        dest.writeDouble(totalBudget);
     }
 }

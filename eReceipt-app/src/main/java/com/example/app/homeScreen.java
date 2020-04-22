@@ -27,7 +27,6 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
     private TableRow curRow;
     private TableLayout folderLayout;
     private Button createFolder;
-    //GlobalFolderList folderList = (GlobalFolderList)getApplication();
 
 
     //Lucas' stuff starts here
@@ -141,10 +140,9 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_FOLDER && resultCode == RESULT_OK) {
-            Folder newFolder = data.getParcelableExtra("newFolder");
-            if(newFolder != null){
-                GlobalFolderList.add(newFolder.toString(),newFolder);
-                insertButton(newFolder.toString());
+            String name = data.getStringExtra("newFolder");
+            if(name != null){
+                insertButton(name);
             }
         }
     }//Justin's stuff ends here
@@ -157,7 +155,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
 //    private final OnClickListener mOnClickListener = new MyOnClickListener();
 //    @Override
-//    public MyViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+//    public MyViewHolder onCreateViewHolder(final ViewGrojup parent, final int viewType) {
 //        View view =
 //    }
 //Lucas's stuff ends here
@@ -189,7 +187,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         b.setWidth((int)convertDpToPixel((float)180));
         b.setHeight((int)convertDpToPixel((float)250));
         //creates button and its text and tag
-        final Intent intent = new Intent(this, FolderFile.class);
+        final Intent intent = new Intent(this, receiptFolder.class);
         intent.putExtra("folderName", name);
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {
@@ -224,7 +222,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
     }
 
     private void toStatsScreen() {
-        Intent toStatsScreen = new Intent(this, addReceipt.class);
+        Intent toStatsScreen = new Intent(this, receiptFolder.class);
         startActivity(toStatsScreen);
     }
 

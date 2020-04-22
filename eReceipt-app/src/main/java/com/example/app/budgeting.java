@@ -9,6 +9,12 @@ import android.widget.Button;
 
 public class budgeting extends AppCompatActivity {
 
+    //Buttons
+    Button homeButton;
+    Button statisticsButton;
+    Button backButton;
+    Button submitButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +45,6 @@ public class budgeting extends AppCompatActivity {
         });
     }
 
-    //Buttons
-    Button homeButton;
-    Button statisticsButton;
-    Button backButton;
 
     //Private button voids
     private void toHomeScreen() {

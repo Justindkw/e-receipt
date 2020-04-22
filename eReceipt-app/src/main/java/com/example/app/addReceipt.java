@@ -10,11 +10,13 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 public class addReceipt extends AppCompatActivity {
@@ -23,22 +25,36 @@ public class addReceipt extends AppCompatActivity {
     EditText company;
     Bitmap receiptPhoto;
     Button submitButton;
-
-    static final int REQUEST_IMAGE_CAPTURE = 2;
     Button captureButton;
     ImageView imageDisplay;
+
+    String name;
+
+
+    static final int REQUEST_IMAGE_CAPTURE = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reciept);
-
+        name = getIntent().getStringExtra("name");
         captureButton = (Button) findViewById(R.id.captureButton);
         imageDisplay = (ImageView) findViewById(R.id.imageCapture);
-
+        submitButton = (Button) findViewById(R.id.doneReceiptButton);
         captureButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 activeTakePhoto();
+            }
+        });
+        final Intent intent = new Intent();
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Folder folder = GlobalFolderList.get(name);
+                folder.addReceipt(new Receipt(receiptPhoto,10,"yes"));
+                intent.putExtra("receiptPos",folder.size()-1);
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }
@@ -83,20 +99,5 @@ public class addReceipt extends AppCompatActivity {
 
 
 
-        submitButton = (Button) findViewById(R.id.doneButton);
-        //need change. MAKE ID CHANGE
-
-
-
-        final Intent intent = new Intent();
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Receipt newReceipt = new Receipt(receiptPhoto,Integer.valueOf(amount.getText().toString()), company.getText().toString());
-                intent.putExtra("newReceipt",newReceipt);
-                setResult(RESULT_OK,intent);
-                finish();
-            }
-        });
     }
 }

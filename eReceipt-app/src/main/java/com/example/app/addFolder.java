@@ -30,8 +30,9 @@ public class addFolder extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                folder = new Folder(nameInput.getText().toString(), useInput.getText().toString(), notesInput.getText().toString());
-                intent.putExtra("newFolder",folder);
+                String name = nameInput.getText().toString();
+                GlobalFolderList.add(name,new Folder(name, useInput.getText().toString(), notesInput.getText().toString()));
+                intent.putExtra("newFolder",name);
                 setResult(RESULT_OK,intent);
                 finish();
             }
