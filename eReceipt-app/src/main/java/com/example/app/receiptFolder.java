@@ -53,7 +53,7 @@ public class receiptFolder extends AppCompatActivity {
     private void setName(String folderName) {
         Log.d(TAG, "setName: setting the name of the folder to widgets");
 
-        TextView name = findViewById(R.id.info_text); //change info_text to something in folder_file.xml MUST DO
+        TextView name = findViewById(R.id.folderName); //change info_text to something in folder_file.xml MUST DO
         name.setText(folderName);
     }//Lucas' stuff ends here
 }
