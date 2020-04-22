@@ -24,7 +24,6 @@ public class Receipt {
         return photo;
     }
 
-
     public void setDayLimit(Date date) {
         this.dayLimit = date;
     }

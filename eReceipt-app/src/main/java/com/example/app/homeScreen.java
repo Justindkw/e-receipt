@@ -19,7 +19,9 @@ import android.widget.TableRow;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ButtonOnClick{//implements recyclerViewAdapter.ItemClickListener {
+public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.OnFolderListener {
+
+//public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ButtonOnClick{//implements recyclerViewAdapter.ItemClickListener {
 
 //    recyclerViewAdapter adapter;
 
@@ -41,6 +43,8 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        folderNames(); //initializes anything in folderNames()
 
         curRow = new TableRow(this);
         folderLayout = findViewById(R.id.folderTable);
@@ -103,6 +107,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
     private void folderNames() {
         mNames.add("Food");
+        mNames.add("Clothing");
         mNames.add("merch");
 
         initRecyclerView();
@@ -115,11 +120,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames,this);
+        //recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames, this);//buttononclick keeps giving errors
 
         int numberOfColumns = 2;
 
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
     }
@@ -197,7 +202,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         //updates button position
     }
 
-    @Override
+    //@Override
     public void ButtonOnClick(String string) {
         Log.d("ran","yep");
         startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
@@ -222,6 +227,14 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         Intent toBudgetScreen = new Intent(this, Budgeting.class);
         startActivity(toBudgetScreen);
     }
+
+    @Override
+    public void onFolderClick(int position) {
+        mNames.get(position);
+        Intent intent = new Intent(homeScreen.this, receiptFolder.class).putExtra("name", mNames.get(position));
+        startActivity(intent);
+    }
+    //Lucas' stuff ends here
     private void toAddFolder(){
         startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
     }
