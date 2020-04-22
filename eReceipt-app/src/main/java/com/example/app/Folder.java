@@ -40,6 +40,9 @@ public class Folder {
     public void setTotalBudget(double budget) {
         this.totalBudget = budget;
     }
+    public double getTotalBudget() {
+        return totalBudget;
+    }
 
     public int size() {
         return receipts.size();
