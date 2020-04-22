@@ -96,8 +96,5 @@ public class addReceipt extends AppCompatActivity {
             receiptPhoto = (Bitmap)data.getExtras().get("data");
             imageDisplay.setImageBitmap(receiptPhoto);
         }
-
-
-
     }
 }

@@ -10,13 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import java.util.ArrayList;
+import android.widget.TextView;
 
 
 public class receiptFolder extends AppCompatActivity {
     static final int REQUEST_RECIEPT = 1;
 
+    private static  final String TAG = "folderFile"; //Lucas' stuff
 
     private String name;
     private ArrayList<Receipt> receipts;
@@ -27,9 +28,7 @@ public class receiptFolder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt_folder);
-
         test = findViewById(R.id.testImage);
-
         name = getIntent().getStringExtra("folderName");
         folder = GlobalFolderList.get(name);
         receipts = folder.getReceipts();
@@ -40,6 +39,42 @@ public class receiptFolder extends AppCompatActivity {
                 toAddReceipt();
             }
         });
+        Log.d(TAG, "onCreate: started.");
+        name = getIntent().getParcelableExtra("folderName");
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toHomeScreen();
+            }
+        });
+
+        homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toHomeScreen();
+            }
+        });
+
+        statisticsButton = findViewById(R.id.statisticsButton);
+        statisticsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toStatsScreen();
+            }
+        });
+
+        budgetButton = findViewById(R.id.budgetingButton);
+        budgetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //User taps on budgetingButton
+                toBudgetScreen();
+            }
+        });
+
     }
     private void toAddReceipt(){
         Intent intent = new Intent(receiptFolder.this, addReceipt.class);
@@ -58,4 +93,48 @@ public class receiptFolder extends AppCompatActivity {
             }
         }
     }
+    //Lucas' stuff starts here
+    //This sets the folder's name depending on what folder is clicked in the RecyclerView
+    private void getIncomingIntent() {
+        Log.d(TAG, "getIncomingIntent: checking for incoming intents"); //Log.d is just to check if the method is working
+
+        if(getIntent().hasExtra("name")) {
+            Log.d(TAG, "getIncomingIntent: found intent extras");
+
+            String folderName = getIntent().getStringExtra("name");
+
+
+        }
+    }
+
+    private void setName(String folderName) {
+        Log.d(TAG, "setName: setting the name of the folder to widgets");
+
+        TextView name = findViewById(R.id.folderName); //change info_text to something in folder_file.xml MUST DO
+        name.setText(folderName);
+    }
+
+    //Buttons
+    Button backButton;
+    Button homeButton;
+    Button statisticsButton;
+    Button budgetButton;
+
+    //Private button voids
+    private void toHomeScreen() {
+        Intent toHomeScreen = new Intent(this, homeScreen.class);
+        startActivity(toHomeScreen);
+    }
+
+    private void toStatsScreen() {
+        Intent toStatsScreen = new Intent(this, MainActivity.class);
+        startActivity(toStatsScreen);
+    }
+
+    private void toBudgetScreen() {
+        Intent toBudgetScreen = new Intent(this, budgeting.class);
+        startActivity(toBudgetScreen);
+    }
+
+    //Lucas' stuff ends here
 }

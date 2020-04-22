@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-public class Folder implements Parcelable {
+public class Folder {
     private String name;
     private String use;
     private String note;
@@ -22,30 +22,12 @@ public class Folder implements Parcelable {
         this.note = note;
     }
 
-    protected Folder(Parcel in) {
-        name = in.readString();
-        use = in.readString();
-        note = in.readString();
-    }
-
-    public static final Creator<Folder> CREATOR = new Creator<Folder>() {
-        @Override
-        public Folder createFromParcel(Parcel in) {
-            return new Folder(in);
-        }
-
-        @Override
-        public Folder[] newArray(int size) {
-            return new Folder[size];
-        }
-    };
-
     public int addReceipt(Receipt r) {
         this.receipts.add(r);
         this.totalSpent += r.getCost();
-        Log.d("app", String.valueOf(receipts.size()));
-        return receipts.size()-1;
+        return receipts.size() - 1;
     }
+
 
     public double getTotalSpent() {
         return totalSpent;
@@ -58,7 +40,8 @@ public class Folder implements Parcelable {
     public void setTotalBudget(double budget) {
         this.totalBudget = budget;
     }
-    public int size(){
+
+    public int size() {
         return receipts.size();
     }
 
@@ -66,19 +49,5 @@ public class Folder implements Parcelable {
     @Override
     public String toString() {
         return name;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(use);
-        dest.writeString(note);
-        dest.writeDouble(totalSpent);
-        dest.writeDouble(totalBudget);
     }
 }

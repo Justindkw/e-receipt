@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECECEF"
+    android:background="#2F4760"
     tools:context=".receiptFolder">
 
     <Button
@@ -37,4 +37,99 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/big_grey_horizontal_rectangle" />
 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="20dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="43dp"
+        android:background="@drawable/back_button_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/folderName"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="40dp"
+        android:gravity="left"
+        android:text="Food"
+        android:textColor="#EFEFEF"
+        android:textSize="30sp"
+        app:fontFamily="@font/robotobold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="@drawable/receipt_recycler_layout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/Receipt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="225dp"
+        android:text="Receipts"
+        android:textColor="#2F4760"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/font"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/tab_bar"
+        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/home_light" />
+
+        <Button
+            android:id="@+id/budgetingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/budget_light" />
+
+        <Button
+            android:id="@+id/statisticsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/stats_light" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
