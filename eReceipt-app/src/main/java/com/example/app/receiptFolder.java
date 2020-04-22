@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -22,6 +24,40 @@ public class receiptFolder extends AppCompatActivity {
         setContentView(R.layout.activity_receipt_folder);
         Log.d(TAG, "onCreate: started.");
         name = getIntent().getParcelableExtra("folderName");
+
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toHomeScreen();
+            }
+        });
+
+        homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toHomeScreen();
+            }
+        });
+
+        statisticsButton = findViewById(R.id.statisticsButton);
+        statisticsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toStatsScreen();
+            }
+        });
+
+        budgetButton = findViewById(R.id.budgetingButton);
+        budgetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //User taps on budgetingButton
+                toBudgetScreen();
+            }
+        });
+
     }
     private void toAddFolder(){
         startActivityForResult(new Intent(receiptFolder.this, addReceipt.class), REQUEST_RECIEPT);
@@ -55,5 +91,29 @@ public class receiptFolder extends AppCompatActivity {
 
         TextView name = findViewById(R.id.folderName); //change info_text to something in folder_file.xml MUST DO
         name.setText(folderName);
-    }//Lucas' stuff ends here
+    }
+
+    //Buttons
+    Button backButton;
+    Button homeButton;
+    Button statisticsButton;
+    Button budgetButton;
+
+    //Private button voids
+    private void toHomeScreen() {
+        Intent toHomeScreen = new Intent(this, homeScreen.class);
+        startActivity(toHomeScreen);
+    }
+
+    private void toStatsScreen() {
+        Intent toStatsScreen = new Intent(this, addReceipt.class);
+        startActivity(toStatsScreen);
+    }
+
+    private void toBudgetScreen() {
+        Intent toBudgetScreen = new Intent(this, budgeting.class);
+        startActivity(toBudgetScreen);
+    }
+
+    //Lucas' stuff ends here
 }
