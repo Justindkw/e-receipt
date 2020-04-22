@@ -20,7 +20,7 @@ import android.widget.TableRow;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class homeScreen extends AppCompatActivity {//implements recyclerViewAdapter.ItemClickListener {
+public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.OnFolderListener {
 
 //    recyclerViewAdapter adapter;
 
@@ -42,6 +42,8 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        folderNames(); //initializes anything in folderNames()
 
         curRow = new TableRow(this);
         folderLayout = findViewById(R.id.folderTable);
@@ -119,13 +121,14 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
 
     private void folderNames() {
         mNames.add("Food");
+        mNames.add("Clothing");
 
         initRecyclerView();
     }
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames);
+        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames, this);
 
         int numberOfColumns = 2;
 
@@ -239,8 +242,16 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         Intent toClothingFolder = new Intent(this, clothingFolder.class);
         startActivity(toClothingFolder);
     }
+
+    @Override
+    public void onFolderClick(int position) {
+        mNames.get(position);
+        Intent intent = new Intent(homeScreen.this, receiptFolder.class).putExtra("name", mNames.get(position));
+        startActivity(intent);
+    }
     //Lucas' stuff ends here
     private void toAddFolder(){
         startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
     }
+
 }

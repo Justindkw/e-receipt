@@ -22,40 +22,30 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> mFolderNames = new ArrayList<>();
+    private ArrayList<String> mFolderNames;
+    private OnFolderListener mOnFolderListener;
     private Context mContext;
 
-    public recyclerViewAdapter(Context mContext, ArrayList<String> mFolderNames) {
+    public recyclerViewAdapter(Context mContext, ArrayList<String> mFolderNames, OnFolderListener mOnFolderListener) {
         this.mFolderNames = mFolderNames;
         this.mContext = mContext;
+        this.mOnFolderListener = mOnFolderListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_home_screen_recycler_view, parent, false);
-        ViewHolder holder = new ViewHolder(view);
 
-        return holder;
+        return new ViewHolder(view, mOnFolderListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG,"onBindViewHolder: called.");
 
         holder.folderName.setText(mFolderNames.get(position));
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on: " + mFolderNames.get(position));
 
-                Toast.makeText(mContext, mFolderNames.get(position), Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(mContext, FolderFile.class);
-                intent.putExtra("name", mFolderNames.get(position));
-                mContext.startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -63,18 +53,31 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         return mFolderNames.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         Button folderButton;
         TextView folderName;
         RelativeLayout parentLayout;
+        OnFolderListener onFolderListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnFolderListener onFolderListener) {
             super(itemView);
             folderButton = itemView.findViewById(R.id.info_folder);
             folderName = itemView.findViewById(R.id.info_text);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+
+            this.onFolderListener = onFolderListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onFolderListener.onFolderClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnFolderListener {
+        void onFolderClick(int position);
     }
 
 }
