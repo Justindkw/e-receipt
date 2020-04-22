@@ -19,9 +19,9 @@ import android.widget.TableRow;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.OnFolderListener {
+//public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.OnFolderListener {
 
-//public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ButtonOnClick{//implements recyclerViewAdapter.ItemClickListener {
+public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ButtonOnClick{//implements recyclerViewAdapter.ItemClickListener {
 
 //    recyclerViewAdapter adapter;
 
@@ -62,17 +62,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
 //Lucas's stuff starts here
 
-//        ArrayList<recyclerViewData> setData = initFolders();
-//
-//        this.data = (RecyclerView) findViewById(R.id.rvNumbers);
-//        int numberOfColumns = 2;
-//
-//        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, numberOfColumns);
-//        this.data.setLayoutManager(mLayoutManager);
-//
-//        adapter = new recyclerViewAdapter(setData);
-//        this.data.setAdapter(adapter);
-
         //Buttons down below
         findViewById(R.id.statisticsButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,15 +80,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         });
 
     }
-
-//    private ArrayList<recyclerViewAdapter> initFolders() {
-//        ArrayList<recyclerViewAdapter> list = new ArrayList<>();
-//
-//        list.add(new recyclerViewAdapter("Food"));
-//        list.add(new recyclerViewAdapter("Clothing"));
-//
-//        return list;
-//    }
 
     private void folderNames() {
         mNames.add("Food");
@@ -138,18 +118,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         }
     }//Justin's stuff ends here
 
-//probably don't need this (see below)
-//    @Override
-//    public void onItemClick(View view, int position) {
-//        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
-//    }
-
-//    private final OnClickListener mOnClickListener = new MyOnClickListener();
-//    @Override
-//    public MyViewHolder onCreateViewHolder(final ViewGrojup parent, final int viewType) {
-//        View view =
-//    }
-//Lucas's stuff ends here
 
 //Justin's stuff starts here
     public void restoreFolders(){
@@ -199,11 +167,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         curButtonPos++;
     }
 
-    //@Override
-//    public void ButtonOnClick(String string) {
-//        Log.d("ran","yep");
-//        startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
-//    }
+    @Override
+    public void ButtonOnClick(String string) {
+        Log.d("ran","yep");
+        startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
+    }
 
     private void toAddFolder(){
         startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
@@ -225,7 +193,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         startActivity(toBudgetScreen);
     }
 
-    @Override
+    //@Override
     public void onFolderClick(int position) {
         mNames.get(position);
         startActivity(new Intent(homeScreen.this, receiptFolder.class).putExtra("name", mNames.get(position)));

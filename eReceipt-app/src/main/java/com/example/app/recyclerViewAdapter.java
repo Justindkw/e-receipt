@@ -1,6 +1,7 @@
 package com.example.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,13 +23,13 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     private ArrayList<String> mFolderNames;
     private OnFolderListener mOnFolderListener;
     private Context mContext;
-    //private ButtonOnClick buttonOnClick;
+    private ButtonOnClick buttonOnClick;
 
-    public recyclerViewAdapter(Context mContext, ArrayList<String> mFolderNames, OnFolderListener mOnFolderListener){//, ButtonOnClick buttonOnClick) {
+    public recyclerViewAdapter(Context mContext, ArrayList<String> mFolderNames, ButtonOnClick buttonOnClick){//OnFolderListener mOnFolderListener,) {
         this.mFolderNames = mFolderNames;
         this.mContext = mContext;
-        this.mOnFolderListener = mOnFolderListener;
-        //this.buttonOnClick = buttonOnClick;
+        //this.mOnFolderListener = mOnFolderListener;
+        this.buttonOnClick = buttonOnClick;
     }
 
     @NonNull
@@ -40,30 +43,29 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG,"onBindViewHolder: called.");
-
         holder.folderName.setText(mFolderNames.get(position));
 
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on: " + mFolderNames.get(position));
-
-                Toast.makeText(mContext, mFolderNames.get(position), Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(mContext, homeScreen.class);
-                intent.putExtra("name", mFolderNames.get(position));
-                mContext.startActivity(intent);
-            }
-        });
+//        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "onClick: clicked on: " + mFolderNames.get(position));
+//
+//                Toast.makeText(mContext, mFolderNames.get(position), Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(mContext, receiptFolder.class);
+//                intent.putExtra("name", mFolderNames.get(position));
+//                mContext.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
     public int getItemCount() {
         return mFolderNames.size();
     }
-//    public interface ButtonOnClick{
-//        void ButtonOnClick(String string);
-//    }
+    public interface ButtonOnClick{
+        void ButtonOnClick(String string);
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -75,18 +77,18 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         public ViewHolder(@NonNull View itemView, OnFolderListener onFolderListener) {
             super(itemView);
             folderButton = itemView.findViewById(R.id.info_folder);
-            Log.d("name",mFolderNames.get(getAdapterPosition()));
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    buttonOnClick.ButtonOnClick(mFolderNames.get(getAdapterPosition()));
-//                }
-//            });
+            //Log.d("name",mFolderNames.get(getAdapterPosition()));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    buttonOnClick.ButtonOnClick(mFolderNames.get(getAdapterPosition()));
+                }
+            });
             folderName = itemView.findViewById(R.id.info_text);
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
-            this.onFolderListener = onFolderListener;
-            itemView.setOnClickListener(this);
+            //this.onFolderListener = onFolderListener;
+            //itemView.setOnClickListener(this);
         }
 
         @Override
