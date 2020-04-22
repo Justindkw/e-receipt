@@ -42,7 +42,7 @@ public class statistics extends AppCompatActivity {
     }
 
     private void toBudgetScreen() {
-        Intent toBudgetScreen = new Intent(this, budgeting.class);
+        Intent toBudgetScreen = new Intent(this, Budgeting.class);
         startActivity(toBudgetScreen);
     }
 }

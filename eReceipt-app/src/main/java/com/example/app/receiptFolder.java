@@ -3,8 +3,6 @@ package com.example.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -132,7 +130,7 @@ public class receiptFolder extends AppCompatActivity {
     }
 
     private void toBudgetScreen() {
-        Intent toBudgetScreen = new Intent(this, budgeting.class);
+        Intent toBudgetScreen = new Intent(this, Budgeting.class);
         startActivity(toBudgetScreen);
     }
 

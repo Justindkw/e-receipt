@@ -17,15 +17,14 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class budgeting extends AppCompatActivity {
+public class Budgeting extends AppCompatActivity {
 
     //Buttons
-    Button homeButton;
-    Button statisticsButton;
-    Button backButton;
-    Button submitButton;
+    private Button homeButton;
+    private Button statisticsButton;
+    private Button backButton;
+    private Button submitButton;
 
-    private Button btn;
     private RecyclerView recyclerView;
     private BudgetingAdapter budgetingAdapter;
     public ArrayList<Folder> budgetArrayList;
@@ -36,14 +35,14 @@ public class budgeting extends AppCompatActivity {
         setContentView(R.layout.activity_budgeting);
 
         recyclerView = (RecyclerView) findViewById(R.id.budgetRecycler);
-        btn = (Button) findViewById(R.id.doneBudgetButton);
+        submitButton = (Button) findViewById(R.id.doneBudgetButton);
 
         budgetArrayList = new ArrayList<Folder>(GlobalFolderList.getFolderList().values());
         budgetingAdapter = new BudgetingAdapter(this,budgetArrayList);
         recyclerView.setAdapter(budgetingAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(BudgetingAdapter.correctBudgets()){
@@ -86,18 +85,6 @@ public class budgeting extends AppCompatActivity {
                 toHomeScreen();
             }
         });
-    }
-    private ArrayList<Budget> populateList(){
-
-        ArrayList<Budget> list = new ArrayList<>();
-
-        for(int i = 0; i < 8; i++){
-            Budget budget = new Budget();
-            budget.setEditTextValue(String.valueOf(i));
-            list.add(budget);
-        }
-
-        return list;
     }
 
     //Private button voids

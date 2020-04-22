@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -209,9 +208,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     //Buttons
     Button statisticsButton;
     Button budgetButton;
-    Button foodButton;
-    Button clothingButton;
-
     //Private button voids
     public float convertDpToPixel(float dp){
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
@@ -223,20 +219,9 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     }
 
     private void toBudgetScreen() {
-        Intent toBudgetScreen = new Intent(this, budgeting.class);
+        Intent toBudgetScreen = new Intent(this, Budgeting.class);
         startActivity(toBudgetScreen);
     }
-
-    private void toFoodFolder() {
-        Intent toFoodFolder = new Intent(this, foodFolder.class);
-        startActivity(toFoodFolder);
-    }
-
-    private void toClothingFolder() {
-        Intent toClothingFolder = new Intent(this, clothingFolder.class);
-        startActivity(toClothingFolder);
-    }
-    //Lucas' stuff ends here
     private void toAddFolder(){
         startActivityForResult(new Intent(this,addFolder.class), REQUEST_FOLDER);
     }
