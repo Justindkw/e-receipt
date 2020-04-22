@@ -28,4 +28,8 @@ public class Receipt {
     public void setDayLimit(Date date) {
         this.dayLimit = date;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f3254bd2730c46cd28eb7ecc955eae27068a4fc2

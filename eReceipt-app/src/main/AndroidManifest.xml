@@ -16,7 +16,6 @@
         <activity android:name=".clothingFolder" />
         <activity android:name=".foodFolder" />
         <activity android:name=".addFolder" />
-        <activity android:name=".FolderFile" />
         <activity android:name=".statistics" />
         <activity android:name=".receiptFolder" />
         <activity android:name=".budgeting" />

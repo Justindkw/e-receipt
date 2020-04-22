@@ -22,6 +22,8 @@ import java.util.HashMap;
 
 public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.OnFolderListener {
 
+//public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ButtonOnClick{//implements recyclerViewAdapter.ItemClickListener {
+
 //    recyclerViewAdapter adapter;
 
     //Justin's stuff starts here
@@ -93,22 +95,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
             }
         });
 
-        foodButton = findViewById(R.id.Food);
-        foodButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toFoodFolder();
-            }
-        });
-
-        clothingButton = findViewById(R.id.Clothing);
-        clothingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toClothingFolder();
-            }
-        });
-
     }
 
 //    private ArrayList<recyclerViewAdapter> initFolders() {
@@ -123,6 +109,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     private void folderNames() {
         mNames.add("Food");
         mNames.add("Clothing");
+        mNames.add("merch");
 
         initRecyclerView();
     }
@@ -134,11 +121,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames, this);
+        //recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames, this);//buttononclick keeps giving errors
 
         int numberOfColumns = 2;
 
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
     }
@@ -196,7 +183,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         b.setHeight((int)convertDpToPixel((float)250));
         //creates button and its text and tag
         final Intent intent = new Intent(this, receiptFolder.class);
-        Log.d("HOMESCREEN",name);
+        //Log.d("HOMESCREEN",name);
         intent.putExtra("folderName", name);
         //saves folder to the next activity
         b.setOnClickListener(new View.OnClickListener() {
@@ -216,6 +203,11 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         //updates button position
     }
 
+    //@Override
+    public void ButtonOnClick(String string) {
+        Log.d("ran","yep");
+        startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
+    }
 //Justin's stuff ends here
 
 //Lucas's stuff starts here
