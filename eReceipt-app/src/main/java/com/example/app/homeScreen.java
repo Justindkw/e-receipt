@@ -47,6 +47,7 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         folderLayout = findViewById(R.id.folderTable);
         folderLayout.addView(curRow);
 
+        inflateFolders();
         createFolder = findViewById(R.id.createFolder);
         createFolder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +122,11 @@ public class homeScreen extends AppCompatActivity {//implements recyclerViewAdap
         mNames.add("Food");
 
         initRecyclerView();
+    }
+    private void inflateFolders(){
+        for(int i = 0; i<5;i++){
+            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
+        }
     }
 
     private void initRecyclerView() {

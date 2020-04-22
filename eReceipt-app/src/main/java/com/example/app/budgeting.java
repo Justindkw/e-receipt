@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,10 +47,11 @@ public class budgeting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(BudgetingAdapter.correctBudgets()){
-                    BudgetingAdapter.finalizeBudgets();
-                    for(Folder fold:GlobalFolderList.getFolderList().values()){
-                        //Log.d(fold.toString(),fold.getTotalBudget()+"");
-                    }
+                    TextView totalBudgetText = findViewById(R.id.totalBudget);
+                    totalBudgetText.setText(String.valueOf(BudgetingAdapter.finalizeBudgets()));
+//                    for(Folder fold:GlobalFolderList.getFolderList().values()){
+//                        Log.d(fold.toString(),fold.getTotalBudget()+"");
+//                    }
                 }
                 else{
                     //this means the user input budget is not correct. For example id they don't have any value or it includes letters

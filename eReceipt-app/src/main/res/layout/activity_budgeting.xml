@@ -82,58 +82,58 @@
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="345dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="115dp"
-        android:background="@drawable/rectangle_1"
-        android:foregroundGravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="243dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
-            android:layout_marginTop="5dp"
-            android:text="Budget set for this month:"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
-            android:layout_marginBottom="5dp"
-            android:text="$500.00"
-            android:textSize="24sp"
-            app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="84dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="345dp"
+            android:layout_height="82dp"
+            android:layout_marginTop="115dp"
+            android:background="@drawable/rectangle_1"
+            android:foregroundGravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="243dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="33dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginTop="5dp"
+                android:text="Budget set for this month:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:fontFamily="@font/ralewayregular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/totalBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="33dp"
+                android:layout_marginLeft="33dp"
+                android:layout_marginBottom="5dp"
+                android:text="$0.00"
+                android:textSize="24sp"
+                app:fontFamily="@font/ralewayregular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/budgetRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
     <Button

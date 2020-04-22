@@ -36,10 +36,13 @@ public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyVi
             for(boolean b : areDoubles) if(!b) return false;
             return true;
         }
-        public static void finalizeBudgets(){
+        public static int finalizeBudgets(){
+            int totalBudget=0;
             for(int i =0; i<budgets.length;i++){
                 folderArrayList.get(i).setTotalBudget(budgets[i]);
+                totalBudget+=budgets[i];
             }
+            return totalBudget;
         }
         @Override
         public BudgetingAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -56,7 +59,6 @@ public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyVi
 
             holder.editText.setText(String.valueOf(folderArrayList.get(position).getTotalBudget()));
             holder.folderName.setText(folderArrayList.get(position).toString());
-            Log.d("print","yes");
 
         }
 
