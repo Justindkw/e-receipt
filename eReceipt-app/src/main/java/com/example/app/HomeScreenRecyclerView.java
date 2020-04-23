@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class homeScreenRecyclerView extends AppCompatActivity{
-
+//Justin's stuff
+public class HomeScreenRecyclerView extends AppCompatActivity{
+    //AHHH DON'T LOOK IT'S USELESS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

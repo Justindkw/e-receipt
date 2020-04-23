@@ -13,14 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addReceipt" />
-        <activity android:name=".homeScreenRecyclerView" />
-        <activity android:name=".addFolder" />
-        <activity android:name=".statistics" />
-        <activity android:name=".receiptFolder" />
+        <activity android:name=".AddReceipt"></activity>
+        <activity android:name=".HomeScreenRecyclerView" />
+        <activity android:name=".AddFolder" />
+        <activity android:name=".Statistics" />
+        <activity android:name=".ReceiptFolder" />
         <activity android:name=".Budgeting" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".homeScreen">
+        <activity android:name=".HomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -15,46 +15,44 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyViewHolder> {
-
+//Justin's stuff
         private LayoutInflater inflater;
-        public static ArrayList<Folder> folderArrayList;
-        private static boolean[] areDoubles;
-        private static double[] budgets;
-
-
+        //all the folders
+        public ArrayList<Folder> folderArrayList;
+        //array of user input status. false means the user input isn't double, true means it is
+        private boolean[] areDoubles;
+        //array of all budget
+        private double[] budgets;
+        //constructor
         public BudgetingAdapter(Context ctx, ArrayList<Folder> folderArrayList){
-
             inflater = LayoutInflater.from(ctx);
             this.folderArrayList = folderArrayList;
+            //make arrays of same size as folderArrayList
             areDoubles = new boolean[folderArrayList.size()];
             budgets = new double[folderArrayList.size()];
         }
-
-        public static boolean correctBudgets(){
+        //checks for user input mistakes
+        public boolean correctBudgets(){
             for(boolean b : areDoubles) if(!b) return false;
             return true;
         }
-        public static void finalizeBudgets(){
+        //sets budgets
+        public void finalizeBudgets(){
             for(int i =0; i<budgets.length;i++){
                 folderArrayList.get(i).setBudget(budgets[i]);
             }
         }
+        //LUCAS HELP ME WITH THIS RECYCLERVIEW STUFF
         @Override
         public BudgetingAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
             View view = inflater.inflate(R.layout.activity_budgeting_recycler_view, parent, false);
-            MyViewHolder holder = new MyViewHolder(view);
-
-            return holder;
+            return new MyViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(final BudgetingAdapter.MyViewHolder holder, final int position) {
-
-
             holder.editText.setText(String.valueOf(folderArrayList.get(position).getBudget()));
             holder.folderName.setText(folderArrayList.get(position).toString());
-
         }
 
         @Override
@@ -64,32 +62,35 @@ public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyVi
 
         class MyViewHolder extends RecyclerView.ViewHolder{
 
-            protected EditText editText;
-            protected TextView folderName;
+            private EditText editText;
+            private TextView folderName;
 
-            public MyViewHolder(View itemView) {
+            private MyViewHolder(View itemView) {
                 super(itemView);
-
+                //finds stuff from xml
                 editText = (EditText) itemView.findViewById(R.id.editBudget);
                 folderName = (TextView) itemView.findViewById(R.id.folderNameBudget);
+                //adds listener to user input
                 editText.addTextChangedListener(new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-
-                    @Override
+                    //checks while user is giving input
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                         try{
+                            //attempts to make user input string to double. If it is double then the text color is black and sets the input status to true
                             budgets[getAdapterPosition()] = Double.valueOf(editText.getText().toString());
                             editText.setTextColor(Color.BLACK);
                             areDoubles[getAdapterPosition()] = true;
                         }
                         catch (NumberFormatException e){
+                            //string cannot be converted to double. Changes text color to red and sets the input status to false
                             editText.setTextColor(Color.RED);
                             areDoubles[getAdapterPosition()] = false;
                         }
                     }
-
+                    //useless. Basically does the same thing
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    }
                     @Override
                     public void afterTextChanged(Editable editable) {
                     }
