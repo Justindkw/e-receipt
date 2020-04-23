@@ -25,33 +25,32 @@
         android:id="@+id/addFolder"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="65dp"
         android:gravity="left|center_vertical"
         android:text="New Folder"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:fontFamily="@font/ralewayregular"
-        app:layout_constraintStart_toEndOf="@+id/backButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/addReceipt"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="633dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/plus"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nameView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addFolder"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/cameraButton"
@@ -77,14 +76,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="309dp"
         android:layout_marginLeft="309dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginTop="700dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:layout_weight="1"
         android:background="@drawable/done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/nameView"
