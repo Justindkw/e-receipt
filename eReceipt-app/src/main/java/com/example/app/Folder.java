@@ -3,27 +3,29 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 //Justin's stuff
 public class Folder {
+    //buncha stuff stored in the folders
     private String name;
     private String use;
     private String note;
-    private double spendings = 0;
+    private double spending = 0;
     private double budget = 0;
     private ArrayList<Receipt> receipts = new ArrayList<>();
-
+    //constructor
     public Folder(String name, String use, String note) {
         this.name = name;
         this.use = use;
         this.note = note;
     }
-
+    //buncha getters, adders, and setters
+    //adds new receipt but also adds it's cost to spending
     public int addReceipt(Receipt r) {
         this.receipts.add(r);
-        this.spendings += r.getCost();
+        this.spending += r.getCost();
         return receipts.size() - 1;
     }
 
-    public double getSpendings() {
-        return spendings;
+    public double getSpending() {
+        return spending;
     }
 
     public ArrayList<Receipt> getReceipts() {
@@ -43,7 +45,6 @@ public class Folder {
     }
 
     @NonNull
-    @Override
     public String toString() {
         return name;
     }

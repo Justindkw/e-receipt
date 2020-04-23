@@ -9,17 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
+//Justin's stuff
 public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.HomeScreenAdapterVh>{
-
+    //list of folder names
     private ArrayList<String> folderNames;
+    //interfaced used for start activity
     private AddButtonDestination addButtonDestination;
-
+    //constructor
     public HomeScreenAdapter(ArrayList<String> folderNames, AddButtonDestination addButtonDestination) {
         this.folderNames = folderNames;
         this.addButtonDestination = addButtonDestination;
     }
-
+    //LUwUcas help I donno what to write!
     @NonNull
     @Override
     public HomeScreenAdapter.HomeScreenAdapterVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,12 +36,12 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
     public int getItemCount() {
         return folderNames.size();
     }
-
+    //updates recycler view with a new folder
     public void addItem(String newName){
         folderNames.add(newName);
         this.notifyItemInserted(folderNames.size()-1);
     }
-
+    //interface to set button function
     public interface AddButtonDestination {
         void AddButtonDestination(String name);
     }
@@ -50,6 +51,7 @@ public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.Ho
         public HomeScreenAdapterVh(@NonNull View itemView) {
             super(itemView);
             nameText = itemView.findViewById(R.id.info_text);
+            //sets button function
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

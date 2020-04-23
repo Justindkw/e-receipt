@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class statistics extends AppCompatActivity {
-
+public class Statistics extends AppCompatActivity {
+//Lucas's stuff
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +37,7 @@ public class statistics extends AppCompatActivity {
 
     //Private button voids
     private void toHomeScreen() {
-        Intent toHomeScreen = new Intent(this, homeScreen.class);
+        Intent toHomeScreen = new Intent(this, HomeScreen.class);
         startActivity(toHomeScreen);
     }
 
