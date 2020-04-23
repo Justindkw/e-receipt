@@ -17,11 +17,12 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 //public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.OnFolderListener {
 
-public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.ButtonOnClick{//implements recyclerViewAdapter.ItemClickListener {
+public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.SelectedUser{//implements recyclerViewAdapter.ItemClickListener {
 
 //    recyclerViewAdapter adapter;
 
@@ -49,7 +50,6 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
         folderLayout.addView(curRow);
         //up to here
 
-        inflateFolders(); //adds test folders. Will remove after testing
 
 
         findViewById(R.id.createFolder).setOnClickListener(new View.OnClickListener() {
@@ -58,7 +58,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
                 toAddFolder();
             }
         });
-        restoreFolders();
+        //restoreFolders();
 
 //Lucas's stuff starts here
 
@@ -91,7 +91,9 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
 
     private void initRecyclerView() { //THIS INITIALIZES THE RECYCLER VIEW
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        recyclerViewAdapter adapter = new recyclerViewAdapter(this, mNames, this);//buttononclick keeps giving errors
+        inflateFolders();
+
+        HomeScreenAdapter adapter = new HomeScreenAdapter(new ArrayList<Folder>(GlobalFolderList.getFolderList().values()),this);
 
         int numberOfColumns = 2;
 
@@ -168,7 +170,7 @@ public class homeScreen extends AppCompatActivity implements recyclerViewAdapter
     }
 
     @Override
-    public void ButtonOnClick(String string) {
+    public void selectedUser(String string) {
         Log.d("ran","yep");
         startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
     }

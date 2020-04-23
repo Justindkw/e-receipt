@@ -76,7 +76,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
         public ViewHolder(@NonNull View itemView, OnFolderListener onFolderListener) {
             super(itemView);
-            folderButton = itemView.findViewById(R.id.info_folder);
+            //folderButton = itemView.findViewById(R.id.info_folder);
             //Log.d("name",mFolderNames.get(getAdapterPosition()));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
