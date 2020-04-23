@@ -5,27 +5,28 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:id="@+id/parent_layout"
-            android:layout_width="200dp"
-            android:layout_height="300dp"
-            android:orientation="horizontal"
-            android:padding="5dp"
+        android:id="@+id/parent_layout"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:adjustViewBounds="false"
+        android:background="@drawable/folderbutton"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/folderbutton">
-            <TextView
-                android:id="@+id/info_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
-                android:adjustViewBounds="true"
-                android:text="TextView"
-                android:textSize="18sp"
-                app:fontFamily="@font/ralewayregular"
-                app:layout_constraintBottom_toBottomOf="@+id/parent_layout"
-                app:layout_constraintEnd_toEndOf="@+id/parent_layout"
-                app:layout_constraintStart_toStartOf="@+id/parent_layout"
-                app:layout_constraintTop_toTopOf="@+id/parent_layout" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="TextView"
+            android:textSize="18sp"
+            app:fontFamily="@font/ralewayregular"
+            app:layout_constraintBottom_toBottomOf="@+id/parent_layout"
+            app:layout_constraintEnd_toEndOf="@+id/parent_layout"
+            app:layout_constraintStart_toStartOf="@+id/parent_layout"
+            app:layout_constraintTop_toTopOf="@+id/parent_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

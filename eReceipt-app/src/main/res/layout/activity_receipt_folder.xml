@@ -8,18 +8,6 @@
     tools:context=".receiptFolder">
 
     <Button
-        android:id="@+id/createReceipt"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginRight="180dp"
-        android:background="@drawable/plus"
-        app:layout_constraintCircleRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/backButton"
         android:layout_width="20dp"
         android:layout_height="35dp"
@@ -40,7 +28,7 @@
         android:layout_marginEnd="232dp"
         android:layout_marginRight="232dp"
         android:layout_marginBottom="105dp"
-        android:gravity="left"
+        android:gravity="start"
         android:text="Folder"
         android:textColor="#EFEFEF"
         android:textSize="30sp"
@@ -58,40 +46,38 @@
         android:background="@drawable/receipt_recycler_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/testImage"
-            android:layout_width="363dp"
-            android:layout_height="368dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="103dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="129dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/big_grey_horizontal_rectangle" />
-    </RelativeLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/Receipt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="225dp"
+        android:layout_marginEnd="270dp"
+        android:layout_marginRight="270dp"
+        android:layout_marginBottom="300dp"
         android:text="Receipts"
         android:textColor="#2F4760"
         android:textSize="18sp"
         android:textStyle="bold"
         app:fontFamily="@font/font"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/createReceipt"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -99,7 +85,7 @@
         android:layout_height="70dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/tab_bar"
-        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:foregroundGravity="center_vertical|center|fill_vertical|center_horizontal"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"

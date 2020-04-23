@@ -44,11 +44,11 @@ public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.S
 
         folderNames(); //initializes anything in folderNames()
 
-        //everything here should be removed after recyclerview is done
-        curRow = new TableRow(this);
-        folderLayout = findViewById(R.id.folderTable);
-        folderLayout.addView(curRow);
-        //up to here
+//        //everything here should be removed after recyclerview is done
+//        curRow = new TableRow(this);
+//        folderLayout = findViewById(R.id.folderTable);
+//        folderLayout.addView(curRow);
+//        //up to here
 
 
 

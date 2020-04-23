@@ -26,7 +26,6 @@ public class receiptFolder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt_folder);
-        test = findViewById(R.id.testImage);
         name = getIntent().getStringExtra("folderName");
         folder = GlobalFolderList.get(name);
         Log.d("receipt",name);
