@@ -17,23 +17,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
-//public class homeScreen extends AppCompatActivity implements recyclerViewAdapter.OnFolderListener {
-
-public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.SelectedUser{//implements recyclerViewAdapter.ItemClickListener {
-
-//    recyclerViewAdapter adapter;
-
-    //Lucas' stuff starts here
-    private ArrayList<String> mNames = new ArrayList<>();
-    //Lucas' stuff ends here
-
-    //Justin's stuff starts here
-    private int curButtonPos = 0;
-    private TableRow curRow;
-    private TableLayout folderLayout;
+public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.AddButtonDestination {//implements recyclerViewAdapter.ItemClickListener {
+//Justin's stuff starts here
+    private HomeScreenAdapter adapter;
     static final int REQUEST_FOLDER = 0;
 
     @Override
@@ -42,15 +30,8 @@ public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        folderNames(); //initializes anything in folderNames()
-
-        //everything here should be removed after recyclerview is done
-        curRow = new TableRow(this);
-        folderLayout = findViewById(R.id.folderTable);
-        folderLayout.addView(curRow);
-        //up to here
-
-
+        inflateFolders();
+        initRecyclerView(); //initializes anything in folderNames()
 
         findViewById(R.id.createFolder).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,8 +39,7 @@ public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.S
                 toAddFolder();
             }
         });
-        //restoreFolders();
-
+//Justin's stuff ends here
 //Lucas's stuff starts here
 
         //Buttons down below
@@ -80,29 +60,17 @@ public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.S
         });
 
     }
-
-    private void folderNames() {
-        mNames.add("Food");
-        mNames.add("Clothing");
-        mNames.add("merch");
-
-        initRecyclerView();
-    }
-
+//Lucas's stuff ends here
+//Justin's stuff starts here
     private void initRecyclerView() { //THIS INITIALIZES THE RECYCLER VIEW
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
-        inflateFolders();
 
-        HomeScreenAdapter adapter = new HomeScreenAdapter(new ArrayList<Folder>(GlobalFolderList.getFolderList().values()),this);
-
-        int numberOfColumns = 2;
-
+        adapter = new HomeScreenAdapter(new ArrayList<String>(GlobalFolderList.getFolderList().keySet()),this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
 
-    //Justin's stuff starts here
     private void inflateFolders(){
         for(int i = 0; i<5;i++){
             GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
@@ -115,63 +83,12 @@ public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.S
         if (requestCode == REQUEST_FOLDER && resultCode == RESULT_OK) {
             String name = data.getStringExtra("newFolder");
             if(name != null){
-                insertButton(name);
+                adapter.addItem(name);
             }
         }
-    }//Justin's stuff ends here
-
-
-//Justin's stuff starts here
-    public void restoreFolders(){
-        for(HashMap.Entry<String,Folder> folder:GlobalFolderList.getFolderList().entrySet()){
-            insertButton(folder.getKey());
-        }
     }
-    public void insertButton(String name){
-        if(curButtonPos%2==0){
-            //determines the position of the button
-            curRow = new TableRow(this);
-            folderLayout.addView(curRow);
-            //creates and adds a new table row once the previous table row is filled with button
-        }
-
-        ConstraintLayout layout = new ConstraintLayout(this);
-        ConstraintSet set = new ConstraintSet();
-        layout.setMinWidth((int)convertDpToPixel((float)180));
-        layout.setMinHeight((int)convertDpToPixel((float)250));
-
-        layout.setMaxWidth((int)convertDpToPixel((float)180));
-        layout.setMaxHeight((int)convertDpToPixel((float)250));
-        set.clone(layout);
-        ImageView image = new ImageView(getApplicationContext());
-        image.setImageResource(R.drawable.bx_bx_receipt);
-        Button b = new Button(this);
-        b.setBackgroundResource(R.drawable.grey_horizontal_rectangle);
-        b.setText(name);
-        b.setTag(name);
-        b.setWidth((int)convertDpToPixel((float)180));
-        b.setHeight((int)convertDpToPixel((float)250));
-        //creates button and its text and tag
-        final Intent intent = new Intent(this, receiptFolder.class);
-        //Log.d("HOMESCREEN",name);
-        intent.putExtra("folderName", name);
-        //saves folder to the next activity
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(intent);
-                //goes to the folder file activity
-            }
-        });
-        layout.addView(image);
-        layout.addView(b);
-        curRow.addView(layout);
-        curButtonPos++;
-    }
-
     @Override
-    public void selectedUser(String string) {
-        Log.d("ran","yep");
+    public void AddButtonDestination(String string) {
         startActivity(new Intent(this,receiptFolder.class).putExtra("folderName",string));
     }
 
@@ -181,11 +98,6 @@ public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.S
 //Justin's stuff ends here
 //Lucas's stuff starts here
     //Buttons
-    //Private button voids
-    public float convertDpToPixel(float dp){
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
-    }
-
     private void toStatsScreen() {
         startActivity(new Intent(this, MainActivity.class));
     }
@@ -194,12 +106,6 @@ public class homeScreen extends AppCompatActivity implements HomeScreenAdapter.S
         Intent toBudgetScreen = new Intent(this, Budgeting.class);
         startActivity(toBudgetScreen);
     }
-
-    //@Override
-    public void onFolderClick(int position) {
-        mNames.get(position);
-        startActivity(new Intent(homeScreen.this, receiptFolder.class).putExtra("name", mNames.get(position)));
-    }
-    //Lucas' stuff ends here
+//Lucas' stuff ends here
 
 }

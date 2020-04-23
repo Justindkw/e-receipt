@@ -89,26 +89,6 @@ public class receiptFolder extends AppCompatActivity {
             }
         }
     }
-    //Lucas' stuff starts here
-//    //This sets the folder's name depending on what folder is clicked in the RecyclerView
-//    private void getIncomingIntent() {
-//        Log.d(TAG, "getIncomingIntent: checking for incoming intents"); //Log.d is just to check if the method is working
-//
-//        if(getIntent().hasExtra("name")) {
-//            Log.d(TAG, "getIncomingIntent: found intent extras");
-//
-//            String folderName = getIntent().getStringExtra("name");
-//
-//
-//        }
-//    }
-//
-//    private void setName(String folderName) {
-//        Log.d(TAG, "setName: setting the name of the folder to widgets");
-//
-//        TextView name = findViewById(R.id.folderName); //change info_text to something in folder_file.xml MUST DO
-//        name.setText(folderName);
-//    }
 
     //Buttons
     Button backButton;
