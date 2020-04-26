@@ -1,7 +1,6 @@
-package com.example.app;
+package com.example.app.FolderStuff;
 
-import android.app.Application;
-import android.util.Log;
+import com.example.app.FolderStuff.Folder;
 
 import java.util.HashMap;
 //Justin's stuff

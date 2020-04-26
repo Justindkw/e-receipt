@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.FolderStuff;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.app.R;
 
 public class AddFolder extends AppCompatActivity {
 //Justin's stuff

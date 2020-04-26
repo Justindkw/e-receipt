@@ -1,5 +1,8 @@
-package com.example.app;
+package com.example.app.FolderStuff;
 import androidx.annotation.NonNull;
+
+import com.example.app.ReceiptStuff.Receipt;
+
 import java.util.ArrayList;
 //Justin's stuff
 public class Folder {

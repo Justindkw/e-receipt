@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.BudgetingStuff;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.app.FolderStuff.Folder;
+import com.example.app.R;
 
 import java.util.ArrayList;
 

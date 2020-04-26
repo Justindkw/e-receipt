@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.HomeStuff;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -7,6 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.app.FolderStuff.AddFolder;
+import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.FolderStuff.Folder;
+import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.MainActivity;
+import com.example.app.R;
+import com.example.app.ReceiptStuff.ReceiptFolder;
+
 import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity implements HomeScreenAdapter.AddButtonDestination {//implements recyclerViewAdapter.ItemClickListener {

@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ECECEF"
-    tools:context=".Budgeting">
+    tools:context=".BudgetingStuff.Budgeting">
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginRight="300dp"
+        android:layout_marginBottom="680dp"
         android:background="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,21 +25,18 @@
         android:layout_width="202dp"
         android:layout_height="44dp"
         android:layout_alignParentTop="false"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginRight="116dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="680dp"
         android:gravity="top"
         android:text="Budget"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:fontFamily="@font/ralewayregular"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,12 +72,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="33dp"
             android:layout_marginLeft="33dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="249dp"
+            android:layout_marginRight="249dp"
             android:layout_marginBottom="5dp"
             android:text="$0.00"
             android:textSize="24sp"
             app:fontFamily="@font/ralewayregular"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -88,8 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/budgetRecycler"
@@ -160,6 +163,7 @@
             android:layout_weight="1"
             android:background="@drawable/stats_light" />
     </LinearLayout>
+
     <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:id="@+id/constraintLayout3"-->
 <!--        android:layout_width="345dp"-->

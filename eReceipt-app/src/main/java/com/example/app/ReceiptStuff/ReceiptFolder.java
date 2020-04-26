@@ -1,13 +1,18 @@
-package com.example.app;
+package com.example.app.ReceiptStuff;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+
+import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.FolderStuff.Folder;
+import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.HomeStuff.HomeScreen;
+import com.example.app.MainActivity;
+import com.example.app.R;
+
 import java.util.ArrayList;
 
 
