@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import java.util.Date;
 //Justin's stuff
 public class Receipt {
-    //receipt informations
+    //receipt information
     private Bitmap photo;
     private double cost;
     private String company;

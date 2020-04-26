@@ -34,7 +34,7 @@ public class Budgeting extends AppCompatActivity {
                     ((TextView)findViewById(R.id.totalBudget)).setText(String.valueOf(GlobalFolderList.getTotalBudget()));
                 }
                 else{
-                    //this means the user input budget is not correct. For example id they don't have any value or it includes letters
+                    //this means the user input budget is not correct. For example if they don't have any value or it includes letters
                     //can add something here to warn user of their wrong input
                 }
             }
