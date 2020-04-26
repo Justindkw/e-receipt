@@ -1,8 +1,10 @@
-package com.example.app;
+package com.example.app.HomeStuff;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.app.R;
 
 //Justin's stuff
 public class HomeScreenRecyclerView extends AppCompatActivity{

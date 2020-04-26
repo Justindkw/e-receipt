@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.HomeStuff.HomeScreen;
+
 public class Statistics extends AppCompatActivity {
 //Lucas's stuff
     @Override

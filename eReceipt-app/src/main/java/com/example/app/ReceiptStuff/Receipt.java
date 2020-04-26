@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.ReceiptStuff;
 
 import android.graphics.Bitmap;
 import java.util.Date;

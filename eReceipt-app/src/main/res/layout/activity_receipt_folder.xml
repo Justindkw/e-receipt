@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2F4760"
-    tools:context=".ReceiptFolder">
+    tools:context=".ReceiptStuff.ReceiptFolder">
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="20dp"
-        android:layout_height="35dp"
+        android:layout_height="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="43dp"
@@ -24,16 +24,16 @@
         android:layout_height="40dp"
         android:layout_marginStart="75dp"
         android:layout_marginLeft="75dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="232dp"
         android:layout_marginRight="232dp"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="100dp"
         android:gravity="start"
         android:text="Folder"
         android:textColor="#EFEFEF"
         android:textSize="30sp"
         app:fontFamily="@font/robotobold"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,32 +41,49 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="185dp"
-        android:background="@drawable/receipt_recycler_layout"
+        android:layout_height="550dp"
+        android:layout_marginTop="235dp"
+        android:background="#EFEFEF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/Receipt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="270dp"
-        android:layout_marginRight="270dp"
-        android:layout_marginBottom="300dp"
-        android:text="Receipts"
-        android:textColor="#2F4760"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/font"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/receiptRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/rectangle"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout">
+
+        <TextView
+            android:id="@+id/Receipt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginEnd="284dp"
+            android:layout_marginRight="284dp"
+            android:text="Receipts"
+            android:textColor="#2F4760"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/font"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/createReceipt"

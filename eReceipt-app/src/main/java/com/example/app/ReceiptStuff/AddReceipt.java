@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.ReceiptStuff;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.example.app.FolderStuff.Folder;
+import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.R;
 
 public class AddReceipt extends AppCompatActivity {
 //Justin's stuff

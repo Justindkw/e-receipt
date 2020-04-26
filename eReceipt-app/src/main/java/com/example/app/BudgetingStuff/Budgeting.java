@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.app.BudgetingStuff;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.app.FolderStuff.Folder;
+import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.HomeStuff.HomeScreen;
+import com.example.app.MainActivity;
+import com.example.app.R;
+
 import java.util.ArrayList;
 public class Budgeting extends AppCompatActivity {
 
