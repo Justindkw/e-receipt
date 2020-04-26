@@ -4,19 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import java.util.ArrayList;
 
 
 public class ReceiptFolder extends AppCompatActivity {
 //Justin's stuff starts here
     //int to compare if it is our request
-    static final int REQUEST_RECIEPT = 1;
+    static final int REQUEST_RECEIPT = 1;
     //feel free to delete Lucas
-    private static  final String TAG = "folderFile"; //Lucas' stuff
     //folder name
     private String folderName;
     //receipts in folder
@@ -73,7 +69,7 @@ public class ReceiptFolder extends AppCompatActivity {
     //after a new receipt is added
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_RECIEPT && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_RECEIPT && resultCode == RESULT_OK) {
             int pos = data.getIntExtra("receiptPos",-1);
             if(pos != -1){
                 //checks if results are ok and then updates the recycler view (WIP)
@@ -82,9 +78,9 @@ public class ReceiptFolder extends AppCompatActivity {
         }
     }
 //Justin's stuff ends here
-    //sets button desinations
+    //sets button destinations
     private void toAddReceipt(){
-        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("folderName", folderName), REQUEST_RECIEPT);
+        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("folderName", folderName), REQUEST_RECEIPT);
     }
 //Lucas's stuff starts here
     private void toHomeScreen() {
