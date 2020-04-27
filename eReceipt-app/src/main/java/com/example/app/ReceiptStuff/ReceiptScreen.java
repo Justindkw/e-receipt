@@ -1,25 +1,25 @@
 package com.example.app.ReceiptStuff;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.HomeStuff.FolderScreen;
 import com.example.app.OtherFolderStuff.Folder;
 import com.example.app.OtherFolderStuff.GlobalFolderList;
-import com.example.app.HomeStuff.FolderScreen;
 import com.example.app.R;
 import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
 
 
-class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.AddButtonDestination{
+class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAdapter.AddButtonDestination{
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECEIPT = 1;
@@ -32,7 +32,7 @@ class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.Ad
     //THE folder
     private Folder folder;
     ////recycler adapter
-    private ReceiptFolderAdapter adapter;
+    private ReceiptScreenAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +96,7 @@ class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.Ad
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.receiptRecyclerView);
 
-        adapter = new ReceiptFolderAdapter(new ArrayList<String>(GlobalReceiptList.getReceiptList().keySet()), this);
+        adapter = new ReceiptScreenAdapter(new ArrayList<String>(GlobalReceiptList.getReceiptList().keySet()), this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
@@ -122,7 +122,7 @@ class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.Ad
     }
     //sets button desinations
     private void toAddReceipt() {
-        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("receiptName", folderName), REQUEST_RECEIPT);
+        startActivityForResult(new Intent(ReceiptScreen.this, AddReceipt.class).putExtra("receiptName", folderName), REQUEST_RECEIPT);
         //sets button destinations
     }
 //Lucas's stuff starts here
