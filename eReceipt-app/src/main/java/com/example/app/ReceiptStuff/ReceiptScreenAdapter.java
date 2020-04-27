@@ -6,20 +6,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.R;
 
 import java.util.ArrayList;
 
-class ReceiptFolderAdapter extends RecyclerView.Adapter<ReceiptFolderAdapter.ReceiptFolderAdapterVh> {
+class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.ReceiptFolderAdapterVh> {
     //list of receipt names
     private ArrayList<String> receiptNames;
     //interfaced used for start activity
-    private ReceiptFolderAdapter.AddButtonDestination addButtonDestination;
+    private ReceiptScreenAdapter.AddButtonDestination addButtonDestination;
     //constructor
-    public ReceiptFolderAdapter(ArrayList<String> receiptNames, ReceiptFolderAdapter.AddButtonDestination addButtonDestination) {
+    public ReceiptScreenAdapter(ArrayList<String> receiptNames, ReceiptScreenAdapter.AddButtonDestination addButtonDestination) {
         this.receiptNames = receiptNames;
         this.addButtonDestination = addButtonDestination;
     }
@@ -27,12 +26,12 @@ class ReceiptFolderAdapter extends RecyclerView.Adapter<ReceiptFolderAdapter.Rec
     //I believe this returns the Recycler View's content (in this case, it is the receipts that are the content)
     @NonNull
     @Override
-    public ReceiptFolderAdapter.ReceiptFolderAdapterVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReceiptScreenAdapter.ReceiptFolderAdapterVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ReceiptFolderAdapterVh(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_receipt_folder_recycler_view,null));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReceiptFolderAdapter.ReceiptFolderAdapterVh holder, int position) {
+    public void onBindViewHolder(@NonNull ReceiptScreenAdapter.ReceiptFolderAdapterVh holder, int position) {
         holder.nameText.setText(receiptNames.get(position));
     }
 
