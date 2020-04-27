@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ECECEF"
     tools:context=".OtherFolderStuff.AddFolder">
+    tools:context=".HomeStuff.AddFolder">
 
     <Button
         android:id="@+id/backButton2"
@@ -121,6 +122,7 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:hint="Name" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -160,6 +162,7 @@
                 android:id="@+id/use"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:hint="Main Use" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -188,8 +191,9 @@
             app:fontFamily="@font/ralewayregular" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="13dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/notes"

@@ -12,25 +12,25 @@ import com.example.app.R;
 
 import java.util.ArrayList;
 //Justin's stuff
-public class HomeScreenAdapter extends RecyclerView.Adapter<HomeScreenAdapter.HomeScreenAdapterVh>{
+public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapter.HomeScreenAdapterVh>{
     //list of folder names
     private ArrayList<String> folderNames;
     //interfaced used for start activity
     private AddButtonDestination addButtonDestination;
     //constructor
-    public HomeScreenAdapter(ArrayList<String> folderNames, AddButtonDestination addButtonDestination) {
+    public FolderScreenAdapter(ArrayList<String> folderNames, AddButtonDestination addButtonDestination) {
         this.folderNames = folderNames;
         this.addButtonDestination = addButtonDestination;
     }
     //LUwUcas help I donno what to write!
     @NonNull
     @Override
-    public HomeScreenAdapter.HomeScreenAdapterVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FolderScreenAdapter.HomeScreenAdapterVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new HomeScreenAdapterVh(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_home_screen_recycler_view,null));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeScreenAdapter.HomeScreenAdapterVh holder, int position) {
+    public void onBindViewHolder(@NonNull FolderScreenAdapter.HomeScreenAdapterVh holder, int position) {
         holder.nameText.setText(folderNames.get(position));
     }
 

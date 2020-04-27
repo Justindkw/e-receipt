@@ -1,8 +1,5 @@
 package com.example.app.BudgetingStuff;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +7,18 @@ import android.widget.TextView;
 
 import com.example.app.OtherFolderStuff.Folder;
 import com.example.app.OtherFolderStuff.GlobalFolderList;
-import com.example.app.HomeStuff.HomeScreen;
-import com.example.app.MainActivity;
-import com.example.app.R;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.app.HomeStuff.FolderScreen;
+import com.example.app.R;
+import com.example.app.StatisticStuff.Statistics;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+
 public class Budgeting extends AppCompatActivity {
 
     BudgetingAdapter budgetingAdapter;
@@ -24,13 +28,10 @@ public class Budgeting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budgeting);
 //Justin's stuff starts here
-        //creates a List of folders from the folderList map
         //sets up the recycler view
-        budgetingAdapter = new BudgetingAdapter(this,new ArrayList<Folder>(GlobalFolderList.getFolderList().values()));
-        RecyclerView recyclerView = findViewById(R.id.budgetRecycler);
-        recyclerView.setAdapter(budgetingAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-
+        initRecyclerView();
+        //initializes the total budget number
+        updateTotalBudget();
         //sets done budget button function
         findViewById(R.id.doneBudgetButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,10 +39,10 @@ public class Budgeting extends AppCompatActivity {
                 //if all user inputted budgets are doubles(numbers), then set budget and total budget according to user input
                 if(budgetingAdapter.correctBudgets()){
                     budgetingAdapter.finalizeBudgets();
-                    ((TextView)findViewById(R.id.totalBudget)).setText(String.valueOf(GlobalFolderList.getTotalBudget()));
+                    updateTotalBudget();
                 }
                 else{
-                    //this means the user input budget is not correct. For example id they don't have any value or it includes letters
+                    //this means the user input budget is not correct. For example if they don't have any value or it includes letters
                     //can add something here to warn user of their wrong input
                 }
             }
@@ -69,12 +70,22 @@ public class Budgeting extends AppCompatActivity {
             }
         });
     }
+    //sets up the recycler view
+    private void initRecyclerView(){
+        budgetingAdapter = new BudgetingAdapter(this,new ArrayList<Folder>(GlobalFolderList.getFolderList().values()));
+        RecyclerView recyclerView = findViewById(R.id.budgetRecycler);
+        recyclerView.setAdapter(budgetingAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+    }
+    private void updateTotalBudget(){
+        ((TextView)findViewById(R.id.totalBudget)).setText(String.valueOf(new DecimalFormat("0.00").format(GlobalFolderList.getTotalBudget())));
+    }
 
     private void toHomeScreen() {
-        startActivity(new Intent(this, HomeScreen.class));
+        startActivity(new Intent(this, FolderScreen.class));
     }
 
     private void toStatsScreen() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Statistics.class));
     }
 }

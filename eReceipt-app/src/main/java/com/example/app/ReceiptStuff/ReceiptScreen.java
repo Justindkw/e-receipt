@@ -7,21 +7,29 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app.BudgetingStuff.Budgeting;
 import com.example.app.OtherFolderStuff.Folder;
 import com.example.app.OtherFolderStuff.GlobalFolderList;
-import com.example.app.HomeStuff.HomeScreen;
-import com.example.app.MainActivity;
+//import com.example.app.HomeStuff.HomeScreen;
+//import com.example.app.MainActivity;
+//import com.example.app.GlobalFolderList;
+//import com.example.app.HomeStuff.Folder;
+import com.example.app.HomeStuff.FolderScreen;
 import com.example.app.R;
+import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
 
 
 public class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.AddButtonDestination{
+//public class ReceiptScreen extends AppCompatActivity {
 //Justin's stuff starts here
     //int to compare if it is our request
-    static final int REQUEST_RECIEPT = 1;
+    static final int REQUEST_RECEIPT = 1;
     //feel free to delete Lucas
     private static  final String TAG = "receiptFile"; //Lucas' stuff
     //folder name
@@ -38,6 +46,8 @@ public class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAda
         setContentView(R.layout.activity_receipt_folder);
         //gets name of the folder from intent
         folderName = getIntent().getStringExtra("folderName");
+        //sets the name of the folder in the activity
+        ((TextView)findViewById(R.id.folderName)).setText(folderName);
         //find the folder by using it's name
         folder = GlobalFolderList.get(folderName);
         //gets receipts from folder
@@ -103,7 +113,7 @@ public class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAda
     //after a new receipt is added
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_RECIEPT && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_RECEIPT && resultCode == RESULT_OK) {
             int pos = data.getIntExtra("receiptPos",-1);
             if(pos != -1){
                 //checks if results are ok and then updates the recycler view (WIP)
@@ -118,16 +128,17 @@ public class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAda
         startActivity(new Intent(this, AddReceipt.class).putExtra("receiptName", string));
     }
     //sets button desinations
-    private void toAddReceipt(){
-        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("receiptName", folderName), REQUEST_RECIEPT);
+    private void toAddReceipt() {
+        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("receiptName", folderName), REQUEST_RECEIPT);
+        //sets button destinations
     }
 //Lucas's stuff starts here
     private void toHomeScreen() {
-        startActivity(new Intent(this, HomeScreen.class));
+        startActivity(new Intent(this, FolderScreen.class));
     }
 
     private void toStatsScreen() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Statistics.class));
     }
 
     private void toBudgetScreen() {
@@ -136,3 +147,4 @@ public class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAda
 
     //Lucas' stuff ends here
 }
+
