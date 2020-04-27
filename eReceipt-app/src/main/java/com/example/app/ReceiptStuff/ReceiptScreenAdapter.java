@@ -6,13 +6,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.R;
 
 import java.util.ArrayList;
 
-public class ReceiptFolderAdapter extends RecyclerView.Adapter<ReceiptFolderAdapter.ReceiptFolderAdapterVh> {
+class ReceiptFolderAdapter extends RecyclerView.Adapter<ReceiptFolderAdapter.ReceiptFolderAdapterVh> {
     //list of receipt names
     private ArrayList<String> receiptNames;
     //interfaced used for start activity

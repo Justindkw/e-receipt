@@ -13,11 +13,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.R;
-import com.example.app.ReceiptStuff.ReceiptFolder;
+//import com.example.app.ReceiptStuff.ReceiptFolder;
 import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
+
 //FolderScreen is the HOME SCREEN
+
+//FolderScreen is the HOME SCREEN
+
 public class FolderScreen extends AppCompatActivity implements FolderScreenAdapter.AddButtonDestination {//implements recyclerViewAdapter.ItemClickListener {
 //Justin's stuff starts here
     //recycler adapter
@@ -97,7 +101,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
 
     //this is used to set button function for all the buttons in recycler view
     public void AddButtonDestination(String string) {
-        startActivity(new Intent(this, ReceiptFolder.class).putExtra("folderName",string));
+        startActivity(new Intent(this, ReceiptScreen.class).putExtra("folderName",string));
     }
     //functions to start button activities DUDDDDE
     private void toAddFolder(){

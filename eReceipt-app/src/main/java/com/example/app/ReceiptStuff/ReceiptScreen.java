@@ -9,15 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.app.BudgetingStuff.Budgeting;
 import com.example.app.OtherFolderStuff.Folder;
 import com.example.app.OtherFolderStuff.GlobalFolderList;
-//import com.example.app.HomeStuff.HomeScreen;
-//import com.example.app.MainActivity;
-//import com.example.app.GlobalFolderList;
-//import com.example.app.HomeStuff.Folder;
 import com.example.app.HomeStuff.FolderScreen;
 import com.example.app.R;
 import com.example.app.StatisticStuff.Statistics;
@@ -25,8 +19,7 @@ import com.example.app.StatisticStuff.Statistics;
 import java.util.ArrayList;
 
 
-public class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.AddButtonDestination{
-//public class ReceiptScreen extends AppCompatActivity {
+class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.AddButtonDestination{
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECEIPT = 1;
