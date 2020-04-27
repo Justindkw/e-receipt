@@ -1,4 +1,4 @@
-package com.example.app.FolderStuff;
+package com.example.app;
 
 import com.example.app.FolderStuff.Folder;
 
@@ -20,16 +20,16 @@ public class GlobalFolderList{
         return folderMap;
     }
     //returns sum of all folder's budget
-    public static int getTotalBudget(){
-        int totBudget=0;
+    public static double getTotalBudget(){
+        double totBudget=0;
         for(Folder fold:folderMap.values()){
             totBudget+=fold.getBudget();
         }
         return totBudget;
     }
     //returns sun of all folder's spending
-    public static int getTotalSpending(){
-        int totSpending=0;
+    public static double getTotalSpending(){
+        double totSpending=0;
         for(Folder fold:folderMap.values()){
             totSpending+=fold.getSpending();
         }

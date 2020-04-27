@@ -4,7 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Statistics">
+    tools:context=".StatisticStuff.Statistics">
+    <com.example.app.StatisticStuff.CircularProgressBar
+        android:id="@+id/totalBudgetBar"
+        android:layout_width="204dp"
+        android:layout_height="201dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="89dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/folderBudgetProgress"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:layout_marginTop="300dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-2dp" />
 
     <LinearLayout
         android:layout_width="200dp"

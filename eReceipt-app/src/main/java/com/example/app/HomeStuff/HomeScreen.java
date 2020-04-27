@@ -1,18 +1,18 @@
 package com.example.app.HomeStuff;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.app.FolderStuff.AddFolder;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.FolderStuff.AddFolder;
 import com.example.app.FolderStuff.Folder;
-import com.example.app.FolderStuff.GlobalFolderList;
-import com.example.app.MainActivity;
+import com.example.app.GlobalFolderList;
+import com.example.app.StatisticStuff.Statistics;
 import com.example.app.R;
 import com.example.app.ReceiptStuff.ReceiptFolder;
 
@@ -64,7 +64,10 @@ public class HomeScreen extends AppCompatActivity implements HomeScreenAdapter.A
     //make buncha folders
     private void inflateFolders(){
         for(int i = 0; i<5;i++){
-            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
+            Folder fold = new Folder("folder "+i,"","");
+            fold.setBudget(100+Math.random()*300);
+            fold.setSpending(50+Math.random()*200);
+            GlobalFolderList.add("folder "+i,fold);
         }
     }
     //initializes recycler view
@@ -101,7 +104,7 @@ public class HomeScreen extends AppCompatActivity implements HomeScreenAdapter.A
 //Justin's stuff ends here
 //Lucas's stuff starts here
     private void toStatsScreen() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Statistics.class));
     }
 
     private void toBudgetScreen() {

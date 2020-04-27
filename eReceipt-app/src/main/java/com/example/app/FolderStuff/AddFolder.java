@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
 public class AddFolder extends AppCompatActivity {

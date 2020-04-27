@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.app.FolderStuff.Folder;
-import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
 public class AddReceipt extends AppCompatActivity {

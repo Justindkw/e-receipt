@@ -1,13 +1,14 @@
 package com.example.app.ReceiptStuff;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.app.BudgetingStuff.Budgeting;
 import com.example.app.FolderStuff.Folder;
-import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.GlobalFolderList;
 import com.example.app.HomeStuff.HomeScreen;
 import com.example.app.MainActivity;
 import com.example.app.R;

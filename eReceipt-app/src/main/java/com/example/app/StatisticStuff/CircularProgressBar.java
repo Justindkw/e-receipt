@@ -1,4 +1,4 @@
-package se.kmdev.circularprogressbar;
+package com.example.app.StatisticStuff;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -22,8 +22,8 @@ public class CircularProgressBar extends View {
     private int mViewHeight;
 
     private float mStartAngle = -90;            // Start from top (default is: "3 o'clock on a watch.")
-    private float mSweepAngle = 0;              // How long to sweep from mStartAngle
-    private float mMaxSweepAngle = 360;         // Max degrees to sweep = full circle
+    private float mBeginningAngle = 330;          //what the progress % starts off of
+    private float mMaxSweepAngle = 360;         // Max degrees for the progress ring = full circle
     private int mStrokeWidth = 20;              // Width of outline
     private int mAnimationDuration = 400;       // Animation duration for progress change
     private int mMaxProgress = 100;             // Max progress to use
@@ -83,7 +83,7 @@ public class CircularProgressBar extends View {
         }
         mPaint.setStrokeCap(mRoundedCorners ? Paint.Cap.ROUND : Paint.Cap.BUTT);
         mPaint.setColor(mProgressColor);
-        canvas.drawArc(outerOval, mStartAngle, mClockWise ? mSweepAngle : -mSweepAngle, false, mPaint);
+        canvas.drawArc(outerOval, mStartAngle, mClockWise ? mBeginningAngle : -mBeginningAngle, false, mPaint);
     }
 
     private void drawText(Canvas canvas) {
@@ -96,7 +96,7 @@ public class CircularProgressBar extends View {
         int xPos = (canvas.getWidth() / 2);
         int yPos = (int) ((canvas.getHeight() / 2) - ((mPaint.descent() + mPaint.ascent()) / 2));
 
-        canvas.drawText(calcProgressFromSweepAngle(mSweepAngle) + "%", xPos, yPos, mPaint);
+        canvas.drawText(calcProgressFromSweepAngle(mBeginningAngle) + "%", xPos, yPos, mPaint);
     }
 
     private float calcSweepAngleFromProgress(int progress) {
@@ -113,16 +113,18 @@ public class CircularProgressBar extends View {
      * @param progress progress between 0 and 100.
      */
     public void setProgress(int progress) {
-        ValueAnimator animator = ValueAnimator.ofFloat(mSweepAngle, calcSweepAngleFromProgress(progress));
+        ValueAnimator animator = ValueAnimator.ofFloat(mBeginningAngle, calcSweepAngleFromProgress(progress));
         animator.setInterpolator(new DecelerateInterpolator());
         animator.setDuration(mAnimationDuration);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                mSweepAngle = (float) valueAnimator.getAnimatedValue();
+                mBeginningAngle = (float) valueAnimator.getAnimatedValue();
                 invalidate();
             }
         });
+        int newColor = (progress<50) ? 0:(progress-50)*2;
+        setProgressColor(Color.HSVToColor( new float[]{ 100-newColor, 100, 100 }));
         animator.start();
     }
 
@@ -131,7 +133,7 @@ public class CircularProgressBar extends View {
         invalidate();
     }
 
-    public void setProgressWidth(int width) {
+    public void setRingThickness(int width) {
         mStrokeWidth = width;
         invalidate();
     }
