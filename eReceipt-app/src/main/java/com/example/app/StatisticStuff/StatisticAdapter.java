@@ -3,6 +3,7 @@ package com.example.app.StatisticStuff;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.HomeStuff.Folder;
+import com.example.app.FolderStuff.Folder;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
@@ -28,6 +29,7 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
     //constructor
     public StatisticAdapter(AddButtonDestination addButtonDestination) {
         this.folders = new ArrayList<Folder>(GlobalFolderList.getFolderList().values());
+        Log.d("stat",folders.get(0).toString());
         this.addButtonDestination = addButtonDestination;
     }
     //LUwUcas help I donno what to write!

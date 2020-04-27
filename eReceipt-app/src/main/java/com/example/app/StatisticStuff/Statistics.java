@@ -1,4 +1,5 @@
 package com.example.app.StatisticStuff;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.GlobalFolderList;
-import com.example.app.HomeStuff.FolderScreen;
 import com.example.app.R;
 
 public class Statistics extends AppCompatActivity implements StatisticAdapter.AddButtonDestination {

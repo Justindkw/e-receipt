@@ -22,14 +22,14 @@ public class CircularProgressBar extends View {
     private int mViewHeight;
 
     private float mStartAngle = -90;            // Start from top (default is: "3 o'clock on a watch.")
-    private float mBeginningAngle = 330;          //what the progress % starts off of
+    private float mBeginningAngle = 0;          //what the progress % starts off of
     private float mMaxSweepAngle = 360;         // Max degrees for the progress ring = full circle
-    private int mStrokeWidth = 20;              // Width of outline
+    private int mStrokeWidth = 50;              // Width of outline
     private int mAnimationDuration = 400;       // Animation duration for progress change
     private int mMaxProgress = 100;             // Max progress to use
     private boolean mDrawText = true;           // Set to true if progress text should be drawn
     private boolean mRoundedCorners = true;     // Set to true if rounded corners should be applied to outline ends
-    private int mProgressColor = Color.BLACK;   // Outline color
+    private int mProgressColor = Color.GREEN;   // Outline color
     private int mBackgroundColor = Color.BLACK; // Background color
     private int mTextColor = Color.BLACK;       // Progress text color
     private boolean mClockWise = true;

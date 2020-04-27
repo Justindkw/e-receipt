@@ -1,4 +1,4 @@
-package com.example.app.HomeStuff;
+package com.example.app.FolderStuff;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +26,7 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
     @NonNull
     @Override
     public FolderScreenAdapter.HomeScreenAdapterVh onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new HomeScreenAdapterVh(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_home_screen_recycler_view,null));
+        return new HomeScreenAdapterVh(LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_folder_screen_recycler_view,null));
     }
 
     @Override

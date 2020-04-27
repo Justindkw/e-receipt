@@ -1,22 +1,22 @@
-package com.example.app.HomeStuff;
+package com.example.app.FolderStuff;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.app.OtherFolderStuff.AddFolder;
-import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.OtherFolderStuff.Folder;
-import com.example.app.OtherFolderStuff.GlobalFolderList;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.GlobalFolderList;
 import com.example.app.R;
-//import com.example.app.ReceiptStuff.ReceiptFolder;
+import com.example.app.ReceiptStuff.ReceiptScreen;
 import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
+
+//import com.example.app.ReceiptStuff.ReceiptFolder;
 
 //FolderScreen is the HOME SCREEN
 
@@ -32,7 +32,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+        setContentView(R.layout.activity_folder_screen);
         //adds buncha folders for sake of demo and debugging
         inflateFolders();
         //creates recycler view

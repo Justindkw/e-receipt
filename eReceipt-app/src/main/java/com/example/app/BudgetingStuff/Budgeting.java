@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.app.OtherFolderStuff.Folder;
-import com.example.app.OtherFolderStuff.GlobalFolderList;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.HomeStuff.FolderScreen;
+import com.example.app.FolderStuff.Folder;
+import com.example.app.FolderStuff.FolderScreen;
+import com.example.app.GlobalFolderList;
 import com.example.app.R;
 import com.example.app.StatisticStuff.Statistics;
 

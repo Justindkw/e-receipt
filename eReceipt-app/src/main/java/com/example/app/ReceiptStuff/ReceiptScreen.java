@@ -10,16 +10,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.HomeStuff.FolderScreen;
-import com.example.app.OtherFolderStuff.Folder;
-import com.example.app.OtherFolderStuff.GlobalFolderList;
+import com.example.app.FolderStuff.FolderScreen;
+import com.example.app.FolderStuff.Folder;
+import com.example.app.GlobalFolderList;
 import com.example.app.R;
 import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
 
 
-class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAdapter.AddButtonDestination{
+public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAdapter.AddButtonDestination{
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECEIPT = 1;

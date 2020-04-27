@@ -1,4 +1,4 @@
-package com.example.app.HomeStuff;
+package com.example.app.FolderStuff;
 import androidx.annotation.NonNull;
 
 import com.example.app.ReceiptStuff.Receipt;
@@ -30,6 +30,10 @@ public class Folder {
     public double getSpending() {
         return spending;
     }
+    //only exists to make demo folders
+    public void setSpending(double spending){
+        this.spending = spending;
+    }
 
     public ArrayList<Receipt> getReceipts() {
         return receipts;
@@ -46,10 +50,7 @@ public class Folder {
     public int size() {
         return receipts.size();
     }
-    //this shouldn't exist other than for testing purposes
-    public void setSpending(double spending){
-        this.spending = spending;
-    }
+
     @NonNull
     public String toString() {
         return name;
