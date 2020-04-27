@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.app.FolderStuff.Folder;
+import com.example.app.HomeStuff.Folder;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 

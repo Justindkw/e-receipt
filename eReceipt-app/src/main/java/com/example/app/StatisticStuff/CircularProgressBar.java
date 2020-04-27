@@ -123,6 +123,7 @@ public class CircularProgressBar extends View {
                 invalidate();
             }
         });
+        //Justin's changes. This makes it so the color changes depending on the %
         int newColor = (progress<50) ? 0:(progress-50)*2;
         setProgressColor(Color.HSVToColor( new float[]{ 100-newColor, 100, 100 }));
         animator.start();

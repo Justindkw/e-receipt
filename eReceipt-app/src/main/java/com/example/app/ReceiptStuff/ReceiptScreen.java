@@ -3,20 +3,21 @@ package com.example.app.ReceiptStuff;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.FolderStuff.Folder;
 import com.example.app.GlobalFolderList;
-import com.example.app.HomeStuff.HomeScreen;
-import com.example.app.MainActivity;
+import com.example.app.HomeStuff.Folder;
+import com.example.app.HomeStuff.FolderScreen;
 import com.example.app.R;
+import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
 
 
-public class ReceiptFolder extends AppCompatActivity {
+public class ReceiptScreen extends AppCompatActivity {
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECEIPT = 1;
@@ -33,6 +34,8 @@ public class ReceiptFolder extends AppCompatActivity {
         setContentView(R.layout.activity_receipt_folder);
         //gets name of the folder from intent
         folderName = getIntent().getStringExtra("folderName");
+        //sets the name of the folder in the activity
+        ((TextView)findViewById(R.id.folderName)).setText(folderName);
         //find the folder by using it's name
         folder = GlobalFolderList.get(folderName);
         //gets receipts from folder
@@ -88,15 +91,15 @@ public class ReceiptFolder extends AppCompatActivity {
 //Justin's stuff ends here
     //sets button destinations
     private void toAddReceipt(){
-        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("folderName", folderName), REQUEST_RECEIPT);
+        startActivityForResult(new Intent(ReceiptScreen.this, AddReceipt.class).putExtra("folderName", folderName), REQUEST_RECEIPT);
     }
 //Lucas's stuff starts here
     private void toHomeScreen() {
-        startActivity(new Intent(this, HomeScreen.class));
+        startActivity(new Intent(this, FolderScreen.class));
     }
 
     private void toStatsScreen() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Statistics.class));
     }
 
     private void toBudgetScreen() {

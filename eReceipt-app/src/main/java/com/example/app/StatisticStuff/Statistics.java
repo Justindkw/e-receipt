@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
 import com.example.app.GlobalFolderList;
-import com.example.app.HomeStuff.HomeScreen;
+import com.example.app.HomeStuff.FolderScreen;
 import com.example.app.R;
 
 public class Statistics extends AppCompatActivity implements StatisticAdapter.AddButtonDestination {
@@ -70,7 +70,7 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
 
     //Private button voids
     private void toHomeScreen() {
-        Intent toHomeScreen = new Intent(this, HomeScreen.class);
+        Intent toHomeScreen = new Intent(this, FolderScreen.class);
         startActivity(toHomeScreen);
     }
 

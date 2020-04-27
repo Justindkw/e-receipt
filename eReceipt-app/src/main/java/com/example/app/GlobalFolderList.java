@@ -1,6 +1,6 @@
 package com.example.app;
 
-import com.example.app.FolderStuff.Folder;
+import com.example.app.HomeStuff.Folder;
 
 import java.util.HashMap;
 //Justin's stuff

@@ -9,19 +9,17 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.FolderStuff.AddFolder;
-import com.example.app.FolderStuff.Folder;
 import com.example.app.GlobalFolderList;
-import com.example.app.StatisticStuff.Statistics;
 import com.example.app.R;
-import com.example.app.ReceiptStuff.ReceiptFolder;
+import com.example.app.ReceiptStuff.ReceiptScreen;
+import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
 
-public class HomeScreen extends AppCompatActivity implements HomeScreenAdapter.AddButtonDestination {//implements recyclerViewAdapter.ItemClickListener {
+public class FolderScreen extends AppCompatActivity implements FolderScreenAdapter.AddButtonDestination {//implements recyclerViewAdapter.ItemClickListener {
 //Justin's stuff starts here
     //recycler adapter
-    private HomeScreenAdapter adapter;
+    private FolderScreenAdapter adapter;
     //int to compare if it is our request
     static final int REQUEST_FOLDER = 0;
 
@@ -62,19 +60,20 @@ public class HomeScreen extends AppCompatActivity implements HomeScreenAdapter.A
 //Lucas's stuff ends here
 //Justin's stuff starts here
     //make buncha folders
-    private void inflateFolders(){
-        for(int i = 0; i<5;i++){
-            Folder fold = new Folder("folder "+i,"","");
-            fold.setBudget(100+Math.random()*300);
-            fold.setSpending(50+Math.random()*200);
-            GlobalFolderList.add("folder "+i,fold);
+    private void inflateFolders() {
+        for (int i = 0; i < 5; i++) {
+            Folder fold = new Folder("folder " + i, "", "");
+            fold.setBudget(100 +Math.random() * 300);
+            fold.setSpending(50 + Math.random() * 200);
+            GlobalFolderList.add("folder " + i, fold);
         }
     }
+
     //initializes recycler view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
 
-        adapter = new HomeScreenAdapter(new ArrayList<String>(GlobalFolderList.getFolderList().keySet()),this);
+        adapter = new FolderScreenAdapter(new ArrayList<String>(GlobalFolderList.getFolderList().keySet()),this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
@@ -95,7 +94,7 @@ public class HomeScreen extends AppCompatActivity implements HomeScreenAdapter.A
 
     //this is used to set button function for all the buttons in recycler view
     public void AddButtonDestination(String string) {
-        startActivity(new Intent(this, ReceiptFolder.class).putExtra("folderName",string));
+        startActivity(new Intent(this, ReceiptScreen.class).putExtra("folderName",string));
     }
     //functions to start button activities DUDDDDE
     private void toAddFolder(){

@@ -14,15 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".StatisticStuff.FolderStatistics"></activity>
-        <activity android:name=".ReceiptStuff.ReceiptFolderRecyclerView" />
         <activity android:name=".ReceiptStuff.AddReceipt" />
-        <activity android:name=".HomeStuff.HomeScreenRecyclerView" />
-        <activity android:name=".FolderStuff.AddFolder" />
+        <activity android:name=".HomeStuff.AddFolder" />
         <activity android:name=".StatisticStuff.Statistics" />
-        <activity android:name=".ReceiptStuff.ReceiptFolder" />
+        <activity android:name=".ReceiptStuff.ReceiptScreen" />
         <activity android:name=".BudgetingStuff.Budgeting" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".HomeStuff.HomeScreen">
+        <activity android:name=".HomeStuff.FolderScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

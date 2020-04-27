@@ -12,9 +12,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.FolderStuff.Folder;
+import com.example.app.HomeStuff.Folder;
 import com.example.app.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyViewHolder> {
@@ -54,7 +55,7 @@ public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final BudgetingAdapter.MyViewHolder holder, final int position) {
-        holder.editText.setText(String.valueOf(folderArrayList.get(position).getBudget()));
+        holder.editText.setText(new DecimalFormat("0.00").format(folderArrayList.get(position).getBudget()));
         holder.folderName.setText(folderArrayList.get(position).toString());
     }
 

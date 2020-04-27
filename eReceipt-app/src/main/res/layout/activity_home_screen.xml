@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ECECEF"
-    tools:context=".HomeStuff.HomeScreen">
+    tools:context=".HomeStuff.FolderScreen">
 
     <Button
         android:id="@+id/createFolder"

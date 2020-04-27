@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.FolderStuff.Folder;
+import com.example.app.HomeStuff.Folder;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
