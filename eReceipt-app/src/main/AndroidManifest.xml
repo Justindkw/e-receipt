@@ -16,7 +16,7 @@
         <activity android:name=".ReceiptStuff.ReceiptFolderRecyclerView"></activity>
         <activity android:name=".ReceiptStuff.AddReceipt" />
         <activity android:name=".HomeStuff.HomeScreenRecyclerView" />
-        <activity android:name=".FolderStuff.AddFolder" />
+        <activity android:name=".OtherFolderStuff.AddFolder" />
         <activity android:name=".Statistics" />
         <activity android:name=".ReceiptStuff.ReceiptFolder" />
         <activity android:name=".BudgetingStuff.Budgeting" />

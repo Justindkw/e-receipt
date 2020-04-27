@@ -1,14 +1,16 @@
 package com.example.app.ReceiptStuff;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.FolderStuff.Folder;
-import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.OtherFolderStuff.Folder;
+import com.example.app.OtherFolderStuff.GlobalFolderList;
 import com.example.app.HomeStuff.HomeScreen;
 import com.example.app.MainActivity;
 import com.example.app.R;
@@ -16,18 +18,20 @@ import com.example.app.R;
 import java.util.ArrayList;
 
 
-public class ReceiptFolder extends AppCompatActivity {
+public class ReceiptFolder extends AppCompatActivity implements ReceiptFolderAdapter.AddButtonDestination{
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECIEPT = 1;
     //feel free to delete Lucas
-    private static  final String TAG = "folderFile"; //Lucas' stuff
+    private static  final String TAG = "receiptFile"; //Lucas' stuff
     //folder name
     private String folderName;
     //receipts in folder
     private ArrayList<Receipt> receipts;
     //THE folder
     private Folder folder;
+    ////recycler adapter
+    private ReceiptFolderAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,10 @@ public class ReceiptFolder extends AppCompatActivity {
         folder = GlobalFolderList.get(folderName);
         //gets receipts from folder
         receipts = folder.getReceipts();
+        //adds buncha receipts for sake of demo and debugging
+        inflateReceipts();
+        //creates recycler view
+        initRecyclerView();
         //sets button functions
         findViewById(R.id.createReceipt).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +82,23 @@ public class ReceiptFolder extends AppCompatActivity {
         });
 
     }
+
+    //make buncha receipts
+    private void inflateReceipts(){
+        for(int i = 0; i<5;i++){
+            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
+        }
+    }
+    //initializes recycler view
+    private void initRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.receiptRecyclerView);
+
+        adapter = new ReceiptFolderAdapter(new ArrayList<String>(GlobalReceiptList.getReceiptList().keySet()), this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+
+    }
+
     @Override
     //after a new receipt is added
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -87,9 +112,14 @@ public class ReceiptFolder extends AppCompatActivity {
         }
     }
 //Justin's stuff ends here
+
+    //this is used to set button function for all the buttons in recycler view
+    public void AddButtonDestination(String string) {
+        startActivity(new Intent(this, AddReceipt.class).putExtra("receiptName", string));
+    }
     //sets button desinations
     private void toAddReceipt(){
-        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("folderName", folderName), REQUEST_RECIEPT);
+        startActivityForResult(new Intent(ReceiptFolder.this, AddReceipt.class).putExtra("receiptName", folderName), REQUEST_RECIEPT);
     }
 //Lucas's stuff starts here
     private void toHomeScreen() {

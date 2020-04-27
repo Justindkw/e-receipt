@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ECECEF"
-    tools:context=".FolderStuff.AddFolder">
+    tools:context=".OtherFolderStuff.AddFolder">
 
     <Button
         android:id="@+id/backButton2"

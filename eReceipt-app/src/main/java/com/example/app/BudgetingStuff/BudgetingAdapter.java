@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.FolderStuff.Folder;
+import com.example.app.OtherFolderStuff.Folder;
 import com.example.app.R;
 
 import java.util.ArrayList;

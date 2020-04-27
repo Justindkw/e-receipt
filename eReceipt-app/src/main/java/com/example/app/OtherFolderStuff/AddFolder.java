@@ -1,4 +1,4 @@
-package com.example.app.FolderStuff;
+package com.example.app.OtherFolderStuff;
 
 import androidx.appcompat.app.AppCompatActivity;
 

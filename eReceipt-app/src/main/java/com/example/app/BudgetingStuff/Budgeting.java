@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.app.FolderStuff.Folder;
-import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.OtherFolderStuff.Folder;
+import com.example.app.OtherFolderStuff.GlobalFolderList;
 import com.example.app.HomeStuff.HomeScreen;
 import com.example.app.MainActivity;
 import com.example.app.R;

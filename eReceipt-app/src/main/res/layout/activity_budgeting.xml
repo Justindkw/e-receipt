@@ -67,21 +67,37 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/totalBudget"
+            android:id="@+id/dollarSign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="33dp"
             android:layout_marginLeft="33dp"
             android:layout_marginTop="9dp"
+            android:layout_marginBottom="5dp"
+            android:text="$"
+            android:textColor="#838383"
+            android:textSize="24sp"
+            app:fontFamily="@font/ralewayregular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/totalBudget"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+        <TextView
+            android:id="@+id/totalBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
             android:layout_marginEnd="249dp"
             android:layout_marginRight="249dp"
             android:layout_marginBottom="5dp"
-            android:text="$0.00"
+            android:text="0.00"
+            android:textColor="#838383"
             android:textSize="24sp"
             app:fontFamily="@font/ralewayregular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dollarSign"
             app:layout_constraintTop_toBottomOf="@+id/text1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

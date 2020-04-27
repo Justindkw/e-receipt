@@ -1,6 +1,4 @@
-package com.example.app.FolderStuff;
-
-import com.example.app.FolderStuff.Folder;
+package com.example.app.OtherFolderStuff;
 
 import java.util.HashMap;
 //Justin's stuff

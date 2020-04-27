@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.app.FolderStuff.AddFolder;
+import com.example.app.OtherFolderStuff.AddFolder;
 import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.FolderStuff.Folder;
-import com.example.app.FolderStuff.GlobalFolderList;
+import com.example.app.OtherFolderStuff.Folder;
+import com.example.app.OtherFolderStuff.GlobalFolderList;
 import com.example.app.MainActivity;
 import com.example.app.R;
 import com.example.app.ReceiptStuff.ReceiptFolder;
@@ -64,7 +64,7 @@ public class HomeScreen extends AppCompatActivity implements HomeScreenAdapter.A
     //make buncha folders
     private void inflateFolders(){
         for(int i = 0; i<5;i++){
-            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
+            GlobalFolderList.add("folder "+i, new Folder("folder "+i,"",""));
         }
     }
     //initializes recycler view
