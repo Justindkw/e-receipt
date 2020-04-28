@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
         android:background="@drawable/stats_screen_background"
         android:src="@drawable/receipt_recycler_layout"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,11 +22,12 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="345dp"
         android:layout_height="63dp"
-        android:layout_marginTop="30dp"
         android:background="@drawable/rectangle_2"
+        app:layout_constraintTop_toBottomOf="@id/statsProgressBar"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statsProgressBar">
+        tools:layout_editor_absoluteY="507dp">
 
         <TextView
             android:layout_width="120dp"
@@ -74,8 +75,9 @@
         android:layout_width="345dp"
         android:layout_height="63dp"
         android:layout_margin="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
@@ -128,8 +130,6 @@
         android:id="@+id/statsFolderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="152dp"
         android:layout_marginRight="152dp"
@@ -148,11 +148,9 @@
         android:id="@+id/backButton"
         android:layout_width="20dp"
         android:layout_height="25dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="37dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
         android:layout_marginBottom="76dp"
         android:background="@drawable/back_button_white"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -170,5 +168,6 @@
         app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.335" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
