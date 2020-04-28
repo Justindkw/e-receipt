@@ -1,15 +1,19 @@
 package com.example.app.FolderStuff;
+
 import androidx.annotation.NonNull;
 
 import com.example.app.ReceiptStuff.Receipt;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 //Justin's stuff
 public class Folder {
     //buncha stuff stored in the folders
     private String name;
     private String use;
     private String note;
+    private Date date;
     private double spending = 0;
     private double budget = 0;
     private ArrayList<Receipt> receipts = new ArrayList<>();
@@ -18,6 +22,7 @@ public class Folder {
         this.name = name;
         this.use = use;
         this.note = note;
+        this.date = new Date();
     }
     //buncha getters, adders, and setters
     //adds new receipt but also adds it's cost to spending
@@ -54,5 +59,13 @@ public class Folder {
     @NonNull
     public String toString() {
         return name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -9,6 +9,7 @@ public class Receipt {
     private double cost;
     private String company;
     private Date dayLimit;
+    private Date date;
     //constructor
     public Receipt(Bitmap photo, int amt, String company) {
         this.photo = photo;
@@ -34,5 +35,13 @@ public class Receipt {
 
     public Date getDayLimit() {
         return dayLimit;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
