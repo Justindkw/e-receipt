@@ -9,11 +9,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/parent_layout"
-        android:layout_width="150dp"
-        android:layout_height="225dp"
+        android:layout_width="175dp"
+        android:layout_height="250dp"
         android:adjustViewBounds="false"
         android:background="@drawable/folderbutton"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="1dp">
 
         <TextView
             android:id="@+id/info_text"

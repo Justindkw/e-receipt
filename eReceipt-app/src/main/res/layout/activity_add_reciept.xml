@@ -4,27 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#49494E"
     tools:context=".ReceiptStuff.AddReceipt">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ImageView
             android:id="@+id/imageCapture"
-            android:layout_width="match_parent"
-            android:layout_height="286dp" />
+            android:layout_width="350dp"
+            android:layout_height="500dp"
+            android:background="@color/black" />
 
         <Button
             android:id="@+id/captureButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="Capture"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/camera_button"
             android:textColor="#fff"
             android:textSize="20sp" />
     </LinearLayout>
+
     <Button
         android:id="@+id/doneBudgetButton"
         android:layout_width="wrap_content"

@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:background="#ECECEF"
     tools:context=".FolderStuff.AddFolder">
+
     <Button
         android:id="@+id/backButton2"
         android:layout_width="20dp"
-        android:layout_height="40dp"
+        android:layout_height="25dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="60dp"
@@ -26,7 +27,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="55dp"
         android:gravity="left|center_vertical"
         android:text="New Folder"
         android:textColor="#000000"
@@ -37,35 +38,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addReceipt"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/plus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/cameraButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginTop="153dp"
-        android:layout_marginEnd="227dp"
-        android:layout_marginRight="227dp"
-        android:layout_marginBottom="423dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="216dp"
+        android:layout_marginRight="216dp"
+        android:layout_marginBottom="33dp"
         android:background="@drawable/camera"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nameView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/backButton2" />
 
     <Button
         android:id="@+id/doneButton"
