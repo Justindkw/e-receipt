@@ -1,10 +1,5 @@
 package com.example.app.ReceiptStuff;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,9 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.example.app.FolderStuff.Folder;
 import com.example.app.GlobalFolderList;
-
 import com.example.app.R;
 
 public class AddReceipt extends AppCompatActivity {
@@ -40,7 +39,7 @@ public class AddReceipt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_reciept);
         //finds button and imageView from xml. get folderName from intent
-        folderName = getIntent().getStringExtra("folderName");
+        folderName = getIntent().getStringExtra("receiptName");
         imageDisplay = findViewById(R.id.imageCapture);
         submitButton = findViewById(R.id.doneBudgetButton);
         captureButton = findViewById(R.id.captureButton);
