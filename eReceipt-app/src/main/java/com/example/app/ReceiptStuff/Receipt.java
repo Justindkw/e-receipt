@@ -11,10 +11,11 @@ public class Receipt {
     private Date dayLimit;
     private Date date;
     //constructor
-    public Receipt(Bitmap photo, int amt, String company) {
+    public Receipt(Bitmap photo, double cost, String company) {
         this.photo = photo;
-        this.cost = amt;
+        this.cost = cost;
         this.company = company;
+        this.date = new Date();
     }
     //buncha getters and setters
     public double getCost() {

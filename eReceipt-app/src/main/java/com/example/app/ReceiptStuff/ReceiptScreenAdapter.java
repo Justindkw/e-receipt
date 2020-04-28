@@ -3,6 +3,7 @@ package com.example.app.ReceiptStuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,16 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.ReceiptFolderAdapterVh> {
     //list of receipt names
-    private ArrayList<String> receiptNames;
+    private ArrayList<Receipt> receipts;
     //interfaced used for start activity
     private ReceiptScreenAdapter.AddButtonDestination addButtonDestination;
     //constructor
-    public ReceiptScreenAdapter(ArrayList<String> receiptNames, ReceiptScreenAdapter.AddButtonDestination addButtonDestination) {
-        this.receiptNames = receiptNames;
+    public ReceiptScreenAdapter(ArrayList<Receipt> receipts, ReceiptScreenAdapter.AddButtonDestination addButtonDestination) {
+        this.receipts = receipts;
         this.addButtonDestination = addButtonDestination;
     }
 
@@ -32,34 +34,36 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
 
     @Override
     public void onBindViewHolder(@NonNull ReceiptScreenAdapter.ReceiptFolderAdapterVh holder, int position) {
-        holder.nameText.setText(receiptNames.get(position));
+        holder.nameText.setText(new SimpleDateFormat("MMM dd, yyyy").format(receipts.get(position).getDate()));
+        holder.receiptPhoto.setImageBitmap(receipts.get(position).getPhoto());
     }
 
     @Override
     public int getItemCount() {
-        return receiptNames.size();
+        return receipts.size();
     }
 
     //updates recycler view with a new folder
-    public void addItem(String newName){
-        receiptNames.add(newName);
-        this.notifyItemInserted(receiptNames.size()-1);
+    public void updateView(){
+        this.notifyItemInserted(receipts.size()-1);
     }
     //interface to set button function
     public interface AddButtonDestination {
-        void AddButtonDestination(String name);
+        void AddReceiptDestination(String name);
     }
 
     public class ReceiptFolderAdapterVh extends RecyclerView.ViewHolder {
+        ImageView receiptPhoto;
         TextView nameText;
         public ReceiptFolderAdapterVh(@NonNull View itemView) {
             super(itemView);
+            receiptPhoto = itemView.findViewById(R.id.receiptImage);
             nameText = itemView.findViewById(R.id.date);
             //sets button function
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    addButtonDestination.AddButtonDestination(receiptNames.get(getAdapterPosition()));
+                    addButtonDestination.AddReceiptDestination(receipts.get(getAdapterPosition()).getCompany());
                 }
             });
         }

@@ -45,8 +45,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         folder = GlobalFolderList.get(folderName);
         //gets receipts from folder
         receipts = folder.getReceipts();
-        //adds buncha receipts for sake of demo and debugging
-        inflateReceipts();
         //creates recycler view
         initRecyclerView();
         //sets button functions
@@ -86,17 +84,17 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 
     }
 
-    //make buncha receipts
-    private void inflateReceipts(){
-        for(int i = 0; i<5;i++){
-            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
-        }
-    }
+//    //make buncha receipts
+//    private void inflateReceipts(){
+//        for(int i = 0; i<5;i++){
+//            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
+//        }
+//    }
     //initializes recycler view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.receiptRecyclerView);
 
-        adapter = new ReceiptScreenAdapter(new ArrayList<String>(GlobalReceiptList.getReceiptList().keySet()), this);
+        adapter = new ReceiptScreenAdapter(receipts, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
@@ -111,13 +109,14 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             if(pos != -1){
                 //checks if results are ok and then updates the recycler view (WIP)
                 Receipt newReceipt = receipts.get(folder.size()-1);
+                adapter.updateView();
             }
         }
     }
 //Justin's stuff ends here
 
     //this is used to set button function for all the buttons in recycler view
-    public void AddButtonDestination(String string) {
+    public void AddReceiptDestination(String string) {
         startActivity(new Intent(this, AddReceipt.class).putExtra("receiptName", string));
     }
     //sets button desinations
