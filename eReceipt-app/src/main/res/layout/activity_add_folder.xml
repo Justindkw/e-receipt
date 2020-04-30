@@ -38,7 +38,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/cameraButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -54,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/backButton2" />
 
     <Button
-        android:id="@+id/doneButton"
+        android:id="@+id/doneFolderButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="309dp"

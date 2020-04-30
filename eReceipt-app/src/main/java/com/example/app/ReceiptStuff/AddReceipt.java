@@ -1,105 +1,116 @@
 package com.example.app.ReceiptStuff;
 
-import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
+import android.widget.Switch;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.example.app.FolderStuff.Folder;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
-public class AddReceipt extends AppCompatActivity {
-//Justin's stuff
-    //xml stuff
-    EditText amount;
-    EditText company;
-    Bitmap receiptPhoto;
-    Button submitButton;
-    Button captureButton;
-    ImageView imageDisplay;
-    //name of the folder where the receipt will be sent to
-    String folderName;
-    //int to compare if it is our request
-    static final int REQUEST_IMAGE_CAPTURE = 2;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
+public class AddReceipt extends AppCompatActivity {
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private EditText timerDate;
+    private String folderName;
+    private Bitmap receiptPhoto;
+    private ImageButton cameraButton;
+    private Switch enabler;
+    static final int REQUEST_IMAGE = 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_reciept);
-        //finds button and imageView from xml. get folderName from intent
-        folderName = getIntent().getStringExtra("receiptName");
-        imageDisplay = findViewById(R.id.imageCapture);
-        submitButton = findViewById(R.id.doneBudgetButton);
-        captureButton = findViewById(R.id.captureButton);
-        //sets capture button function
-        captureButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                activeTakePhoto();
-            }
-        });
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_add_receipt);
+        timerDate = findViewById(R.id.timerDate);
+        findViewById(R.id.addTimer).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-            Folder folder = GlobalFolderList.get(folderName);
-            //adds new receipt to folder
-            folder.addReceipt(new Receipt(receiptPhoto,10,"yes"));
-            //returns with receipt position (it is kinda redundant since the pos is always last)
-            setResult(RESULT_OK,new Intent().putExtra("receiptPos",folder.size()-1));
-            finish();
+                folderName = getIntent().getStringExtra("folderName");
+                cameraButton = findViewById(R.id.toCameraButton);
+                cameraButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("button","click click");
+                        toCameraScreen();
+                    }
+                });
+                ((Button)findViewById(R.id.doneReceiptButton)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            Folder folder = GlobalFolderList.get(folderName);
+                            //adds new receipt to folder
+                            folder.addReceipt(new Receipt(receiptPhoto,
+                                    Double.parseDouble(((EditText) findViewById(R.id.cost)).getText().toString()),
+                                    ((EditText) findViewById(R.id.company)).getText().toString(),
+                                    new SimpleDateFormat("dd/MM/yyyy").parse(timerDate.getText().toString()),
+                                    true
+                            ));
+                            //returns with receipt position (it is kinda redundant since the pos is always last)
+                            setResult(RESULT_OK, new Intent().putExtra("receiptPos", folder.size() - 1));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                });
+
+
+                // Get Current Date
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        AddReceipt.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        mYear,mMonth,mDay);
+                dialog.show();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color
+                .TRANSPARENT));
+                dialog.show();
             }
         });
-    }
-
-    //PHOTO STUFF BEINGS HERE
-
-    //asks for photo permission
-    private void activeTakePhoto() {
-        //checks if self permission is equal to camera activity permission
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
-            //if not take further action
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 110);
-        } else {
-            //else take picture
-            takePicture();
-        }
-
-    }
-    //further action for permission
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 110) {
-            //further action taken to take picture
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                takePicture();
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                    timerDate.setText(day+"/"+month+"/"+year);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
             }
-        }}
-    //goes to camera activity for photo
-    public void takePicture() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+        };
     }
-    //PHOTO STUFF ENDS HERE
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         //returns the resulted receipt back to ReceiptFolder
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            receiptPhoto = (Bitmap)data.getExtras().get("data");
-            imageDisplay.setImageBitmap(receiptPhoto);
+        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK) {
+            receiptPhoto = data.getParcelableExtra("photo");
+            cameraButton.setImageBitmap(receiptPhoto);
         }
+    }
+    private void toCameraScreen(){
+        startActivityForResult(new Intent(this, CameraScreen.class),REQUEST_IMAGE);
     }
 }

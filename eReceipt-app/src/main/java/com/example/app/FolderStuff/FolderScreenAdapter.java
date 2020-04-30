@@ -3,11 +3,13 @@ package com.example.app.FolderStuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
 import java.util.ArrayList;
@@ -15,8 +17,11 @@ import java.util.ArrayList;
 public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapter.HomeScreenAdapterVh>{
     //list of folder names
     private ArrayList<String> folderNames;
+    private ArrayList<Integer> checkedFolders;
     //interfaced used for start activity
     private AddButtonDestination addButtonDestination;
+
+    private boolean deleteMode = false;
     //constructor
     public FolderScreenAdapter(ArrayList<String> folderNames, AddButtonDestination addButtonDestination) {
         this.folderNames = folderNames;
@@ -32,6 +37,13 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
     @Override
     public void onBindViewHolder(@NonNull FolderScreenAdapter.HomeScreenAdapterVh holder, int position) {
         holder.nameText.setText(folderNames.get(position));
+        if(deleteMode){
+            holder.deleteBox.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.deleteBox.setVisibility(View.INVISIBLE);
+            holder.deleteBox.setChecked(false);
+        }
     }
 
     @Override
@@ -43,6 +55,21 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
         folderNames.add(newName);
         this.notifyItemInserted(folderNames.size()-1);
     }
+    public void setDeleteMode(boolean deleteMode){
+        this.deleteMode = deleteMode;
+    }
+    public boolean getDeleteMode(){
+        return deleteMode;
+    }
+    public void deleteSelected(){
+        ArrayList<String> found = new ArrayList<>();
+        for(String folder:folderNames){
+            if(GlobalFolderList.get(folder).isSelected()){
+                found.add(folder);
+            }
+        }
+        folderNames.removeAll(found);
+    }
     //interface to set button function
     public interface AddButtonDestination {
         void AddButtonDestination(String name);
@@ -50,14 +77,24 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
 
     public class HomeScreenAdapterVh extends RecyclerView.ViewHolder {
         TextView nameText;
+        CheckBox deleteBox;
         public HomeScreenAdapterVh(@NonNull View itemView) {
             super(itemView);
             nameText = itemView.findViewById(R.id.info_text);
+            deleteBox = itemView.findViewById(R.id.deleteBox);
             //sets button function
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                addButtonDestination.AddButtonDestination(folderNames.get(getAdapterPosition()));
+                    if(!deleteMode){
+                        addButtonDestination.AddButtonDestination(folderNames.get(getAdapterPosition()));
+                    }
+                }
+            });
+            deleteBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    GlobalFolderList.get(folderNames.get(getAdapterPosition())).setSelected(deleteBox.isChecked());
                 }
             });
         }

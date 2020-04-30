@@ -13,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StatisticStuff.FolderStatistics"></activity>
-        <activity android:name=".ReceiptStuff.AddReceipt" />
+        <activity android:name=".ReceiptStuff.AddReceipt"></activity>
+        <activity android:name=".StatisticStuff.FolderStatistics" />
+        <activity android:name=".ReceiptStuff.CameraScreen" />
         <activity android:name=".FolderStuff.AddFolder" />
-        <activity android:name=".ReceiptStuff.ReceiptFolder" />
+        <activity android:name=".ReceiptStuff.ReceiptScreen" />
         <activity android:name=".StatisticStuff.Statistics" />
-<!--        <activity android:name=".ReceiptStuff.ReceiptScreen" />-->
         <activity android:name=".BudgetingStuff.Budgeting" />
         <activity android:name=".MainActivity" />
         <activity android:name=".FolderStuff.FolderScreen">
@@ -28,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReceiptStuff.ReceiptScreen" />
     </application>
 
 </manifest>

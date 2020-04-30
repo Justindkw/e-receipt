@@ -72,8 +72,8 @@ public class BudgetingAdapter extends RecyclerView.Adapter<BudgetingAdapter.MyVi
         private MyViewHolder(View itemView) {
             super(itemView);
             //finds stuff from xml
-            editText = (EditText) itemView.findViewById(R.id.editBudget);
-            folderName = (TextView) itemView.findViewById(R.id.folderNameBudget);
+            editText = itemView.findViewById(R.id.editBudget);
+            folderName = itemView.findViewById(R.id.folderNameBudget);
             //adds listener to user input
             editText.addTextChangedListener(new TextWatcher() {
                 @Override

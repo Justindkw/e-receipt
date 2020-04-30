@@ -44,7 +44,7 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
     }
 
     //updates recycler view with a new folder
-    public void updateView(){
+    public void notifyInsert(){
         this.notifyItemInserted(receipts.size()-1);
     }
     //interface to set button function

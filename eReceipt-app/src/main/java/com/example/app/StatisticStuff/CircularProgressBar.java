@@ -25,15 +25,15 @@ public class CircularProgressBar extends View {
     private float mBeginningAngle = 0;          //what the progress % starts off of
     private float mMaxSweepAngle = 360;         // Max degrees for the progress ring = full circle
     private int mStrokeWidth = 50;              // Width of outline
-    private int mAnimationDuration = 400;       // Animation duration for progress change
+    private int mAnimationDuration = 600;       // Animation duration for progress change
     private int mMaxProgress = 100;             // Max progress to use
     private boolean mDrawText = true;           // Set to true if progress text should be drawn
     private boolean mRoundedCorners = true;     // Set to true if rounded corners should be applied to outline ends
     private int mProgressColor = Color.GREEN;   // Outline color
-    private int mBackgroundColor = Color.BLACK; // Background color
+    private int mBackgroundColor = Color.LTGRAY; // Background color
     private int mTextColor = Color.BLACK;       // Progress text color
     private boolean mClockWise = true;
-    private boolean hasBackground = false;
+    private boolean hasBackground = true;
 
     private final Paint mPaint;                 // Allocate paint outside onDraw to avoid unnecessary object creation
 
@@ -134,7 +134,7 @@ public class CircularProgressBar extends View {
         invalidate();
     }
 
-    public void setRingThickness(int width) {
+    public void setStrokeWidth(int width) {
         mStrokeWidth = width;
         invalidate();
     }
@@ -164,7 +164,7 @@ public class CircularProgressBar extends View {
         return mStartAngle;
     }
 
-    public void setStartAnle(float angle) {
+    public void setStartAngle(float angle) {
         mStartAngle = angle;
     }
 

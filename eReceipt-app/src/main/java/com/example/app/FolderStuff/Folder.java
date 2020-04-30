@@ -16,6 +16,7 @@ public class Folder {
     private Date date;
     private double spending = 0;
     private double budget = 0;
+    private boolean selected;
     private ArrayList<Receipt> receipts = new ArrayList<>();
     //constructor
     public Folder(String name, String use, String note) {
@@ -67,5 +68,13 @@ public class Folder {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

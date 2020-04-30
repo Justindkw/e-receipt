@@ -7,19 +7,6 @@
     android:background="#ECECEF"
     tools:context=".FolderStuff.FolderScreen">
 
-    <Button
-        android:id="@+id/createFolder"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginLeft="250dp"
-        android:background="@drawable/plus"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
-        app:layout_constraintCircleRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/eReceipt"
         android:layout_width="wrap_content"
@@ -99,5 +86,28 @@
             android:layout_weight="1"
             android:background="@drawable/stats_light" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/createFolder"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintCircleRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/folderDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/select_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

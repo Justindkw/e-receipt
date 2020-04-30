@@ -1,16 +1,12 @@
 package com.example.app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.*;
+import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.os.Handler;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -43,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                                     pbar.setProgress(a);
                                     textView.setText(a + "/" + pbar.getMax());
                                     if (a == 100)
-                                        textView.setText(" Your Progess has been Completed");
+                                        textView.setText(" Your Progress has been Completed");
                                 }
                             });
                             try {

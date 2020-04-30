@@ -109,19 +109,19 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             if(pos != -1){
                 //checks if results are ok and then updates the recycler view (WIP)
                 Receipt newReceipt = receipts.get(folder.size()-1);
-                adapter.updateView();
+                adapter.notifyInsert();
             }
         }
     }
 //Justin's stuff ends here
 
-    //this is used to set button function for all the buttons in recycler view
+    //THIS HAS NO CURRENT USEEEEEEE
     public void AddReceiptDestination(String string) {
         startActivity(new Intent(this, AddReceipt.class).putExtra("receiptName", string));
     }
     //sets button desinations
     private void toAddReceipt() {
-        startActivityForResult(new Intent(ReceiptScreen.this, AddReceipt.class).putExtra("receiptName", folderName), REQUEST_RECEIPT);
+        startActivityForResult(new Intent(ReceiptScreen.this, AddReceipt.class).putExtra("folderName", folderName), REQUEST_RECEIPT);
         //sets button destinations
     }
 //Lucas's stuff starts here

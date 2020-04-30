@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#49494E"
-    tools:context=".ReceiptStuff.AddReceipt">
+    tools:context=".ReceiptStuff.CameraScreen">
 
     <Button
         android:id="@+id/captureButton"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/doneBudgetButton"
+        android:id="@+id/backToAddReceiptButton"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

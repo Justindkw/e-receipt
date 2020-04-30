@@ -41,7 +41,7 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onBindViewHolder(@NonNull StatisticAdapter.HomeScreenAdapterVh holder, int position) {
+    public void onBindViewHolder(@NonNull HomeScreenAdapterVh holder, int position) {
         //sets variables needed
         Folder fold = folders.get(position);
         int percent = (int)(fold.getSpending()/fold.getBudget()*100);
@@ -51,7 +51,9 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
         String display = percent+"%";
         holder.percentDisplay.setText(display);
         //sets progress bar's progress and changes the color of the bar accordingly
-        holder.bar.setProgress(percent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            holder.bar.setProgress(percent, true);
+        }
         int newColor = (percent<50) ? 0:(percent-50)*2;
         holder.bar.setProgressTintList(ColorStateList.valueOf(Color.HSVToColor(new float[]{ 100-newColor, 100, 100 })));
     }

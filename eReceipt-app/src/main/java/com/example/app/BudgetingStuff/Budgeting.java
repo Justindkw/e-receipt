@@ -77,7 +77,7 @@ public class Budgeting extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
     }
     private void updateTotalBudget(){
-        ((TextView)findViewById(R.id.totalBudget)).setText(String.valueOf(new DecimalFormat("0.00").format(GlobalFolderList.getTotalBudget())));
+        ((TextView)findViewById(R.id.totalBudget)).setText(new DecimalFormat("0.00").format(GlobalFolderList.getTotalBudget()));
     }
 
     private void toHomeScreen() {

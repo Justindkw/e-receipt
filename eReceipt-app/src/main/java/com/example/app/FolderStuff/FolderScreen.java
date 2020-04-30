@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -29,6 +30,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
 //Justin's stuff starts here
     //recycler adapter
     private FolderScreenAdapter adapter;
+    private ImageButton deleteButton;
     //int to compare if it is our request
     static final int REQUEST_FOLDER = 0;
 
@@ -40,11 +42,18 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
         inflateFolders();
         //creates recycler view
         initRecyclerView();
+        deleteButton = findViewById(R.id.folderDelete);
         //sets button functions
         findViewById(R.id.createFolder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toAddFolder();
+            }
+        });
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleDeleteMode();
             }
         });
 //Justin's stuff ends here
@@ -92,6 +101,18 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
+    private void toggleDeleteMode(){
+        if(adapter.getDeleteMode()){
+            deleteButton.setBackgroundResource(R.drawable.select_button);
+            adapter.deleteSelected();
+            adapter.setDeleteMode(false);
+        }
+        else{
+            deleteButton.setBackgroundResource(R.drawable.delete);
+            adapter.setDeleteMode(true);
+        }
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     //after a new folder is added
@@ -112,7 +133,8 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
     }
     //functions to start button activities DUDDDDE
     private void toAddFolder(){
-        startActivityForResult(new Intent(this, AddFolder.class), REQUEST_FOLDER);
+        //startActivityForResult(new Intent(this, AddFolder.class), REQUEST_FOLDER);
+        startActivity(new Intent(this, AddFolder.class));
     }
 //Justin's stuff ends here
 //Lucas's stuff starts here
