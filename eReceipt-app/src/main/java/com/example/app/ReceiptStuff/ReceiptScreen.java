@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,12 +40,13 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         setContentView(R.layout.activity_receipt_folder);
         //gets name of the folder from intent
         folderName = getIntent().getStringExtra("folderName");
-        //sets the name of the folder in the activity
-        ((TextView)findViewById(R.id.folderName)).setText(folderName);
         //find the folder by using it's name
         folder = GlobalFolderList.get(folderName);
         //gets receipts from folder
         receipts = folder.getReceipts();
+        //sets the name of the folder in the activity
+        ((TextView)findViewById(R.id.folderName)).setText(folderName);
+        ((ConstraintLayout)findViewById(R.id.folderColor)).setBackgroundColor(folder.getColor());
         //creates recycler view
         initRecyclerView();
         //sets button functions
@@ -96,7 +98,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 
         adapter = new ReceiptScreenAdapter(receipts, this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
 
     }
 

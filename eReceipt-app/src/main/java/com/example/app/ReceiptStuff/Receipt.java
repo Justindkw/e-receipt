@@ -25,7 +25,7 @@ public class Receipt {
     }
 
     public int getRefundDaysLeft(){
-        return (int)((date.getTime()-refundDate.getTime())/(1000*60*60*24));
+        return (int)((refundDate.getTime()-date.getTime())/(1000*60*60*24));
     }
 
     //buncha getters and setters
@@ -55,5 +55,13 @@ public class Receipt {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public boolean isTimer() {
+        return timer;
+    }
+
+    public void setTimer(boolean timer) {
+        this.timer = timer;
     }
 }

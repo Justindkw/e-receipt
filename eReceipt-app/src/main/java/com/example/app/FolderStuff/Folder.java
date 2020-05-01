@@ -11,7 +11,7 @@ import java.util.Date;
 public class Folder {
     //buncha stuff stored in the folders
     private String name;
-    private String use;
+    private int color;
     private String note;
     private Date date;
     private double spending = 0;
@@ -19,9 +19,9 @@ public class Folder {
     private boolean selected;
     private ArrayList<Receipt> receipts = new ArrayList<>();
     //constructor
-    public Folder(String name, String use, String note) {
+    public Folder(String name, int color, String note) {
         this.name = name;
-        this.use = use;
+        this.color = color;
         this.note = note;
         this.date = new Date();
     }
@@ -76,5 +76,13 @@ public class Folder {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

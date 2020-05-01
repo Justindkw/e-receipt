@@ -10,13 +10,25 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:id="@+id/parent_layout"
+        android:id="@+id/folderLayout"
         android:layout_width="175dp"
         android:layout_height="250dp"
         android:adjustViewBounds="false"
-        android:background="@drawable/folderbutton"
+        android:background="@drawable/folder_base"
         android:orientation="horizontal"
         android:padding="1dp">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/receipt_icon"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.37" />
 
         <CheckBox
             android:id="@+id/deleteBox"
@@ -34,11 +46,12 @@
             android:layout_marginTop="130dp"
             android:adjustViewBounds="true"
             android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="@+id/parent_layout"
-            app:layout_constraintEnd_toEndOf="@+id/parent_layout"
-            app:layout_constraintStart_toStartOf="@+id/parent_layout"
-            app:layout_constraintTop_toTopOf="@+id/parent_layout" />
+            app:layout_constraintBottom_toBottomOf="@+id/folderLayout"
+            app:layout_constraintEnd_toEndOf="@+id/folderLayout"
+            app:layout_constraintStart_toStartOf="@+id/folderLayout"
+            app:layout_constraintTop_toTopOf="@+id/folderLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

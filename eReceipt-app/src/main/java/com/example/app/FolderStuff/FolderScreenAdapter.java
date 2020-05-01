@@ -1,5 +1,7 @@
 package com.example.app.FolderStuff;
 
+import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.GlobalFolderList;
@@ -44,6 +47,8 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
             holder.deleteBox.setVisibility(View.INVISIBLE);
             holder.deleteBox.setChecked(false);
         }
+        holder.buttonLayout.getBackground().mutate().setColorFilter(GlobalFolderList.get(folderNames.get(position)).getColor(), PorterDuff.Mode.SRC_ATOP);
+        Log.d("color2",GlobalFolderList.get(folderNames.get(position)).getColor()+" ");
     }
 
     @Override
@@ -78,10 +83,12 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
     public class HomeScreenAdapterVh extends RecyclerView.ViewHolder {
         TextView nameText;
         CheckBox deleteBox;
+        ConstraintLayout buttonLayout;
         public HomeScreenAdapterVh(@NonNull View itemView) {
             super(itemView);
             nameText = itemView.findViewById(R.id.info_text);
             deleteBox = itemView.findViewById(R.id.deleteBox);
+            buttonLayout = itemView.findViewById(R.id.folderLayout);
             //sets button function
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,6 +98,7 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
                     }
                 }
             });
+            //itemView.setBackgroundColor(GlobalFolderList.get(folderNames.get(getAdapterPosition())).getColor());
             deleteBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -1,5 +1,6 @@
 package com.example.app.ReceiptStuff;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,13 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
     public void onBindViewHolder(@NonNull ReceiptScreenAdapter.ReceiptFolderAdapterVh holder, int position) {
         holder.nameText.setText(new SimpleDateFormat("MMM dd, yyyy").format(receipts.get(position).getDate()));
         holder.receiptPhoto.setImageBitmap(receipts.get(position).getPhoto());
+        holder.companyText.setText(receipts.get(position).getCompany());
+        int left = receipts.get(position).getRefundDaysLeft();
+        if(receipts.get(position).isTimer()){
+            holder.daysLeft.setText(left+" days left");
+        }
+        int newColor = (left>10) ? 0:(10-left)*10;
+        holder.daysLeft.setTextColor(Color.HSVToColor( new float[]{ 100-newColor, 100, 100}));
     }
 
     @Override
@@ -55,10 +63,14 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
     public class ReceiptFolderAdapterVh extends RecyclerView.ViewHolder {
         ImageView receiptPhoto;
         TextView nameText;
+        TextView companyText;
+        TextView daysLeft;
         public ReceiptFolderAdapterVh(@NonNull View itemView) {
             super(itemView);
             receiptPhoto = itemView.findViewById(R.id.receiptImage);
             nameText = itemView.findViewById(R.id.date);
+            companyText = itemView.findViewById(R.id.companyName);
+            daysLeft = itemView.findViewById(R.id.daysLeft);
             //sets button function
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
