@@ -24,11 +24,9 @@
         android:id="@+id/folderName"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginLeft="75dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="45dp"
-        android:layout_marginEnd="232dp"
-        android:layout_marginRight="232dp"
         android:layout_marginBottom="100dp"
         android:gravity="start"
         android:text="Folder"
@@ -36,9 +34,36 @@
         android:textSize="30sp"
         app:fontFamily="@font/robotobold"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="190dp"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintStart_toEndOf="@+id/folderName"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/statFolder"
+            android:layout_width="23dp"
+            android:layout_height="28dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/stat_white" />
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="23dp"
+            android:layout_height="30dp"
+            android:background="@drawable/search_symbol" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -64,7 +89,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/rectangle"
+        android:background="@drawable/rectangle_10"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout">
 
@@ -107,7 +132,7 @@
         android:foregroundGravity="center_vertical|center|fill_vertical|center_horizontal"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 

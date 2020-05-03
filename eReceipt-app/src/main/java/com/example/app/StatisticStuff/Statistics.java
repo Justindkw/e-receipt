@@ -60,11 +60,6 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
         ((CircularProgressBar)findViewById(R.id.totalBudgetBar)).setProgress(totalPercent);
     }
 
-
-
-
-
-
     //Buttons
     Button homeButton;
     Button budgetButton;
