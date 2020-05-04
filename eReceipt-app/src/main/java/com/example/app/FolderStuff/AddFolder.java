@@ -36,14 +36,21 @@ public class AddFolder extends AppCompatActivity {
         findViewById(R.id.doneFolderButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = ((EditText)findViewById(R.id.name)).getText().toString();
+                String name = ((EditText) findViewById(R.id.name)).getText().toString();
                 //adds the newly made folder to the folderList
-                GlobalFolderList.add(name,new Folder(name, mColor, ((EditText)findViewById(R.id.notes)).getText().toString()));
+                GlobalFolderList.add(name, new Folder(name, mColor, 0.00));
                 //returns to HomeScreen with the new folder folderName
-                setResult(RESULT_OK,new Intent().putExtra("newFolderName",name));
+                setResult(RESULT_OK, new Intent().putExtra("newFolderName", name));
                 finish();
             }
         });
-    }
 
+        findViewById(R.id.backButton2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+    }
 }

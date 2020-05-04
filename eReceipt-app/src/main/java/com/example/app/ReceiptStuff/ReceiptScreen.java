@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.FolderStuff.AddFolder;
 import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.FolderStuff.Folder;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
+import com.example.app.StatisticStuff.FolderStatistics;
 import com.example.app.StatisticStuff.Statistics;
 
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECEIPT = 1;
+    //int to compare if it is our request
+    static final int REQUEST_FOLDER = 0;
     //feel free to delete Lucas
     private static  final String TAG = "receiptFile"; //Lucas' stuff
     //folder name
@@ -147,7 +151,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     }
 
     private void statsFolder() {
-        //startActivity(new Intent(this, ));
+        //startActivityForResult(new Intent(this, FolderStatistics.class), REQUEST_FOLDER);
     }
 
     //Lucas' stuff ends here

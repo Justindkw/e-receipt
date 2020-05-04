@@ -71,7 +71,7 @@ public class Budgeting extends AppCompatActivity {
     }
     //sets up the recycler view
     private void initRecyclerView(){
-        budgetingAdapter = new BudgetingAdapter(this,new ArrayList<Folder>(GlobalFolderList.getFolderList().values()));
+        budgetingAdapter = new BudgetingAdapter(this, new ArrayList<Folder>(GlobalFolderList.getFolderList().values()));
         RecyclerView recyclerView = findViewById(R.id.budgetRecycler);
         recyclerView.setAdapter(budgetingAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
