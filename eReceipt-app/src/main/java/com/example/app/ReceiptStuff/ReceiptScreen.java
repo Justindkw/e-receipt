@@ -3,7 +3,10 @@ package com.example.app.ReceiptStuff;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,17 +15,18 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.FolderStuff.Folder;
+import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.FolderStuff.ReceiptPopUp;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 import com.example.app.StatisticStuff.FolderStatistics;
-import com.example.app.StatisticStuff.Statistics;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAdapter.AddButtonDestination{
@@ -42,6 +46,8 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     ////recycler adapter
     private ReceiptScreenAdapter adapter;
 
+    private Spinner sorter;
+
     private ImageButton deleteButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         folder = GlobalFolderList.get(folderName);
         //gets receipts from folder
         receipts = folder.getReceipts();
+        initSorter();
         //sets the name of the folder in the activity
         ((TextView)findViewById(R.id.folderName)).setText(folderName);
         //sets the quick stats of the folder
@@ -120,6 +127,58 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
 
     }
+    private void initSorter(){
+        sorter = findViewById(R.id.receiptSorter);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, new String[]{"Date","Company","Cost","Refund due"});
+        sorter.setAdapter(adapter);
+        sorter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch ((String)parent.getItemAtPosition(position)) {
+                    case "Date":
+                        Collections.sort(receipts, new Comparator<Receipt>() {
+                            @Override
+                            public int compare(Receipt o1, Receipt o2) {
+                                return o1.getDate().compareTo(o2.getDate());
+                            }
+                        });
+                        break;
+                    case "Company":
+                        Collections.sort(receipts, new Comparator<Receipt>() {
+                            @Override
+                            public int compare(Receipt o1, Receipt o2) {
+                                return o1.getCompany().compareTo(o2.getCompany());
+                            }
+                        });
+                        break;
+                    case "Cost":
+                        Collections.sort(receipts, new Comparator<Receipt>() {
+                            @Override
+                            public int compare(Receipt o1, Receipt o2) {
+                                return Double.compare(o1.getCost(), o2.getCost());
+                            }
+                        });
+                    case "Refund due":
+                        Collections.sort(receipts, new Comparator<Receipt>() {
+                            @Override
+                            public int compare(Receipt o1, Receipt o2) {
+                                return o1.getRefundDate().compareTo(o2.getRefundDate());
+                            }
+                        });
+                        break;
+                }
+                //change(folderName);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+    private void change(String l){
+        adapter.notifyNewData(l);
+    }
     private void toggleDeleteMode(){
         if(adapter.getDeleteMode()){
             deleteButton.setBackgroundResource(R.drawable.select_button);
@@ -130,7 +189,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             deleteButton.setBackgroundResource(R.drawable.delete);
             adapter.setDeleteMode(true);
         }
-        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -148,7 +206,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     }
 //Justin's stuff ends here
 
-    //THIS HAS NO CURRENT USEEEEEEE
     public void AddReceiptDestination(Receipt receipt) {
         Intent intent = new Intent(this, ReceiptPopUp.class);
         intent.putExtra("image",receipt.getPhoto());

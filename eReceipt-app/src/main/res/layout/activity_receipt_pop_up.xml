@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     tools:context=".FolderStuff.ReceiptPopUp">
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -12,6 +13,7 @@
         android:gravity="top"
         android:orientation="vertical"
         android:padding="1dp"
+        android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
 import java.text.SimpleDateFormat;
@@ -79,6 +80,12 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
     //updates recycler view with a new folder
     public void notifyInsert(){
         this.notifyItemInserted(receipts.size()-1);
+    }
+
+    public void notifyNewData(String name){
+        this.receipts.clear();
+        this.receipts.addAll(GlobalFolderList.get(name).getReceipts());
+        this.notifyDataSetChanged();
     }
     //interface to set button function
     public interface AddButtonDestination {
