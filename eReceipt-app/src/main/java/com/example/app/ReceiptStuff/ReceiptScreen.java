@@ -117,7 +117,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         });
 
     }
-
     //initializes recycler view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.receiptRecyclerView);
@@ -167,7 +166,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
                         });
                         break;
                 }
-                //change(folderName);
+                notifyChange();
             }
 
             @Override
@@ -176,9 +175,11 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             }
         });
     }
-    private void change(String l){
-        adapter.notifyNewData(l);
+
+    private void notifyChange(){
+        adapter.notifyDataSetChanged();
     }
+
     private void toggleDeleteMode(){
         if(adapter.getDeleteMode()){
             deleteButton.setBackgroundResource(R.drawable.select_button);
