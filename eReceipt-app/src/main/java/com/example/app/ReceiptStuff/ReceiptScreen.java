@@ -99,14 +99,15 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             }
         });
 
+        findViewById(R.id.statFolder).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statsFolder();
+            }
+        });
+
     }
 
-//    //make buncha receipts
-//    private void inflateReceipts(){
-//        for(int i = 0; i<5;i++){
-//            GlobalFolderList.add("folder "+i,new Folder("folder "+i,"",""));
-//        }
-//    }
     //initializes recycler view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.receiptRecyclerView);
@@ -176,6 +177,10 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 
     private void toBudgetScreen() {
         startActivity(new Intent(this, Budgeting.class));
+    }
+
+    private void statsFolder() {
+        //startActivity(new Intent(this, ));
     }
 
     //Lucas' stuff ends here
