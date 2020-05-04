@@ -18,6 +18,7 @@ public class Folder {
     private double budget = 0;
     private boolean selected;
     private ArrayList<Receipt> receipts = new ArrayList<>();
+    private final int daysBeforeNotified = 7;
     //constructor
     public Folder(String name, int color, String note) {
         this.name = name;
@@ -31,6 +32,15 @@ public class Folder {
         this.receipts.add(r);
         this.spending += r.getCost();
         return receipts.size() - 1;
+    }
+    public int totalNotification(){
+        int totNotif = 0;
+        for(Receipt r: receipts){
+            if(r.isTimer()&&daysBeforeNotified>r.getRefundDaysLeft()){
+                totNotif+=1;
+            }
+        }
+        return totNotif;
     }
 
     public double getSpending() {

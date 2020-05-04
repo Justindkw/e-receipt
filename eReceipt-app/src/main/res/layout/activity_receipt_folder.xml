@@ -8,14 +8,23 @@
     android:layout_height="match_parent"
     android:background="#2F4760"
     tools:context=".ReceiptStuff.ReceiptScreen">
-
+    <ImageButton
+        android:id="@+id/receiptDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/select_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/backButton"
         android:layout_width="20dp"
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/back_button_white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +35,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="75dp"
         android:layout_marginLeft="75dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="232dp"
         android:layout_marginRight="232dp"
         android:layout_marginBottom="100dp"
@@ -144,4 +153,22 @@
             android:layout_weight="1"
             android:background="@drawable/stats_light" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/quickReceiptStats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="344dp"
+        android:layout_marginRight="344dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:fontFamily="@font/ralewayregular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

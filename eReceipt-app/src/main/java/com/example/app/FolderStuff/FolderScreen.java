@@ -44,7 +44,10 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_folder_screen);
         //adds buncha folders for sake of demo and debugging
-        inflateFolders();
+        if(GlobalFolderList.initator.get()){
+            GlobalFolderList.initator.set(false);
+            inflateFolders();
+        }
         //creates recycler view
         initRecyclerView();
         deleteButton = findViewById(R.id.folderDelete);
@@ -92,7 +95,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
             Log.d("color",fold.getColor()+" ");
             fold.setBudget(100 +Math.random() * 300);
             fold.setSpending(50 + Math.random() * 200);
-            for(int s = 0;s<(int)(Math.random()*10)+5;s++){
+            for(int s = 0;s<(int)(Math.random()*3)+2;s++){
                 try {
                     fold.addReceipt(new Receipt(defaultPic,
                             Math.round(Math.random()*20)/20.0,

@@ -11,6 +11,8 @@ public class Receipt {
     private Date refundDate;
     private boolean timer;
     private Date date;
+    private boolean selected;
+    private int refundDaysLeft;
     //constructor
     public Receipt(Bitmap photo, double cost, String company, Date refundDate,boolean timer) {
         this.photo = photo;
@@ -19,13 +21,16 @@ public class Receipt {
         this.refundDate = refundDate;
         this.timer = timer;
         this.date = new Date();
+        if(timer){
+            this.refundDaysLeft = (int)((refundDate.getTime()-date.getTime())/(1000*60*60*24));
+        }
     }
     public Receipt(Bitmap photo, double cost, String company){
         this(photo,cost,company,new Date(),false);
     }
 
     public int getRefundDaysLeft(){
-        return (int)((refundDate.getTime()-date.getTime())/(1000*60*60*24));
+        return refundDaysLeft;
     }
 
     //buncha getters and setters
@@ -63,5 +68,13 @@ public class Receipt {
 
     public void setTimer(boolean timer) {
         this.timer = timer;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

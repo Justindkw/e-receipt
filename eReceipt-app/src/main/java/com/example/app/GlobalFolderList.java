@@ -3,10 +3,14 @@ package com.example.app;
 import com.example.app.FolderStuff.Folder;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 //Justin's stuff
 public class GlobalFolderList{
     //the map that keeps all user folders. VERY IMPORTANT
     private static HashMap<String, Folder> folderMap = new HashMap<String, Folder>();
+    //mto make sure dummy folder are only made one
+    public static AtomicBoolean initator = new AtomicBoolean(true);
     //adders getters
     public static void add(String name, Folder folder) {
         folderMap.put(name, folder);
@@ -14,6 +18,10 @@ public class GlobalFolderList{
 
     public static Folder get(String name) {
         return folderMap.get(name);
+    }
+
+    public static void remove(String name){
+        folderMap.remove(name);
     }
 
     public static HashMap<String,Folder> getFolderList(){

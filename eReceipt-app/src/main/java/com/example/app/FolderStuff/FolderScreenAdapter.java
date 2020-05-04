@@ -1,7 +1,6 @@
 package com.example.app.FolderStuff;
 
 import android.graphics.PorterDuff;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
     //list of folder names
     private ArrayList<String> folderNames;
     private ArrayList<Integer> checkedFolders;
-    //interfaced used for start activity
+    //interface used for start activity
     private AddButtonDestination addButtonDestination;
 
     private boolean deleteMode = false;
@@ -40,6 +39,14 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
     @Override
     public void onBindViewHolder(@NonNull FolderScreenAdapter.HomeScreenAdapterVh holder, int position) {
         holder.nameText.setText(folderNames.get(position));
+        int notif = GlobalFolderList.get(folderNames.get(position)).totalNotification();
+        if(notif!=0){
+            holder.notification.setText(String.valueOf(notif));
+            holder.notification.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.notification.setVisibility(View.INVISIBLE);
+        }
         if(deleteMode){
             holder.deleteBox.setVisibility(View.VISIBLE);
         }
@@ -48,7 +55,6 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
             holder.deleteBox.setChecked(false);
         }
         holder.buttonLayout.getBackground().mutate().setColorFilter(GlobalFolderList.get(folderNames.get(position)).getColor(), PorterDuff.Mode.SRC_ATOP);
-        Log.d("color2",GlobalFolderList.get(folderNames.get(position)).getColor()+" ");
     }
 
     @Override
@@ -71,6 +77,7 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
         for(String folder:folderNames){
             if(GlobalFolderList.get(folder).isSelected()){
                 found.add(folder);
+                GlobalFolderList.remove(folder);
             }
         }
         folderNames.removeAll(found);
@@ -84,11 +91,13 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
         TextView nameText;
         CheckBox deleteBox;
         ConstraintLayout buttonLayout;
+        TextView notification;
         public HomeScreenAdapterVh(@NonNull View itemView) {
             super(itemView);
             nameText = itemView.findViewById(R.id.info_text);
             deleteBox = itemView.findViewById(R.id.deleteBox);
             buttonLayout = itemView.findViewById(R.id.folderLayout);
+            notification = itemView.findViewById(R.id.timerNotification);
             //sets button function
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,7 +107,6 @@ public class FolderScreenAdapter extends RecyclerView.Adapter<FolderScreenAdapte
                     }
                 }
             });
-            //itemView.setBackgroundColor(GlobalFolderList.get(folderNames.get(getAdapterPosition())).getColor());
             deleteBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

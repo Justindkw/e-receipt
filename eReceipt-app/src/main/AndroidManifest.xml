@@ -13,13 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReceiptStuff.AddReceipt"></activity>
+        <activity android:name=".FolderStuff.ReceiptPopUp"
+            android:theme="@style/AppTheme.PopUp">
+        </activity>
+        <activity android:name=".ReceiptStuff.AddReceipt" />
         <activity android:name=".StatisticStuff.FolderStatistics" />
         <activity android:name=".FolderStuff.AddFolder" />
         <activity android:name=".ReceiptStuff.ReceiptScreen" />
         <activity android:name=".StatisticStuff.Statistics" />
         <activity android:name=".BudgetingStuff.Budgeting" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".FolderStuff.FolderScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

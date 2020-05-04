@@ -3,6 +3,7 @@ package com.example.app.ReceiptStuff;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +12,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
-import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.FolderStuff.Folder;
+import com.example.app.FolderStuff.FolderScreen;
+import com.example.app.FolderStuff.ReceiptPopUp;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 import com.example.app.StatisticStuff.Statistics;
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -34,6 +38,8 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     private Folder folder;
     ////recycler adapter
     private ReceiptScreenAdapter adapter;
+
+    private ImageButton deleteButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +52,19 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         receipts = folder.getReceipts();
         //sets the name of the folder in the activity
         ((TextView)findViewById(R.id.folderName)).setText(folderName);
+        //sets the quick stats of the folder
+        ((TextView)findViewById(R.id.quickReceiptStats)).setText("$"+new DecimalFormat("0.00").format(folder.getSpending())+"/$"+new DecimalFormat("0.00").format(folder.getBudget()));
         ((ConstraintLayout)findViewById(R.id.folderColor)).setBackgroundColor(folder.getColor());
         //creates recycler view
         initRecyclerView();
         //sets button functions
+        deleteButton = findViewById(R.id.receiptDelete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleDeleteMode();
+            }
+        });
         findViewById(R.id.createReceipt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +116,18 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
 
     }
+    private void toggleDeleteMode(){
+        if(adapter.getDeleteMode()){
+            deleteButton.setBackgroundResource(R.drawable.select_button);
+            adapter.deleteSelected();
+            adapter.setDeleteMode(false);
+        }
+        else{
+            deleteButton.setBackgroundResource(R.drawable.delete);
+            adapter.setDeleteMode(true);
+        }
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     //after a new receipt is added
@@ -118,8 +145,20 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 //Justin's stuff ends here
 
     //THIS HAS NO CURRENT USEEEEEEE
-    public void AddReceiptDestination(String string) {
-        startActivity(new Intent(this, AddReceipt.class).putExtra("receiptName", string));
+    public void AddReceiptDestination(Receipt receipt) {
+        Intent intent = new Intent(this, ReceiptPopUp.class);
+        intent.putExtra("image",receipt.getPhoto());
+        intent.putExtra("company",receipt.getCompany());
+        String date =new SimpleDateFormat("MMM dd, yyyy").format(receipt.getDate());
+        intent.putExtra("date",date);
+        if(receipt.isTimer()) {
+            String dueDate = "Due: " + new SimpleDateFormat("MMM dd, yyyy").format(receipt.getRefundDate());
+            intent.putExtra("dueDate", dueDate);
+        }
+        else{
+            intent.putExtra("dueDate", "");
+        }
+        startActivity(intent);
     }
     //sets button desinations
     private void toAddReceipt() {
