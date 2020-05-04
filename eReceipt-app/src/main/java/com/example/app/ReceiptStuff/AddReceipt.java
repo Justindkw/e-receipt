@@ -131,6 +131,13 @@ public class AddReceipt extends AppCompatActivity {
                 calendar.set(year, month, day);
             }
         };
+
+        findViewById(R.id.backButton3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void animateCalenderButton(int from, int to, int time){

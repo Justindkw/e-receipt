@@ -91,7 +91,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
         Bitmap defaultPic = BitmapFactory.decodeResource(getResources(), R.drawable.receipt);
         Random rnd = new Random();
         for (int i = 0; i < 5; i++) {
-            Folder fold = new Folder("folder " + i, Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)), "");
+            Folder fold = new Folder("folder " + i, Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)), 0.00);
             Log.d("color",fold.getColor()+" ");
             fold.setBudget(100 +Math.random() * 300);
             fold.setSpending(50 + Math.random() * 200);

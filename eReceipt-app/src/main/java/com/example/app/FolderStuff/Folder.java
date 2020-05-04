@@ -12,7 +12,6 @@ public class Folder {
     //buncha stuff stored in the folders
     private String name;
     private int color;
-    private String note;
     private Date date;
     private double spending = 0;
     private double budget = 0;
@@ -20,10 +19,10 @@ public class Folder {
     private ArrayList<Receipt> receipts = new ArrayList<>();
     private final int daysBeforeNotified = 7;
     //constructor
-    public Folder(String name, int color, String note) {
+    public Folder(String name, int color, double budget) {
         this.name = name;
+        this.budget = budget;
         this.color = color;
-        this.note = note;
         this.date = new Date();
     }
     //buncha getters, adders, and setters
