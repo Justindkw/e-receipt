@@ -2,6 +2,7 @@ package com.example.app.ReceiptStuff;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +25,6 @@ import com.example.app.R;
 import com.example.app.StatisticStuff.FolderStatistics;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -144,24 +144,28 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         if (requestCode == REQUEST_RECEIPT && resultCode == RESULT_OK) {
             int pos = data.getIntExtra("receiptPos",-1);
             if(pos != -1){
+                Log.d("data should change",pos+"");
                 adapter.notifyDataSetChanged();
             }
         }
     }
 //Justin's stuff ends here
-    public void AddReceiptDestination(Receipt receipt) {
+    public void AddReceiptDestination(int receipt) {
         Intent intent = new Intent(this, ReceiptPopUp.class);
-        intent.putExtra("image",receipt.getPhoto());
-        intent.putExtra("company",receipt.getCompany());
-        String date =new SimpleDateFormat("MMM dd, yyyy").format(receipt.getDate());
-        intent.putExtra("date",date);
-        if(receipt.isTimer()) {
-            String dueDate = "Due: " + new SimpleDateFormat("MMM dd, yyyy").format(receipt.getRefundDate());
-            intent.putExtra("dueDate", dueDate);
-        }
-        else{
-            intent.putExtra("dueDate", "");
-        }
+        intent.putExtra("receipt",receipt);
+        intent.putExtra("folder",folderName);
+//        intent.putExtra("image",receipt.getPhoto());
+//        intent.putExtra("company",receipt.getCompany);
+//        String date =new SimpleDateFormat("MMM dd, yyyy").format(receipt.getDate());
+//        intent.putExtra("date","2020");
+//        if(receipt.isTimer()) {
+//            String dueDate = "Due: " + new SimpleDateFormat("MMM dd, yyyy").format(receipt.getRefundDate());
+//            intent.putExtra("dueDate", "yeet");
+//        }
+//        else{
+//            //intent.putExtra("dueDate", "");
+//        }
+//        Log.d("before opening",receipt.getCompany());
         startActivity(intent);
     }
     //sets button destinations

@@ -1,7 +1,6 @@
 package com.example.app.ReceiptStuff;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +44,6 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
         int left = receipts.get(position).getRefundDaysLeft();
         if(receipts.get(position).isTimer()){
             holder.daysLeft.setText(left+" days left");
-            Log.d("haveTimer",left+" "+receipts.get(position).getCompany()+" "+receipts.get(position).isTimer());
         }
         else{
             holder.daysLeft.setText("");
@@ -88,7 +86,7 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
     }
     //interface to set button function
     public interface AddButtonDestination {
-        void AddReceiptDestination(Receipt receipt);
+        void AddReceiptDestination(int receipt);
     }
 
     public class ReceiptFolderAdapterVh extends RecyclerView.ViewHolder {
@@ -109,7 +107,7 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
                 @Override
                 public void onClick(View view) {
                     if(!deleteMode){
-                        addButtonDestination.AddReceiptDestination(receipts.get(getAdapterPosition()));
+                        addButtonDestination.AddReceiptDestination(getAdapterPosition());
                     }
                 }
             });

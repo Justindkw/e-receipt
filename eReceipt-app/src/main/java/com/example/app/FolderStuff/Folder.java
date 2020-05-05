@@ -64,6 +64,10 @@ public class Folder {
         return receipts;
     }
 
+    public Receipt getReceipt(int i){
+        return receipts.get(i);
+    };
+
     public void setBudget(double budget) {
         this.budget = budget;
     }
