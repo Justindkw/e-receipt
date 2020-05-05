@@ -44,7 +44,7 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
 
 
     public void AddButtonDestination(String string) {
-        startActivity(new Intent(this, FolderStatistics.class).putExtra("folderName",string));
+        startActivityForResult(new Intent(this, FolderStatistics.class).putExtra("folderName",string),4);
     }
 
     //initializes recycler view

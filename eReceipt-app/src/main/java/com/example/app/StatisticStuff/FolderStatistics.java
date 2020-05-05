@@ -27,8 +27,7 @@ public class FolderStatistics extends AppCompatActivity {
         ((TextView)findViewById(R.id.statsSpent)).setText(new DecimalFormat("0.00").format(fold.getSpending()));
         ((CircularProgressBar)findViewById(R.id.statsProgressBar)).setProgress((int)(fold.getSpending()/fold.getBudget()*100));
 
-        backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();

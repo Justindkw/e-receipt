@@ -62,7 +62,7 @@ public class AddReceipt extends AppCompatActivity {
                     timerButton.animate().alpha(1.0f).setDuration(200);
                     timerButton.setEnabled(true);
                     timerLayout.animate().alpha(1.0f).setDuration(200);
-                    timerDate.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                    timerDate.setInputType(InputType.TYPE_CLASS_DATETIME|InputType.TYPE_DATETIME_VARIATION_DATE);
                 }
                 else{
                     timerButton.animate().alpha(0.0f).setDuration(200);
