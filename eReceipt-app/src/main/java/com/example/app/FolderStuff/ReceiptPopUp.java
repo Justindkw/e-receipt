@@ -34,7 +34,7 @@ public class ReceiptPopUp extends AppCompatActivity {
         double width = dm.widthPixels*0.6;
         double height = dm.heightPixels*0.6;
         getWindow().setLayout((int)width,(int)height);
-
+        Log.d("pop",height+" "+width);
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.dimAmount=0.7f;
         params.gravity = Gravity.CENTER;

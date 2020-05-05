@@ -2,6 +2,7 @@ package com.example.app.FolderStuff;
 
 import androidx.annotation.NonNull;
 
+import com.example.app.Extras;
 import com.example.app.ReceiptStuff.Receipt;
 
 import java.util.ArrayList;
@@ -16,14 +17,23 @@ public class Folder {
     private double spending = 0;
     private double budget = 0;
     private boolean selected;
-    private ArrayList<Receipt> receipts = new ArrayList<>();
+    private ArrayList<Receipt> receipts;
     private final int daysBeforeNotified = 7;
+    private int sortType = 0;
     //constructor
     public Folder(String name, int color, double budget) {
         this.name = name;
         this.budget = budget;
         this.color = color;
         this.date = new Date();
+        this.receipts = new ArrayList<Receipt>(){
+            @Override
+            public boolean add(Receipt o) {
+                super.add(o);
+                Extras.sort(receipts,sortType);
+                return true;
+            }
+      };
     }
     //buncha getters, adders, and setters
     //adds new receipt but also adds it's cost to spending
@@ -93,5 +103,13 @@ public class Folder {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public void setSortType(int sortType) {
+        this.sortType = sortType;
+    }
+
+    public int getSortType() {
+        return sortType;
     }
 }

@@ -14,16 +14,21 @@ public class Receipt {
     private boolean selected;
     private int refundDaysLeft;
     //constructor
-    public Receipt(Bitmap photo, double cost, String company, Date refundDate,boolean timer) {
+    public Receipt(Bitmap photo, double cost, String company, Date date, Date refundDate,boolean timer) {
         this.photo = photo;
         this.cost = cost;
         this.company = company;
         this.refundDate = refundDate;
         this.timer = timer;
-        this.date = new Date();
-        if(timer){
-            this.refundDaysLeft = (int)((refundDate.getTime()-date.getTime())/(1000*60*60*24));
+        this.date = date;
+        if (timer) {
+            this.refundDaysLeft = (int) ((refundDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+        } else {
+            this.refundDaysLeft = 0;
         }
+    }
+    public Receipt(Bitmap photo, double cost, String company, Date refundDate,boolean timer) {
+        this(photo,cost,company,new Date(), refundDate,timer);
     }
     public Receipt(Bitmap photo, double cost, String company){
         this(photo,cost,company,new Date(),false);

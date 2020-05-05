@@ -1,7 +1,6 @@
 package com.example.app.ReceiptStuff;
 
 import android.Manifest;
-import android.animation.ValueAnimator;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
@@ -40,7 +40,6 @@ public class AddReceipt extends AppCompatActivity {
     private TextInputEditText timerDate;
     private String folderName;
     private Bitmap receiptPhoto;
-    private ImageButton cameraButton;
     private ImageButton timerButton;
     private TextInputLayout timerLayout;
     private boolean haveTimer;
@@ -52,8 +51,8 @@ public class AddReceipt extends AppCompatActivity {
         setContentView(R.layout.activity_add_receipt);
         timerDate = findViewById(R.id.timerDate);
         timerButton = findViewById(R.id.addTimer);folderName = getIntent().getStringExtra("folderName");
-        cameraButton = findViewById(R.id.toCameraButton);
         timerLayout = findViewById(R.id.timerInputLayout);
+
         ((Switch)findViewById(R.id.enableTimer)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -72,29 +71,41 @@ public class AddReceipt extends AppCompatActivity {
                 }
             }
         });
-        cameraButton.setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.toCameraButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activeTakePhoto();
             }
         });
+
         (findViewById(R.id.doneReceiptButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Folder folder = GlobalFolderList.get(folderName);
-                    //adds new receipt to folder
-                    folder.addReceipt(new Receipt(receiptPhoto,
-                            Double.parseDouble(((EditText) findViewById(R.id.cost)).getText().toString()),
-                            ((EditText) findViewById(R.id.company)).getText().toString(),
-                            new SimpleDateFormat("dd/MM/yyyy").parse(timerDate.getText().toString()),
-                            true
-                    ));
-                    //returns with receipt position (it is kinda redundant since the pos is always last)
-                    setResult(RESULT_OK, new Intent().putExtra("receiptPos", folder.size() - 1));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                Folder folder = GlobalFolderList.get(folderName);
+                    String cost = ((EditText) findViewById(R.id.cost)).getText().toString();
+                    String company = ((EditText) findViewById(R.id.company)).getText().toString();
+                    String stringDate = timerDate.getText().toString();
+                    if(cost.length()<1 || company.length()<1 || stringDate.length()<1 || receiptPhoto == null){
+                        try {
+                            Log.d("date",stringDate);
+                            if(!stringDate.equals("")){
+                                //adds new receipt to folder
+                                folder.addReceipt(new Receipt(receiptPhoto,Double.parseDouble(cost),company,new SimpleDateFormat("dd/MM/yyyy").parse(stringDate),true));
+                            }
+                            else{
+                                folder.addReceipt(new Receipt(receiptPhoto,Double.parseDouble(cost),company));
+                            }
+                        } catch (ParseException e) {
+                            Log.d("incorrectDate",((EditText) findViewById(R.id.cost)).getText().toString()+" "+((EditText) findViewById(R.id.company)).getText().toString());
+                        }
+                        //returns with receipt position (it is kinda redundant since the pos is always last)
+                        setResult(RESULT_OK, new Intent().putExtra("receiptPos", folder.size() - 1));
+                        finish();
+                    }
+                    else{
+                        //user have not inputted all the correct values
+                    }
             }
 
         });
@@ -102,25 +113,21 @@ public class AddReceipt extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            int mYear = c.get(Calendar.YEAR);
+            int mMonth = c.get(Calendar.MONTH);
+            int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-
-
-                // Get Current Date
-                final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        AddReceipt.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        mYear,mMonth,mDay);
-                dialog.show();
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color
-                .TRANSPARENT));
-                dialog.show();
+            DatePickerDialog dialog = new DatePickerDialog(
+                    AddReceipt.this,
+                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    mDateSetListener,
+                    mYear,mMonth,mDay);
+            dialog.show();
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color
+            .TRANSPARENT));
+            dialog.show();
             }
         });
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -138,18 +145,6 @@ public class AddReceipt extends AppCompatActivity {
                 finish();
             }
         });
-    }
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void animateCalenderButton(int from, int to, int time){
-        ValueAnimator colorAnimation = ValueAnimator.ofArgb(from, to);
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                timerButton.setBackgroundColor((int) animator.getAnimatedValue());
-            }
-        });
-        colorAnimation.setDuration(time); // milliseconds
-        colorAnimation.start();
     }
     //PHOTO STUFF BEINGS HERE
 

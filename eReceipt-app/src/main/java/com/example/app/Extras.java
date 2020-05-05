@@ -7,9 +7,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Extras {
-    public static void sort(List<Receipt> receipts,String type){
+    public static void sort(List<Receipt> receipts,int type){
         switch (type) {
-            case "Date":
+            case 0:
                 Collections.sort(receipts, new Comparator<Receipt>() {
                     @Override
                     public int compare(Receipt o1, Receipt o2) {
@@ -17,7 +17,7 @@ public class Extras {
                     }
                 });
                 break;
-            case "Company":
+            case 1:
                 Collections.sort(receipts, new Comparator<Receipt>() {
                     @Override
                     public int compare(Receipt o1, Receipt o2) {
@@ -25,7 +25,7 @@ public class Extras {
                     }
                 });
                 break;
-            case "Cost":
+            case 2:
                 Collections.sort(receipts, new Comparator<Receipt>() {
                     @Override
                     public int compare(Receipt o1, Receipt o2) {
@@ -33,6 +33,13 @@ public class Extras {
                     }
                 });
                 break;
+            case 3:
+                Collections.sort(receipts, new Comparator<Receipt>() {
+                    @Override
+                    public int compare(Receipt o1, Receipt o2) {
+                        return o1.getRefundDate().compareTo(o2.getRefundDate());
+                    }
+                });
         }
     }
 }

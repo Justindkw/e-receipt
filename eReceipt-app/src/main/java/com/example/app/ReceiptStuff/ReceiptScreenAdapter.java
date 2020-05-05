@@ -1,6 +1,7 @@
 package com.example.app.ReceiptStuff;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,10 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
         int left = receipts.get(position).getRefundDaysLeft();
         if(receipts.get(position).isTimer()){
             holder.daysLeft.setText(left+" days left");
+            Log.d("haveTimer",left+" "+receipts.get(position).getCompany()+" "+receipts.get(position).isTimer());
+        }
+        else{
+            holder.daysLeft.setText("");
         }
         if(deleteMode){
             holder.deleteBox.setVisibility(View.VISIBLE);
@@ -52,8 +57,9 @@ class ReceiptScreenAdapter extends RecyclerView.Adapter<ReceiptScreenAdapter.Rec
             holder.deleteBox.setVisibility(View.INVISIBLE);
             holder.deleteBox.setChecked(false);
         }
-        int newColor = (left>10) ? 0:(10-left)*10;
-        holder.daysLeft.setTextColor(Color.HSVToColor( new float[]{ 100-newColor, 100, 100}));
+        int newColor = (left>=7) ? 0:(7-left)*(100/7);
+        //Log.d("left",left+" "+newColor+" "+receipts.get(position).isTimer());
+        holder.daysLeft.setTextColor(Color.HSVToColor( new float[]{ 100-newColor, 0.9f, 0.6f}));
     }
 
     @Override

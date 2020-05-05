@@ -1,9 +1,7 @@
 package com.example.app.FolderStuff;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,14 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.app.BudgetingStuff.Budgeting;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
-import com.example.app.ReceiptStuff.Receipt;
 import com.example.app.ReceiptStuff.ReceiptScreen;
 import com.example.app.StatisticStuff.Statistics;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Random;
 
 //import com.example.app.ReceiptStuff.ReceiptFolder;
 
@@ -46,7 +40,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
         //adds buncha folders for sake of demo and debugging
         if(GlobalFolderList.initator.get()){
             GlobalFolderList.initator.set(false);
-            inflateFolders();
+            GlobalFolderList.inflateFolders(BitmapFactory.decodeResource(getResources(), R.drawable.receipt));
         }
         //creates recycler view
         initRecyclerView();
@@ -87,29 +81,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
 //Justin's stuff starts here
     //make buncha folders
 
-    private void inflateFolders() {
-        Bitmap defaultPic = BitmapFactory.decodeResource(getResources(), R.drawable.receipt);
-        Random rnd = new Random();
-        for (int i = 0; i < 5; i++) {
-            Folder fold = new Folder("folder " + i, Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)), 0.00);
-            Log.d("color",fold.getColor()+" ");
-            fold.setBudget(100 +Math.random() * 300);
-            fold.setSpending(50 + Math.random() * 200);
-            for(int s = 0;s<(int)(Math.random()*10)+5;s++){
-                try {
-                    fold.addReceipt(new Receipt(defaultPic,
-                            Math.round(Math.random()*20)/20.0,
-                            "Company "+s,
-                            new SimpleDateFormat("dd/MM/yyyy").parse(Math.round(Math.random()*30)+"/05/2020"),
-                            Math.random()>0.5)
-                    );
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-            GlobalFolderList.add("folder " + i, fold);
-        }
-    }
+
 
     //initializes recycler view
     private void initRecyclerView() {

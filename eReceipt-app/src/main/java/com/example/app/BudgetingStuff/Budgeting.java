@@ -26,7 +26,6 @@ public class Budgeting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budgeting);
-//Justin's stuff starts here
         //sets up the recycler view
         initRecyclerView();
         //initializes the total budget number
@@ -46,8 +45,6 @@ public class Budgeting extends AppCompatActivity {
                 }
             }
         });
-//Justin's stuff ends here
-//Lucas's stuff starts here
         //sets the bottom three buttons' function to start their individual activities
         findViewById(R.id.homeButton).setOnClickListener(new View.OnClickListener() {
             @Override

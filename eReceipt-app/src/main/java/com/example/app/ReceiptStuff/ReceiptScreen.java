@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app.BudgetingStuff.Budgeting;
+import com.example.app.Extras;
 import com.example.app.FolderStuff.Folder;
 import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.FolderStuff.ReceiptPopUp;
@@ -25,8 +26,6 @@ import com.example.app.StatisticStuff.FolderStatistics;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 
 public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAdapter.AddButtonDestination{
@@ -43,8 +42,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     private Folder folder;
     ////recycler adapter
     private ReceiptScreenAdapter adapter;
-
-    private Spinner sorter;
 
     private ImageButton deleteButton;
     @Override
@@ -125,45 +122,15 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 
     }
     private void initSorter(){
-        sorter = findViewById(R.id.receiptSorter);
+        Spinner sorter = findViewById(R.id.receiptSorter);
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, new String[]{"Date","Company","Cost","Refund due"});
         sorter.setAdapter(adapter);
+        sorter.setSelection(folder.getSortType());
         sorter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch ((String)parent.getItemAtPosition(position)) {
-                    case "Date":
-                        Collections.sort(receipts, new Comparator<Receipt>() {
-                            @Override
-                            public int compare(Receipt o1, Receipt o2) {
-                                return o1.getDate().compareTo(o2.getDate());
-                            }
-                        });
-                        break;
-                    case "Company":
-                        Collections.sort(receipts, new Comparator<Receipt>() {
-                            @Override
-                            public int compare(Receipt o1, Receipt o2) {
-                                return o1.getCompany().compareTo(o2.getCompany());
-                            }
-                        });
-                        break;
-                    case "Cost":
-                        Collections.sort(receipts, new Comparator<Receipt>() {
-                            @Override
-                            public int compare(Receipt o1, Receipt o2) {
-                                return Double.compare(o1.getCost(), o2.getCost());
-                            }
-                        });
-                    case "Refund due":
-                        Collections.sort(receipts, new Comparator<Receipt>() {
-                            @Override
-                            public int compare(Receipt o1, Receipt o2) {
-                                return o1.getRefundDate().compareTo(o2.getRefundDate());
-                            }
-                        });
-                        break;
-                }
+                folder.setSortType(position);
+                Extras.sort(receipts,position);
                 notifyChange();
             }
 
@@ -188,6 +155,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             deleteButton.setBackgroundResource(R.drawable.delete);
             adapter.setDeleteMode(true);
         }
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -197,9 +165,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         if (requestCode == REQUEST_RECEIPT && resultCode == RESULT_OK) {
             int pos = data.getIntExtra("receiptPos",-1);
             if(pos != -1){
-                //checks if results are ok and then updates the recycler view (WIP)
-                Receipt newReceipt = receipts.get(folder.size()-1);
-                adapter.notifyInsert();
+                adapter.notifyDataSetChanged();
             }
         }
     }
@@ -219,7 +185,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         }
         startActivity(intent);
     }
-    //sets button desinations
+    //sets button destinations
     private void toAddReceipt() {
         startActivityForResult(new Intent(ReceiptScreen.this, AddReceipt.class).putExtra("folderName", folderName), REQUEST_RECEIPT);
         //sets button destinations
