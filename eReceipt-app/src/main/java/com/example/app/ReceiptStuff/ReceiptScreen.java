@@ -33,8 +33,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECEIPT = 1;
-    //int to compare if it is our request
-    static final int REQUEST_FOLDER = 0;
     //feel free to delete Lucas
     private static  final String TAG = "receiptFile"; //Lucas' stuff
     //folder name
@@ -240,7 +238,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     }
 
     private void statsFolder() {
-        startActivityForResult(new Intent(this, FolderStatistics.class).putExtra("folderName",folderName).putExtra("color",folder.getColor()), REQUEST_FOLDER);
+        startActivityForResult(new Intent(this, FolderStatistics.class).putExtra("folderName",folderName).putExtra("color",folder.getColor()), 4);
     }
     //Lucas' stuff ends here
 }

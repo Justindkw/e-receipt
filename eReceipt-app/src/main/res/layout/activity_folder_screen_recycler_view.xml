@@ -13,10 +13,12 @@
         android:id="@+id/folderLayout"
         android:layout_width="175dp"
         android:layout_height="250dp"
+        android:layout_gravity="center"
         android:adjustViewBounds="false"
         android:background="@drawable/folder_base"
+        android:clipToPadding="true"
         android:orientation="horizontal"
-        android:padding="1dp">
+        android:padding="2dp">
 
         <ImageView
             android:id="@+id/folderIcon"
@@ -35,14 +37,14 @@
             android:id="@+id/timerNotification"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:visibility="invisible"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="60dp"
             android:layout_marginRight="60dp"
+            android:background="@drawable/notification_circle"
             android:gravity="center"
             android:textColor="@color/white"
-            android:background="@drawable/notification_circle"
             android:textStyle="bold"
+            android:visibility="invisible"
             app:fontFamily="@font/ralewayregular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
