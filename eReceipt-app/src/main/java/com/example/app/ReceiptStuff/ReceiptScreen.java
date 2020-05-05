@@ -154,18 +154,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         Intent intent = new Intent(this, ReceiptPopUp.class);
         intent.putExtra("receipt",receipt);
         intent.putExtra("folder",folderName);
-//        intent.putExtra("image",receipt.getPhoto());
-//        intent.putExtra("company",receipt.getCompany);
-//        String date =new SimpleDateFormat("MMM dd, yyyy").format(receipt.getDate());
-//        intent.putExtra("date","2020");
-//        if(receipt.isTimer()) {
-//            String dueDate = "Due: " + new SimpleDateFormat("MMM dd, yyyy").format(receipt.getRefundDate());
-//            intent.putExtra("dueDate", "yeet");
-//        }
-//        else{
-//            //intent.putExtra("dueDate", "");
-//        }
-//        Log.d("before opening",receipt.getCompany());
         startActivity(intent);
     }
     //sets button destinations
