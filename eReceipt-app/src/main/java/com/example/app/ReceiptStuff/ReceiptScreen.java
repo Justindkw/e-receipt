@@ -83,27 +83,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             }
         });
 
-        findViewById(R.id.homeButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toHomeScreen();
-            }
-        });
-
-        findViewById(R.id.statisticsButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toStatsScreen();
-            }
-        });
-
-        findViewById(R.id.budgetingButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toBudgetScreen();
-            }
-        });
-
         findViewById(R.id.statFolder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
