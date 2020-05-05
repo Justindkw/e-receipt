@@ -183,7 +183,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     }
 
     private void statsFolder() {
-        //startActivityForResult(new Intent(this, FolderStatistics.class), REQUEST_FOLDER);
+        startActivity(new Intent(this, FolderStatistics.class).putExtra("folderName",folderName));
     }
 
     //Lucas' stuff ends here
