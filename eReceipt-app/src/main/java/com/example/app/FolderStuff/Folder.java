@@ -55,10 +55,6 @@ public class Folder {
     public double getSpending() {
         return spending;
     }
-    //only exists to make demo folders
-    public void setSpending(double spending){
-        this.spending = spending;
-    }
 
     public ArrayList<Receipt> getReceipts() {
         return receipts;

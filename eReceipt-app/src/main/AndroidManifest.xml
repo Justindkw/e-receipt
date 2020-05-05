@@ -13,7 +13,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FolderStuff.ReceiptPopUp"
+        <activity android:name=".ReceiptStuff.ReceiptPopUp"
             android:theme="@style/AppTheme.PopUp">
         </activity>
         <activity android:name=".ReceiptStuff.AddReceipt" />

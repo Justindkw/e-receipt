@@ -86,7 +86,8 @@ public class AddReceipt extends AppCompatActivity {
                     String cost = ((EditText) findViewById(R.id.cost)).getText().toString();
                     String company = ((EditText) findViewById(R.id.company)).getText().toString();
                     String stringDate = timerDate.getText().toString();
-                    if(cost.length()<1 || company.length()<1 || stringDate.length()<1 || receiptPhoto == null){
+                    Log.d("values",cost+" "+company+" "+stringDate+" "+receiptPhoto);
+                    if(cost.length()>0 || company.length()>0 || stringDate.length()>0 || receiptPhoto != null){
                         try {
                             Log.d("date",stringDate);
                             if(!stringDate.equals("")){
@@ -104,6 +105,7 @@ public class AddReceipt extends AppCompatActivity {
                         finish();
                     }
                     else{
+                        Log.d("incorrectValues","bad");
                         //user have not inputted all the correct values
                     }
             }
@@ -133,7 +135,7 @@ public class AddReceipt extends AppCompatActivity {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                    timerDate.setText(day+"/"+month+"/"+year);
+                    timerDate.setText(day+"/"+(month+1)+"/"+year);
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
             }

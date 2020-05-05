@@ -1,8 +1,7 @@
-package com.example.app.FolderStuff;
+package com.example.app.ReceiptStuff;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -12,14 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
-import com.example.app.ReceiptStuff.Receipt;
 
 import java.text.SimpleDateFormat;
 
 public class ReceiptPopUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("I am in","i");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt_pop_up);
         Receipt receipt = GlobalFolderList.get(getIntent().getStringExtra("folder")).getReceipt(getIntent().getIntExtra("receipt", 0));
@@ -33,11 +30,9 @@ public class ReceiptPopUp extends AppCompatActivity {
         double width = dm.widthPixels*0.6;
         double height = dm.heightPixels*0.6;
         getWindow().setLayout((int)width,(int)height);
-        Log.d("pop",dm.heightPixels+" "+dm.widthPixels);
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.dimAmount=0.7f;
         params.gravity = Gravity.CENTER;
-        Log.d("params", params.dimAmount+"");
         getWindow().setAttributes(params);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
     }

@@ -51,8 +51,8 @@ public class GlobalFolderList{
         return totSpending;
     }
     public static void inflateFolders(Bitmap defaultPic){
-        String[] color = new String[]{"#2F4760","#2D2821","#925E4D","#5E352D"};//,"#A89382","#8E757F","#201615","#8A2517"};
-        String[] names = new String[]{"Food","Clothing","Gas","Entertainment"};//,"Reimbursements","Medical","Supplies","Travel"};
+        String[] color = new String[]{"#2F4760","#2D2821","#925E4D","#5E352D","#A89382","#8E757F","#201615","#8A2517"};
+        String[] names = new String[]{"Food","Clothing","Gas","Entertainment","Reimbursements","Medical","Supplies","Travel"};
         String[] companies = new String[]{"Albicious","Genix","Audile","Cogideo","Megandu","Corize","Calcise","Vooloo","Skido","Hydrozzy","Omnizio","Sysil"};
         int[] budget = new int[]{350,200,400,250,0,150,70,500};
         Random rand = new Random();

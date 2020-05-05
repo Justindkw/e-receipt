@@ -1,6 +1,7 @@
 package com.example.app.ReceiptStuff;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,15 +12,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.BudgetingStuff.Budgeting;
 import com.example.app.Extras;
 import com.example.app.FolderStuff.Folder;
 import com.example.app.FolderStuff.FolderScreen;
-import com.example.app.FolderStuff.ReceiptPopUp;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 import com.example.app.StatisticStuff.FolderStatistics;
@@ -59,18 +57,21 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         ((TextView)findViewById(R.id.folderName)).setText(folderName);
         //sets the quick stats of the folder
         ((TextView)findViewById(R.id.quickReceiptStats)).setText("$"+new DecimalFormat("0.00").format(folder.getSpending())+"/$"+new DecimalFormat("0.00").format(folder.getBudget()));
-        ((ConstraintLayout)findViewById(R.id.folderColor)).setBackgroundColor(folder.getColor());
+        findViewById(R.id.folderColor).setBackgroundColor(folder.getColor());
         //creates recycler view
         initRecyclerView();
         //sets button functions
         deleteButton = findViewById(R.id.receiptDelete);
+        deleteButton.getBackground().mutate().setColorFilter(folder.getColor(), PorterDuff.Mode.SRC_ATOP);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toggleDeleteMode();
             }
         });
-        findViewById(R.id.createReceipt).setOnClickListener(new View.OnClickListener() {
+        ImageButton createReceipt = findViewById(R.id.createReceipt);
+        createReceipt.getBackground().mutate().setColorFilter(folder.getColor(), PorterDuff.Mode.SRC_ATOP);
+        createReceipt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toAddReceipt();
@@ -151,10 +152,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     }
 //Justin's stuff ends here
     public void AddReceiptDestination(int receipt) {
-        Intent intent = new Intent(this, ReceiptPopUp.class);
-        intent.putExtra("receipt",receipt);
-        intent.putExtra("folder",folderName);
-        startActivity(intent);
+        startActivity(new Intent(this, ReceiptPopUp.class).putExtra("folder",folderName).putExtra("receipt",receipt));
     }
     //sets button destinations
     private void toAddReceipt() {
@@ -164,14 +162,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 //Lucas's stuff starts here
     private void toHomeScreen() {
         startActivity(new Intent(this, FolderScreen.class));
-    }
-
-    private void toStatsScreen() {
-        startActivity(new Intent(this, FolderStatistics.class).putExtra("folderName",folderName));
-    }
-
-    private void toBudgetScreen() {
-        startActivity(new Intent(this, Budgeting.class));
     }
 
     private void statsFolder() {
