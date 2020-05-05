@@ -1,7 +1,6 @@
 package com.example.app.StatisticStuff;
 
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,8 +53,7 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             holder.bar.setProgress(percent, true);
         }
-        int newColor = (percent<50) ? 0:(percent-50)*2;
-        holder.bar.setProgressTintList(ColorStateList.valueOf(Color.HSVToColor(new float[]{ 100-newColor, 100, 100 })));
+        holder.bar.setProgressTintList(ColorStateList.valueOf(fold.getColor()));
     }
 
     @Override
@@ -64,7 +62,7 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
     }
     //interface to set button function
     public interface AddButtonDestination {
-        void AddButtonDestination(String name);
+        void AddButtonDestination(String name,int color);
     }
 
     public class HomeScreenAdapterVh extends RecyclerView.ViewHolder {
@@ -80,7 +78,7 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                addButtonDestination.AddButtonDestination(folders.get(getAdapterPosition()).toString());
+                addButtonDestination.AddButtonDestination(folders.get(getAdapterPosition()).toString(),folders.get(getAdapterPosition()).getColor());
                 }
             });
         }

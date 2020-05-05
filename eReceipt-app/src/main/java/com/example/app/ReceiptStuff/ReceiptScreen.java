@@ -206,7 +206,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         }
     }
 //Justin's stuff ends here
-
     public void AddReceiptDestination(Receipt receipt) {
         Intent intent = new Intent(this, ReceiptPopUp.class);
         intent.putExtra("image",receipt.getPhoto());
@@ -241,9 +240,8 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     }
 
     private void statsFolder() {
-        startActivityForResult(new Intent(this, FolderStatistics.class).putExtra("folderName",folderName), REQUEST_FOLDER);
+        startActivityForResult(new Intent(this, FolderStatistics.class).putExtra("folderName",folderName).putExtra("color",folder.getColor()), REQUEST_FOLDER);
     }
-
     //Lucas' stuff ends here
 }
 

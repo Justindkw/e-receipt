@@ -2,9 +2,9 @@ package com.example.app.StatisticStuff;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +14,8 @@ import com.example.app.BudgetingStuff.Budgeting;
 import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
+
+import java.text.DecimalFormat;
 
 public class Statistics extends AppCompatActivity implements StatisticAdapter.AddButtonDestination {
 //Justin's stuff
@@ -25,16 +27,14 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
         initRecyclerView();
         initTotalProgress();
 
-        homeButton = findViewById(R.id.homeButton);
-        homeButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.homeButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toHomeScreen();
             }
         });
 
-        budgetButton = findViewById(R.id.budgetingButton);
-        budgetButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.budgetingButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toBudgetScreen();
@@ -43,8 +43,8 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
     }
 
 
-    public void AddButtonDestination(String string) {
-        startActivityForResult(new Intent(this, FolderStatistics.class).putExtra("folderName",string),4);
+    public void AddButtonDestination(String string,int color) {
+        startActivityForResult(new Intent(this, FolderStatistics.class).putExtra("folderName",string).putExtra("color",color),4);
     }
 
     //initializes recycler view
@@ -55,8 +55,9 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
 
     }
     private void initTotalProgress(){
-        int totalPercent = (int)(GlobalFolderList.getTotalSpending()/GlobalFolderList.getTotalBudget()*100);
-        Log.d("totPercent",String.valueOf(totalPercent));
+        double totalBudget = GlobalFolderList.getTotalBudget();
+        int totalPercent = (int)(GlobalFolderList.getTotalSpending()/totalBudget*100);
+        ((TextView)findViewById(R.id.budgetMoney)).setText(new DecimalFormat("0.00").format(totalBudget));
         ((CircularProgressBar)findViewById(R.id.totalBudgetBar)).setProgress(totalPercent);
     }
 
