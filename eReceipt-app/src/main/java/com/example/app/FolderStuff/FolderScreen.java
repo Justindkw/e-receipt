@@ -94,7 +94,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
     }
     private void toggleDeleteMode(){
         if(adapter.getDeleteMode()){
-            deleteButton.setBackgroundResource(R.drawable.select_button);
+            deleteButton.setBackgroundResource(R.drawable.select_black);
             adapter.deleteSelected();
             adapter.setDeleteMode(false);
         }

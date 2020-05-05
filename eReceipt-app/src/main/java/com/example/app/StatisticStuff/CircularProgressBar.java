@@ -91,6 +91,7 @@ public class CircularProgressBar extends View {
         mPaint.setTextAlign(Paint.Align.CENTER);
         mPaint.setStrokeWidth(0);
         mPaint.setColor(mTextColor);
+        mPaint.setAlpha(255);
 
         // Center text
         int xPos = (canvas.getWidth() / 2);

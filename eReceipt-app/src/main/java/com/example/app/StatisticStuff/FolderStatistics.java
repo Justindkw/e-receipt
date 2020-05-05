@@ -20,11 +20,13 @@ public class FolderStatistics extends AppCompatActivity {
         String name = getIntent().getStringExtra("folderName");
         ((TextView)findViewById(R.id.statsFolderName)).setText(name);
         Folder fold = GlobalFolderList.get(name);
+        int color = getIntent().getIntExtra("color",0);
+
+        findViewById(R.id.statsColor).setBackgroundColor(color);
+
         ((TextView)findViewById(R.id.statsBudget)).setText(new DecimalFormat("0.00").format(fold.getBudget()));
+
         ((TextView)findViewById(R.id.statsSpent)).setText(new DecimalFormat("0.00").format(fold.getSpending()));
-        CircularProgressBar bar = findViewById(R.id.statsProgressBar);
-                bar.setProgressColor(getIntent().getIntExtra("color",0));
-                bar.setProgress((int)(fold.getSpending()/fold.getBudget()*100));
 
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +35,9 @@ public class FolderStatistics extends AppCompatActivity {
             }
         });
 
+        CircularProgressBar bar = findViewById(R.id.statsProgressBar);
+        bar.setProgressColor(color);
+        bar.setProgress((int)(fold.getSpending()/fold.getBudget()*100));
     }
 
 }
