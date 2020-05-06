@@ -27,8 +27,9 @@
 
         <ImageView
             android:id="@+id/receiptImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="92dp"
+            android:layout_height="147dp"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/receipt" />
 
         <TextView

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="@drawable/transparent"
     tools:context=".ReceiptStuff.ReceiptPopUp">
 
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:background="@drawable/transparent"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="1dp"
@@ -22,57 +22,58 @@
 
         <TextView
             android:id="@+id/receiptMadeDate"
-            android:layout_width="match_parent"
+            android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:gravity="center"
+            android:gravity="left"
             android:text="Date"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/ralewayregular" />
 
         <TextView
             android:id="@+id/receiptPrice"
-            android:layout_width="match_parent"
+            android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:gravity="center"
+            android:gravity="left"
             android:text="$0.00"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/ralewayregular" />
 
         <ImageView
             android:id="@+id/receiptImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="196dp"
+            android:layout_height="300dp"
+            android:scaleType="fitXY"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/receipt" />
 
         <TextView
             android:id="@+id/receiptCompanyName"
-            android:layout_width="match_parent"
+            android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:gravity="center"
+            android:gravity="left"
             android:text="Company"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:fontFamily="@font/ralewayregular" />
 
         <TextView
             android:id="@+id/receiptDueDate"
-            android:layout_width="match_parent"
+            android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:gravity="center"
-            android:textColor="@color/black"
+            android:gravity="left"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/ralewayregular" />

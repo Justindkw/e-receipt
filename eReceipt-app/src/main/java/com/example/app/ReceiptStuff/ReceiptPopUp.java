@@ -1,5 +1,7 @@
 package com.example.app.ReceiptStuff;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -45,5 +47,6 @@ public class ReceiptPopUp extends AppCompatActivity {
         params.gravity = Gravity.CENTER;
         getWindow().setAttributes(params);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 }
