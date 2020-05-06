@@ -95,7 +95,6 @@
                     android:text="Sort by"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
                     app:fontFamily="@font/ralewayregular"
                     app:layout_constraintBottom_toTopOf="@+id/receiptDelete"
                     app:layout_constraintEnd_toStartOf="@+id/receiptSorter"

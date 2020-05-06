@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/receiptMadeDate"
-            android:layout_width="196dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/receiptPrice"
-            android:layout_width="196dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -56,7 +56,7 @@
 
         <TextView
             android:id="@+id/receiptCompanyName"
-            android:layout_width="196dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
@@ -68,12 +68,12 @@
 
         <TextView
             android:id="@+id/receiptDueDate"
-            android:layout_width="196dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:textColor="@color/white"
             android:gravity="center|start"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/ralewayregular" />
