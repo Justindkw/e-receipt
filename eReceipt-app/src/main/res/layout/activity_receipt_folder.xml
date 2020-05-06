@@ -106,9 +106,10 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toTopOf="@+id/receiptDelete"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/receiptSorter"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.161" />
 
         <Spinner
             android:id="@+id/receiptSorter"
@@ -116,9 +117,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/receiptDelete"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.166" />
 
         <TextView
             android:id="@+id/quickReceiptStats"
@@ -132,7 +134,7 @@
             app:fontFamily="@font/ralewayregular"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Receipt" />
+            app:layout_constraintTop_toBottomOf="@+id/receiptText" />
 
         <ImageButton
             android:id="@+id/receiptDelete"
@@ -142,7 +144,9 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/select_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton

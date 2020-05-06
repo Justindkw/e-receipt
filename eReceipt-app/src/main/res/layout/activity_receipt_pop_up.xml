@@ -30,6 +30,16 @@
             android:text="Date"
             android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/receiptPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:gravity="center"
+            android:text="$0.00"
+            android:textSize="20sp" />
+
         <ImageView
             android:id="@+id/receiptImage"
             android:layout_width="match_parent"
