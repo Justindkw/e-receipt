@@ -21,7 +21,8 @@
         <activity android:name=".FolderStuff.AddFolder" />
         <activity android:name=".ReceiptStuff.ReceiptScreen" />
         <activity android:name=".StatisticStuff.Statistics" />
-        <activity android:name=".BudgetingStuff.Budgeting" />
+        <activity android:name=".BudgetingStuff.Budgeting"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".FolderStuff.FolderScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
