@@ -104,7 +104,7 @@
             android:textSize="24sp"
             app:fontFamily="@font/robotobold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editText"
+            app:layout_constraintEnd_toStartOf="@+id/setBudget"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText

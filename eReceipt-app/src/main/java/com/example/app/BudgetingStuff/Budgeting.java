@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,6 +71,7 @@ public class Budgeting extends AppCompatActivity {
     private void initRecyclerView(){
         budgetingAdapter = new BudgetingAdapter(this, new ArrayList<Folder>(GlobalFolderList.getFolderList().values()));
         RecyclerView recyclerView = findViewById(R.id.budgetRecycler);
+        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         recyclerView.setAdapter(budgetingAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
     }
