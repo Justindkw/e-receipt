@@ -34,6 +34,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class AddReceipt extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -178,6 +179,7 @@ public class AddReceipt extends AppCompatActivity {
     }
     //PHOTO STUFF ENDS HERE
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         //returns the resulted receipt back to ReceiptFolder

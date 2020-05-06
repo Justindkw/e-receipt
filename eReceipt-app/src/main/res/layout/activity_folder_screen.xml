@@ -25,7 +25,7 @@
                 android:id="@+id/eReceiptBar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="70dp">
+                android:layout_marginTop="50dp">
 
                 <ImageButton
                     android:id="@+id/folderDelete"
@@ -60,7 +60,7 @@
                 android:id="@+id/rvNumbers"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:layout_alignParentTop="false"
                 android:layout_gravity="bottom|center"
                 android:layout_marginTop="50dp" />
 
