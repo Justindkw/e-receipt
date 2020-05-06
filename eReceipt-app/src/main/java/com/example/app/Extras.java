@@ -42,7 +42,7 @@ public class Extras {
                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public int compare(Receipt o1, Receipt o2) {
-                        return o1.isTimer() ? -1 : o2.isTimer()? 1 :Integer.valueOf(o1.getRefundDaysLeft()).compareTo(o2.getRefundDaysLeft());
+                        return !o1.isTimer() ? 1 : !o2.isTimer()? -1 : Integer.compare(o1.getRefundDaysLeft(), o2.getRefundDaysLeft());
                     }
                 });
         }
