@@ -37,6 +37,7 @@ public class FolderStatistics extends AppCompatActivity {
 
         CircularProgressBar bar = findViewById(R.id.statsProgressBar);
         bar.setProgressColor(color);
+        bar.setStrokeWidth(100);
         bar.setProgress((int)(fold.getSpending()/fold.getBudget()*100));
     }
 
