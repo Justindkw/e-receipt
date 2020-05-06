@@ -24,7 +24,7 @@ public class CircularProgressBar extends View {
     private float mStartAngle = -90;            // Start from top (default is: "3 o'clock on a watch.")
     private float mBeginningAngle = 0;          //what the progress % starts off of
     private float mMaxSweepAngle = 360;         // Max degrees for the progress ring = full circle
-    private int mStrokeWidth = 50;              // Width of outline
+    private int mStrokeWidth = 100;              // Width of outline
     private int mAnimationDuration = 600;       // Animation duration for progress change
     private int mMaxProgress = 100;             // Max progress to use
     private boolean mDrawText = true;           // Set to true if progress text should be drawn

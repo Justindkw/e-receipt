@@ -56,7 +56,12 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         //sets the name of the folder in the activity
         ((TextView)findViewById(R.id.folderName)).setText(folderName);
         //sets the quick stats of the folder
-        ((TextView)findViewById(R.id.quickReceiptStats)).setText("$"+new DecimalFormat("0.00").format(folder.getSpending())+"/$"+new DecimalFormat("0.00").format(folder.getBudget()));
+        TextView quickStats = findViewById(R.id.quickReceiptStats);
+        quickStats.setText("$"+new DecimalFormat("0.00").format(folder.getSpending())+"/$"+new DecimalFormat("0.00").format(folder.getBudget()));
+        quickStats.setTextColor(folder.getColor());
+
+        ((TextView)findViewById(R.id.receiptText)).setTextColor(folder.getColor());
+
         findViewById(R.id.folderColor).setBackgroundColor(folder.getColor());
         //creates recycler view
         initRecyclerView();
@@ -127,7 +132,8 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 
     private void toggleDeleteMode(){
         if(adapter.getDeleteMode()){
-            deleteButton.setBackgroundResource(R.drawable.select_button);
+            deleteButton.setBackgroundResource(R.drawable.select_black);
+            deleteButton.getBackground().mutate().setColorFilter(folder.getColor(), PorterDuff.Mode.SRC_ATOP);
             adapter.deleteSelected();
             adapter.setDeleteMode(false);
         }

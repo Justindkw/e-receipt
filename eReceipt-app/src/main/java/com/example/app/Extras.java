@@ -1,5 +1,9 @@
 package com.example.app;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.app.ReceiptStuff.Receipt;
 
 import java.util.Collections;
@@ -21,7 +25,7 @@ public class Extras {
                 Collections.sort(receipts, new Comparator<Receipt>() {
                     @Override
                     public int compare(Receipt o1, Receipt o2) {
-                        return o1.getCompany().compareTo(o2.getCompany());
+                        return o1.getCompany().toLowerCase().compareTo(o2.getCompany().toLowerCase());
                     }
                 });
                 break;
@@ -35,9 +39,10 @@ public class Extras {
                 break;
             case 3:
                 Collections.sort(receipts, new Comparator<Receipt>() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public int compare(Receipt o1, Receipt o2) {
-                        return o1.getRefundDate().compareTo(o2.getRefundDate());
+                        return o1.isTimer() ? -1 : o2.isTimer()? 1 :Integer.valueOf(o1.getRefundDaysLeft()).compareTo(o2.getRefundDaysLeft());
                     }
                 });
         }

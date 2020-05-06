@@ -22,7 +22,8 @@ public class Receipt {
         this.timer = timer;
         this.date = date;
         if (timer) {
-            this.refundDaysLeft = (int) ((refundDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+            int temp = (int) ((refundDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+            this.refundDaysLeft = Math.max(temp, 0);
         } else {
             this.refundDaysLeft = 0;
         }
