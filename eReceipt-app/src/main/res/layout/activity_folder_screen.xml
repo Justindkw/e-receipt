@@ -65,14 +65,14 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNumbers"
-                android:layout_width="350dp"
+                android:layout_width="368dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
                 android:layout_gravity="bottom|center"
                 android:layout_marginTop="40dp" />
 
             <ImageView
-                android:layout_width="350dp"
+                android:layout_width="368dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 app:srcCompat="@color/white" />
