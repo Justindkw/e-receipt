@@ -8,6 +8,7 @@ import com.example.app.ReceiptStuff.Receipt;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -50,14 +51,24 @@ public class GlobalFolderList{
         }
         return totSpending;
     }
+    public static ArrayList<Folder> retrieveBudgetableFolders(){
+        ArrayList<Folder> result = new ArrayList<>();
+        for(Folder fold: folderMap.values()){
+            if(fold.isBudgetable()){
+                result.add(fold);
+            }
+        }
+        return result;
+    }
     public static void inflateFolders(Bitmap defaultPic){
         String[] color = new String[]{"#2F4760","#2D2821","#925E4D","#5E352D","#A89382","#8E757F","#201615","#A99142"};
         String[] names = new String[]{"Food","Clothing","Gas","Entertainment","Reimbursements","Medical","Supplies","Travel"};
         String[] companies = new String[]{"Albicious","Genix","Audile","Cogideo","Megandu","Corize","Calcise","Vooloo","Skido","Hydrozzy","Omnizio","Sysil"};
         int[] budget = new int[]{350,200,400,250,0,150,70,500};
+        boolean[] budgetable = new boolean[]{true,true,true,true,false,true,true,true};
         Random rand = new Random();
         for (int i = 0; i < names.length; i++) {
-            Folder fold = new Folder(names[i], Color.parseColor(color[i]), budget[i]);
+            Folder fold = new Folder(names[i], Color.parseColor(color[i]),budgetable[i], budget[i]);
             double receiptAmt = Math.random()*10+5;
             double avgCost = budget[i]/receiptAmt;
             for(int s = 0;s<receiptAmt;s++){

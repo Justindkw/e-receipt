@@ -17,12 +17,14 @@ public class Folder {
     private double spending = 0;
     private double budget = 0;
     private boolean selected;
+    private boolean budgetable;
     private ArrayList<Receipt> receipts;
     private final int daysBeforeNotified = 7;
     private int sortType = 0;
     //constructor
-    public Folder(String name, int color, double budget) {
+    public Folder(String name, int color, boolean budgetable, double budget) {
         this.name = name;
+        this.budgetable = budgetable;
         this.budget = budget;
         this.color = color;
         this.date = new Date();
@@ -34,6 +36,9 @@ public class Folder {
                 return true;
             }
       };
+    }
+    public Folder(String name, int color){
+        this(name,color,false,0.0);
     }
     //buncha getters, adders, and setters
     //adds new receipt but also adds it's cost to spending
@@ -111,5 +116,13 @@ public class Folder {
 
     public int getSortType() {
         return sortType;
+    }
+
+    public boolean isBudgetable() {
+        return budgetable;
+    }
+
+    public void setBudgetable(boolean budgetable) {
+        this.budgetable = budgetable;
     }
 }

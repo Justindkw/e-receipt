@@ -26,7 +26,7 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
     private AddButtonDestination addButtonDestination;
     //constructor
     public StatisticAdapter(AddButtonDestination addButtonDestination) {
-        this.folders = new ArrayList<Folder>(GlobalFolderList.getFolderList().values());
+        this.folders = GlobalFolderList.retrieveBudgetableFolders();
         this.addButtonDestination = addButtonDestination;
     }
     //LUwUcas help I donno what to write!

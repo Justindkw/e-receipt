@@ -10,14 +10,12 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app.FolderStuff.Folder;
 import com.example.app.FolderStuff.FolderScreen;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 import com.example.app.StatisticStuff.Statistics;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class Budgeting extends AppCompatActivity {
 
@@ -69,7 +67,7 @@ public class Budgeting extends AppCompatActivity {
     }
     //sets up the recycler view
     private void initRecyclerView(){
-        budgetingAdapter = new BudgetingAdapter(this, new ArrayList<Folder>(GlobalFolderList.getFolderList().values()));
+        budgetingAdapter = new BudgetingAdapter(this, GlobalFolderList.retrieveBudgetableFolders());
         RecyclerView recyclerView = findViewById(R.id.budgetRecycler);
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         recyclerView.setAdapter(budgetingAdapter);
