@@ -74,7 +74,7 @@ public class GlobalFolderList{
             for(int s = 0;s<receiptAmt;s++){
                 try {
                     fold.addReceipt(new Receipt(defaultPic,
-                            (0.5)*(avgCost-(avgCost*2*Math.random()-avgCost)),
+                            Math.round((avgCost>0 ? (0.5)*(avgCost-(avgCost*2*Math.random()-avgCost)) : Math.random()*50)*100)/100.0,
                             companies[rand.nextInt(companies.length)],
                             new SimpleDateFormat("dd/MM/yyyy").parse((Math.round(Math.random()*15)+15)+"/04/2020"),
                             new SimpleDateFormat("dd/MM/yyyy").parse(Math.round(Math.random()*15)+"/05/2020"),

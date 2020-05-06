@@ -1,17 +1,24 @@
 package com.example.app.ReceiptStuff;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,8 +46,10 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     private ArrayList<Receipt> receipts;
     //THE folder
     private Folder folder;
-    ////recycler adapter
+    //recycler adapter
     private ReceiptScreenAdapter adapter;
+
+    private TextView selectText;
 
     private ImageButton deleteButton;
     @Override
@@ -53,12 +62,27 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         folder = GlobalFolderList.get(folderName);
         //gets receipts from folder
         receipts = folder.getReceipts();
+        //finds selectText from xml
+        selectText = findViewById(R.id.selectText);
         initSorter();
         //sets the name of the folder in the activity
         ((TextView)findViewById(R.id.folderName)).setText(folderName);
         //sets the quick stats of the folder
         TextView quickStats = findViewById(R.id.quickReceiptStats);
-        quickStats.setText("$"+new DecimalFormat("0.00").format(folder.getSpending())+"/$"+new DecimalFormat("0.00").format(folder.getBudget()));
+        ImageButton toStats = findViewById(R.id.statFolder);
+        if(folder.isBudgetable()) {
+            quickStats.setText("$" + new DecimalFormat("0.00").format(folder.getSpending()) + "/$" + new DecimalFormat("0.00").format(folder.getBudget()));
+            toStats.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    statsFolder();
+                }
+            });
+        }
+        else{
+            quickStats.setText("$" + new DecimalFormat("0.00").format(folder.getSpending()));
+            toStats.setAlpha(0.0f);
+        }
         quickStats.setTextColor(folder.getColor());
 
         ((TextView)findViewById(R.id.receiptText)).setTextColor(folder.getColor());
@@ -90,13 +114,6 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             }
         });
 
-        findViewById(R.id.statFolder).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                statsFolder();
-            }
-        });
-
     }
     //initializes recycler view
     private void initRecyclerView() {
@@ -110,7 +127,27 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     }
     private void initSorter(){
         Spinner sorter = findViewById(R.id.receiptSorter);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, new String[]{"Date","Company","Cost","Refund due"});
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, new String[]{"Date","Company","Cost","Refund due"}){
+            Typeface font = ResourcesCompat.getFont(getContext(),R.font.ralewayregular);
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView v = (TextView)super.getView(position, convertView, parent);
+                v.setTypeface(font);
+                v.setTextColor(Color.BLACK);
+                v.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+                return v;
+            }
+
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView v = (TextView)super.getDropDownView(position, convertView, parent);
+                v.setTypeface(font);
+                v.setTextColor(Color.BLACK);
+                v.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+                return v;
+            }
+        };
         sorter.setAdapter(adapter);
         sorter.setSelection(folder.getSortType());
         sorter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -137,10 +174,12 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
             deleteButton.setBackgroundResource(R.drawable.select_black);
             deleteButton.getBackground().mutate().setColorFilter(folder.getColor(), PorterDuff.Mode.SRC_ATOP);
             adapter.deleteSelected();
+            selectText.setAlpha(1.0f);
             adapter.setDeleteMode(false);
         }
         else{
             deleteButton.setBackgroundResource(R.drawable.delete);
+            selectText.setAlpha(0.0f);
             adapter.setDeleteMode(true);
         }
         adapter.notifyDataSetChanged();

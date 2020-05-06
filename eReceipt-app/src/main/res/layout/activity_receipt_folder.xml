@@ -53,7 +53,7 @@
                     app:layout_constraintStart_toEndOf="@+id/backButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/statFolder"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -92,11 +92,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
                     android:text="Sort by"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:fontFamily="@font/ralewayregular"
-                    app:layout_constraintBottom_toTopOf="@+id/receiptDelete"
                     app:layout_constraintEnd_toStartOf="@+id/receiptSorter"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,7 +106,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
-                    app:layout_constraintBottom_toTopOf="@+id/receiptDelete"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.166" />
@@ -125,29 +124,40 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/receiptText" />
 
-                <ImageButton
-                    android:id="@+id/receiptDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/select_button"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="26dp"
+                    android:layout_marginRight="26dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/receiptSorter" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Select"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:fontFamily="@font/ralewayregular"
-                    app:layout_constraintBottom_toBottomOf="@+id/receiptDelete"
-                    app:layout_constraintEnd_toEndOf="@+id/receiptDelete"
-                    app:layout_constraintStart_toStartOf="@+id/receiptDelete"
-                    app:layout_constraintTop_toTopOf="@+id/receiptDelete" />
+                    <ImageButton
+                        android:id="@+id/receiptDelete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/select_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/selectText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="9dp"
+                        android:text="Select"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/ralewayregular"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
