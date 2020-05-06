@@ -26,6 +26,7 @@ public class Receipt {
             this.refundDaysLeft = Math.max(temp, 0);
         } else {
             this.refundDaysLeft = 0;
+            this.refundDate = null;
         }
     }
     public Receipt(Bitmap photo, double cost, String company, Date refundDate,boolean timer) {

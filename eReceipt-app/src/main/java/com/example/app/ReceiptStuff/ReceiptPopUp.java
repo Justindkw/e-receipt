@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.app.GlobalFolderList;
 import com.example.app.R;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 public class ReceiptPopUp extends AppCompatActivity {
@@ -19,11 +20,20 @@ public class ReceiptPopUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt_pop_up);
+
         Receipt receipt = GlobalFolderList.get(getIntent().getStringExtra("folder")).getReceipt(getIntent().getIntExtra("receipt", 0));
+
         ((ImageView)findViewById(R.id.receiptImage)).setImageBitmap(receipt.getPhoto());
+
         ((TextView)findViewById(R.id.receiptCompanyName)).setText(receipt.getCompany());
+
+        ((TextView)findViewById(R.id.receiptPrice)).setText("$"+new DecimalFormat("0.00").format(receipt.getCost()));
+
         ((TextView)findViewById(R.id.receiptMadeDate)).setText(new SimpleDateFormat("MMM dd, yyyy").format(receipt.getDate()));
-        ((TextView)findViewById(R.id.receiptDueDate)).setText(new SimpleDateFormat("MMM dd, yyyy").format(receipt.getRefundDate()));
+
+        if(receipt.isTimer()) {
+            ((TextView) findViewById(R.id.receiptDueDate)).setText(new SimpleDateFormat("MMM dd, yyyy").format(receipt.getRefundDate()));
+        }
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
