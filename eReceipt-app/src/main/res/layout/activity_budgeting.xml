@@ -130,9 +130,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="205dp"
+        android:layout_width="200dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/tab_bar"
         android:foregroundGravity="center_vertical|center|center_horizontal"
         android:orientation="horizontal"
@@ -142,34 +142,34 @@
 
         <Button
             android:id="@+id/homeButton"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="15dp"
             android:layout_weight="1"
             android:background="@drawable/home_light" />
 
         <Button
             android:id="@+id/budgetingButton"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="15dp"
             android:layout_weight="1"
             android:background="@drawable/budget_dark" />
 
         <Button
             android:id="@+id/statisticsButton"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="15dp"
             android:layout_weight="1"
             android:background="@drawable/stats_light" />
     </LinearLayout>
@@ -178,7 +178,7 @@
         android:id="@+id/doneBudgetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
