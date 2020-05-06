@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,6 +51,7 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
     //initializes recycler view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.folderBudgetProgress);
+        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         recyclerView.setAdapter(new StatisticAdapter(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 

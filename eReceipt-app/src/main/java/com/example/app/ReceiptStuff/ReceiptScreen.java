@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -102,6 +103,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
         RecyclerView recyclerView = findViewById(R.id.receiptRecyclerView);
 
         adapter = new ReceiptScreenAdapter(receipts, this);
+        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
 

@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<!--    tools:context=".StatisticStuff.Statistics">-->
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <!--    tools:context=".StatisticStuff.Statistics">-->
 
     <ScrollView
         android:id="@+id/scrollView4"
@@ -116,10 +117,19 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/folderBudgetProgress"
                 android:layout_width="325dp"
-                android:layout_height="325dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:foregroundGravity="center|center_horizontal" />
+                android:foregroundGravity="center|center_horizontal">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="325dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:srcCompat="@color/white" />
 
         </LinearLayout>
     </ScrollView>

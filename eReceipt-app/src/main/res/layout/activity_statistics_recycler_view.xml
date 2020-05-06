@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/stats_budget_background">
 
-        <TableRow
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/tableRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,18 +31,25 @@
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                app:fontFamily="@font/ralewayregular" />
+                app:fontFamily="@font/ralewayregular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/folderPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginLeft="200dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
                 android:text="100%"
                 android:textColor="@color/black"
-                app:fontFamily="@font/ralewayregular" />
-        </TableRow>
+                app:fontFamily="@font/ralewayregular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ProgressBar
             android:id="@+id/budgetBar"

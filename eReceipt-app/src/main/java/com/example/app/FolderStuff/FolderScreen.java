@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -88,6 +89,7 @@ public class FolderScreen extends AppCompatActivity implements FolderScreenAdapt
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
 
         adapter = new FolderScreenAdapter(new ArrayList<String>(GlobalFolderList.getFolderList().keySet()),this);
+        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 

@@ -7,7 +7,7 @@
     android:background="#ECECEF"
     tools:context=".FolderStuff.FolderScreen">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,9 +22,9 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/eReceiptBar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="70dp">
 
                 <ImageButton
@@ -37,8 +37,6 @@
                     android:foregroundGravity="center_vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.87"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
 
@@ -61,13 +59,19 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNumbers"
                 android:layout_width="350dp"
-                android:layout_height="565dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_gravity="bottom|center"
-                android:layout_marginTop="50dp"
-                android:layout_alignParentTop="true"/>
+                android:layout_marginTop="50dp" />
+
+            <ImageView
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:srcCompat="@color/white" />
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -119,7 +123,7 @@
         android:id="@+id/createFolder"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/plus_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
