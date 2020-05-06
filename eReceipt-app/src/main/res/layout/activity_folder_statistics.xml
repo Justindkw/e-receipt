@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="525dp"
         android:background="@drawable/stats_screen_background"
         android:src="@drawable/receipt_recycler_layout"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,14 +18,38 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.example.app.StatisticStuff.CircularProgressBar
-            android:id="@+id/statsProgressBar"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/progress_circle_drop_shadow" />
+
+            <com.example.app.StatisticStuff.CircularProgressBar
+                android:id="@+id/statsProgressBar"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.343" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
@@ -36,7 +60,7 @@
             android:background="@drawable/rectangle_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/statsProgressBar">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
             <TextView
                 android:id="@+id/textView4"

@@ -51,7 +51,7 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
     //initializes recycler view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.folderBudgetProgress);
-        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+        ViewCompat.setNestedScrollingEnabled(recyclerView, true);
         recyclerView.setAdapter(new StatisticAdapter(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 

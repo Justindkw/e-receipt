@@ -53,12 +53,29 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.example.app.StatisticStuff.CircularProgressBar
-                android:id="@+id/totalBudgetBar"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/progress_circle_drop_shadow" />
+
+                <com.example.app.StatisticStuff.CircularProgressBar
+                    android:id="@+id/totalBudgetBar"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/budgetSet"
@@ -114,22 +131,32 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/folderBudgetProgress"
-                android:layout_width="325dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:foregroundGravity="center|center_horizontal">
+                android:layout_gravity="center">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/folderBudgetProgress"
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="325dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                app:srcCompat="@color/white" />
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="325dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/folderBudgetProgress"
+                    app:srcCompat="@color/white" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
