@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="325dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@drawable/stats_budget_background">
@@ -17,7 +17,7 @@
             android:id="@+id/tableRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
             app:layout_constraintBottom_toTopOf="@+id/budgetBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="3dp"
             android:layout_marginBottom="15dp"
             android:progress="@integer/blur_dialog_animation_duration"
             android:progressDrawable="@drawable/progressbar_rounded_corner"

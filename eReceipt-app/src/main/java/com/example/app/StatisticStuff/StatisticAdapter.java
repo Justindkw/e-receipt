@@ -2,7 +2,6 @@ package com.example.app.StatisticStuff;
 
 import android.content.res.ColorStateList;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,6 @@ public class StatisticAdapter extends RecyclerView.Adapter<StatisticAdapter.Home
     //constructor
     public StatisticAdapter(AddButtonDestination addButtonDestination) {
         this.folders = new ArrayList<Folder>(GlobalFolderList.getFolderList().values());
-        Log.d("stat",folders.get(0).toString());
         this.addButtonDestination = addButtonDestination;
     }
     //LUwUcas help I donno what to write!
