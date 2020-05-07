@@ -19,7 +19,7 @@
 
     <style name="AppTheme.PopUp" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
     </style>
     <style name="SCBSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->

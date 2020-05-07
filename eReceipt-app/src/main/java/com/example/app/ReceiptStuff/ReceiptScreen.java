@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +37,7 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
 //Justin's stuff starts here
     //int to compare if it is our request
     static final int REQUEST_RECEIPT = 1;
+    static final int REQUEST_POPUP = 5;
     //feel free to delete Lucas
     private static  final String TAG = "receiptFile"; //Lucas' stuff
     //folder name
@@ -190,16 +190,22 @@ public class ReceiptScreen extends AppCompatActivity implements ReceiptScreenAda
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_RECEIPT && resultCode == RESULT_OK) {
-            int pos = data.getIntExtra("receiptPos",-1);
-            if(pos != -1){
-                Log.d("data should change",pos+"");
+            if(data.getIntExtra("receiptPos",-1) != -1){
                 adapter.notifyDataSetChanged();
             }
+        }
+        else if(requestCode == REQUEST_POPUP && resultCode == RESULT_OK){
+            int pos = data.getIntExtra("receiptPosition",-1);
+            if(pos != -1 && !data.getBooleanExtra("timer",true)){
+                receipts.get(pos).setTimer(false);
+                adapter.notifyItemChanged(pos);
+            }
+
         }
     }
 //Justin's stuff ends here
     public void AddReceiptDestination(int receipt) {
-        startActivity(new Intent(this, ReceiptPopUp.class).putExtra("folder",folderName).putExtra("receipt",receipt));
+        startActivityForResult(new Intent(this, ReceiptPopUp.class).putExtra("folder",folderName).putExtra("receipt",receipt),REQUEST_POPUP);
     }
     //sets button destinations
     private void toAddReceipt() {

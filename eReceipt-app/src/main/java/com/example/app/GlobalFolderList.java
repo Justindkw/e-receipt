@@ -61,13 +61,13 @@ public class GlobalFolderList{
         return result;
     }
     public static void inflateFolders(Bitmap defaultPic){
-        String[] color = new String[]{"#2F4760","#2D2821","#925E4D","#5E352D","#A89382","#8E757F","#201615","#A99142"};
-        String[] names = new String[]{"Food","Clothing","Gas","Entertainment","Reimbursements","Medical","Supplies","Travel"};
+        String[] color = new String[]{"#2F4760","#2D2821","#925E4D","#A89382","#5E352D","#8E757F","#201615","#A99142"};
+        String[] names = new String[]{"Food","Clothing","Gas","Reimbursements","Entertainment","Medical","Supplies","Travel"};
         String[] companies = new String[]{"Albicious","Genix","Audile","Cogideo","Megandu","Corize","Calcise","Vooloo","Skido","Hydrozzy","Omnizio","Sysil"};
-        int[] budget = new int[]{350,200,400,250,0,150,70,500};
-        boolean[] budgetable = new boolean[]{true,true,true,true,false,true,true,true};
+        int[] budget = new int[]{350,200,400,0,250,150,70,500};
+        boolean[] budgetable = new boolean[]{true,true,true,false,true,true,true,true};
         Random rand = new Random();
-        for (int i = 0; i < names.length; i++) {
+        for (int i = 0; i < 4; i++) {
             Folder fold = new Folder(names[i], Color.parseColor(color[i]),budgetable[i], budget[i]);
             double receiptAmt = Math.random()*10+5;
             double avgCost = budget[i]/receiptAmt;
@@ -76,9 +76,9 @@ public class GlobalFolderList{
                     fold.addReceipt(new Receipt(defaultPic,
                             Math.round((avgCost>0 ? (0.5)*(avgCost-(avgCost*2*Math.random()-avgCost)) : Math.random()*50)*100)/100.0,
                             companies[rand.nextInt(companies.length)],
-                            new SimpleDateFormat("dd/MM/yyyy").parse((Math.round(Math.random()*15)+15)+"/04/2020"),
-                            new SimpleDateFormat("dd/MM/yyyy").parse(Math.round(Math.random()*15)+"/05/2020"),
-                            Math.random()>0.5)
+                            new SimpleDateFormat("dd/MM/yyyy").parse(Math.round(Math.random()*5)+"/05/2020"),
+                            new SimpleDateFormat("dd/MM/yyyy").parse((Math.round(Math.random()*25)+4)+"/05/2020"),
+                            Math.random()>0.7)
                     );
                 } catch (ParseException e) {
                     e.printStackTrace();

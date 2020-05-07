@@ -21,10 +21,11 @@ public class Receipt {
         this.refundDate = refundDate;
         this.timer = timer;
         this.date = date;
-        if (timer) {
-            int temp = (int) ((refundDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
-            this.refundDaysLeft = Math.max(temp, 0);
+        int temp = (int)((refundDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+        if (timer && temp>=0) {
+            this.refundDaysLeft = temp;
         } else {
+            this.timer = false;
             this.refundDaysLeft = 0;
             this.refundDate = null;
         }
@@ -75,6 +76,10 @@ public class Receipt {
 
     public void setTimer(boolean timer) {
         this.timer = timer;
+        if(!timer) {
+            this.refundDaysLeft = 0;
+            this.refundDate = null;
+        }
     }
 
     public boolean isSelected() {
