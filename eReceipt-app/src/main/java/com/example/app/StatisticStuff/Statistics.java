@@ -41,6 +41,13 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
                 toBudgetScreen();
             }
         });
+
+        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 

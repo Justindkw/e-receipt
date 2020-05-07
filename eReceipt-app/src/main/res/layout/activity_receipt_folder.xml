@@ -92,11 +92,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="13dp"
                     android:text="Sort by"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:fontFamily="@font/ralewayregular"
+                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
                     app:layout_constraintEnd_toStartOf="@+id/receiptSorter"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,9 +106,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout7"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.166" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/quickReceiptStats"
@@ -125,6 +125,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/receiptText" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout7"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="40dp"

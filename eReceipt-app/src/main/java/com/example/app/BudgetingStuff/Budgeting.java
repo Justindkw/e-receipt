@@ -61,7 +61,7 @@ public class Budgeting extends AppCompatActivity {
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toHomeScreen();
+                finish();
             }
         });
     }
