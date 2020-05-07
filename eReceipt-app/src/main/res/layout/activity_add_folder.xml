@@ -85,6 +85,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="13dp"
             android:layout_marginLeft="13dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:text="Budget:"
             android:textColor="@color/black"
@@ -99,12 +100,13 @@
             android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:text="$"
-            android:textColor="@color/black"
-            android:textSize="24sp"
             android:alpha="0.0"
             android:animateLayoutChanges="true"
+            android:text="$"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             app:fontFamily="@font/robotobold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/setBudget"
@@ -112,14 +114,15 @@
 
         <EditText
             android:id="@+id/setBudget"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="13dp"
-            android:layout_marginRight="13dp"
-            android:ems="10"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
             android:alpha="0.0"
             android:animateLayoutChanges="true"
+            android:ems="10"
+            android:gravity="left"
             android:inputType="none"
             android:text="0.00"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -132,7 +135,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="17dp"
             android:layout_marginRight="17dp"
+            android:layout_marginBottom="5dp"
             android:theme="@style/SCBSwitch"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -156,25 +161,26 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="13dp"
             android:layout_marginTop="0dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="3dp"
             android:text="Name:"
             android:textColor="#000000"
             android:textSize="18sp"
             app:fontFamily="@font/ralewayregular"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="13dp"
+            android:hint="Name"
+            android:textColor="@color/black" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="13dp"
-                android:hint="Name"
-                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 

@@ -61,15 +61,15 @@
             android:id="@+id/info_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="30dp"
             android:adjustViewBounds="true"
+            android:foregroundGravity="center"
             android:text="Name"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:fontFamily="@font/ralewayregular"
-            app:layout_constraintBottom_toBottomOf="@+id/folderLayout"
             app:layout_constraintEnd_toEndOf="@+id/folderLayout"
             app:layout_constraintStart_toStartOf="@+id/folderLayout"
-            app:layout_constraintTop_toTopOf="@+id/folderLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/folderIcon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
