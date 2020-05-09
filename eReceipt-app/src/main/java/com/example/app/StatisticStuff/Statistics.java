@@ -65,7 +65,7 @@ public class Statistics extends AppCompatActivity implements StatisticAdapter.Ad
     }
     private void initTotalProgress(){
         double totalBudget = GlobalFolderList.getTotalBudget();
-        int totalPercent = (int)(GlobalFolderList.getTotalSpending()/totalBudget*100);
+        int totalPercent = (int)(GlobalFolderList.getTotalBudgetableSpending()/totalBudget*100);
         ((TextView)findViewById(R.id.budgetMoney)).setText(new DecimalFormat("0.00").format(totalBudget));
         ((CircularProgressBar)findViewById(R.id.totalBudgetBar)).setProgress(totalPercent);
     }

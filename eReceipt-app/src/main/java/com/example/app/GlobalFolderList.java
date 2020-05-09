@@ -44,10 +44,12 @@ public class GlobalFolderList{
         return totBudget;
     }
     //returns sun of all folder's spending
-    public static double getTotalSpending(){
+    public static double getTotalBudgetableSpending(){
         double totSpending=0;
         for(Folder fold:folderMap.values()){
-            totSpending+=fold.getSpending();
+            if(fold.isBudgetable()){
+                totSpending+=fold.getSpending();
+            }
         }
         return totSpending;
     }
