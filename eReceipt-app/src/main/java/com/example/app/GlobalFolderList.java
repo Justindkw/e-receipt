@@ -6,9 +6,9 @@ import android.graphics.Color;
 import com.example.app.FolderStuff.Folder;
 import com.example.app.ReceiptStuff.Receipt;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -74,19 +74,22 @@ public class GlobalFolderList{
             double receiptAmt = Math.random()*10+5;
             double avgCost = budget[i]/receiptAmt;
             for(int s = 0;s<receiptAmt;s++){
-                try {
-                    fold.addReceipt(new Receipt(defaultPic,
-                            Math.round((avgCost>0 ? (0.5)*(avgCost-(avgCost*2*Math.random()-avgCost)) : Math.random()*50)*100)/100.0,
-                            companies[rand.nextInt(companies.length)],
-                            new SimpleDateFormat("dd/MM/yyyy").parse(Math.round(Math.random()*5)+"/05/2020"),
-                            new SimpleDateFormat("dd/MM/yyyy").parse((Math.round(Math.random()*25)+4)+"/05/2020"),
-                            Math.random()>0.7)
-                    );
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                fold.addReceipt(new Receipt(defaultPic,
+                        Math.round((avgCost>0 ? (0.5)*(avgCost-(avgCost*2*Math.random()-avgCost)) : Math.random()*50)*100)/100.0,
+                        companies[rand.nextInt(companies.length)],
+                       addDays(new Date(), Math.round(Math.random()*-10)),
+                        addDays(new Date(),Math.round(Math.random()*24)),
+                        Math.random()>0.6)
+                );
             }
             GlobalFolderList.add(names[i], fold);
         }
+    }
+    public static Date addDays(Date date, long days)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, (int)days); //minus number would decrement the days
+        return cal.getTime();
     }
 }
